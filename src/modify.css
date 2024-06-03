@@ -1,0 +1,56 @@
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+
+body,.no-space {
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+.w-max-content {
+    width: max-content;
+}
+.w-100 {
+    width: 100%;
+}
+.font-p {
+    font-size: 14px;
+}
+.font-small {
+    font-size: 12px;
+}
+.font-subtitle {
+    font-size: 20px;
+}
+.font-subtitle-big {
+    font-size: 25px;
+}
+.font-header-1 {
+    font-size: 66px;
+}
+
+.font-light {
+    font-weight: 400;
+}
+.font-regular {
+    font-weight: 500;
+}
+.font-medium {
+    font-weight: 600;
+}
+.font-bold {
+    font-weight: 700;
+}
+.font-black {
+    font-weight: 800;
+}
+
+.c-text-main {
+    color: #8B3939
+}
