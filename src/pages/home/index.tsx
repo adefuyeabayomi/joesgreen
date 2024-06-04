@@ -2,6 +2,10 @@ import React,{ useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import FeaturedCard from '../../components/featuredCard';
 import HowItem from '../../components/HowItem';
+import { useRef, useEffect } from 'react';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+
 //images
 import heroImage from "../../assets/hero-img.png"
 import tipDots from '../../assets/tipDots.png'
@@ -146,6 +150,19 @@ function Home(): React.JSX.Element {
                         <div className='sectionHeadlineContainer d-sm-none text-main text-center font-subtitle-big font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span></div>
                         <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span> WORKS.</div>
                         <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
+                        <div>
+                            <Carousel>
+                                <div>
+                                    {image1}
+                                </div>
+                                <div>
+                                    {image2}
+                                </div>
+                                <div>
+                                    {image3}
+                                </div>  
+                            </Carousel>
+                        </div>
                     </div>
                 </div>
             </div>
