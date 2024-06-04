@@ -4,9 +4,13 @@
     src: url('./assets/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
   }
   @font-face {
-      font-family: 'Archivo';
-      src: url('./assets/Archivo-VariableFont_wdth,wght.ttf') format('truetype');
-    }
+    font-family: 'Archivo';
+    src: url('./assets/Archivo-VariableFont_wdth,wght.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Bruno Ace';
+    src: url('./assets/BrunoAce-Regular.ttf') format('truetype');
+  }
   
 
   *{
@@ -28,6 +32,9 @@ body,.no-space {
 .font-family-archivo {
     font-family: 'Archivo';
 }
+.font-family-bruno{
+    font-family: 'Bruno Ace'
+}
 .font-p {
     font-size: 14px;
     line-height: 2;
@@ -40,6 +47,13 @@ body,.no-space {
 }
 .font-subtitle-big {
     font-size: 25px;
+}
+
+.font-heading-3 {
+    font-size: 48px;
+}
+.font-heading-2 {
+    font-size: 55px;
 }
 .font-header-1 {
     font-size: 66px;
@@ -69,6 +83,20 @@ body,.no-space {
     padding: 5px 80px 6px 80px !important;
 }
 
+.brown {
+    color: #4D3B3B;
+}
+.delight {
+    color: #F50057;
+}
+
+.delicious {
+    color: #B85D19;
+}
+
+.text-main {
+    color: #390000;
+}
   
 @media (max-width: 1024px) {
     .mainSpacing {

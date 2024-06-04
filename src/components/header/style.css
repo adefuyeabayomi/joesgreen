@@ -7,6 +7,9 @@
     border: 0px solid;
     border-bottom: 3px solid #ffe8e8;
     background-color: #ffffff;
+    position: fixed;
+    width: 100%;
+    top: 0px;
 }
 
 .h-nav-container{
@@ -121,6 +124,5 @@
 }
 
 
-/*
-    Featured Dishes
-*/
+
+

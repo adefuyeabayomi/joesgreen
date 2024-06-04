@@ -1,6 +1,7 @@
 .hero-section {
-    margin: 30px auto;
-    color: #390000
+    margin: 0px auto;
+    color: #390000;
+    padding: 40px 20px;
 }
 
 .hero-image {
@@ -18,14 +19,20 @@
     color: #8B3939;
 }
 
+.hbcontainer {
+    width: 100%;
+    margin: 0px auto;
+}
+
 .headlinebutton{
     background-color: #281100;
     background-image: linear-gradient(-20deg,#E13600,#8B3939);
-    padding: 3px 80px 4px 80px;
+    padding: 3px 10px;
     font-size: 12px;
     color: white;
     border-radius: 5px;
     border: 0px solid;
+    width: 100%;
 }
 
 .headlinebutton:hover {
@@ -41,20 +48,45 @@
         font-size: 45px;
     }
 }
+
 @media screen and (max-width: 1000px) {
     .headline {
         font-size: 38px;
     }
 }
+
 @media screen and (max-width: 850px) {
     .headline {
         font-size: 30px;
     }
 }
+
 @media screen and (max-width: 768px) {
     .htext-container {
         padding-right: 0px;
         text-align: center;
+    }
+    .hero-section {
+        padding: 40px 0px;
+    }
+    .hbcontainer {
+        max-width: 300px;
+    }
+    
+}
+
+@media screen and (min-width: 768px) {
+    .hbcontainer {
+        max-width: 300px;
+        margin-left: 0px;
+    }
+    
+}
+@media screen and (max-width: 400px) {
+
+    .htext-container {
+        padding-right: 0px;
+        text-align: left;
     }
 }
 @media screen and (min-width: 575px) and (max-width: 768px) {
@@ -70,4 +102,30 @@
         width: max-content !important;
         margin: 0px auto !important;
     }
+}
+
+
+/*
+    Featured Dishes
+*/
+
+.featuredMainContainer {
+    background-color: #FFE8E8;
+}
+
+.featuredContents {
+    padding: 50px 0px;
+}
+
+.tipDots {
+    height: 16px;
+    position: relative;
+    top: 1px
+}
+
+.tipContent {
+    color: #B85D19
+}
+.tipContent p {
+    padding-right: 10px;
 }

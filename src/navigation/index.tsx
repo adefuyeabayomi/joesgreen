@@ -10,6 +10,7 @@ function Navigation(): React.JSX.Element {
         <>
             <Router>
                 <Header />
+                <div style={{marginTop: 55}}></div>
                 <Routes>
                     <Route path='/' Component={Home} />
                 </Routes>
