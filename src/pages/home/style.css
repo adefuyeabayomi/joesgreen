@@ -112,7 +112,7 @@
     background-color: #FFE8E8;
 }
 
-.featuredContents {
+.featuredContents,.howItWorksContents,.reviewsContents {
     padding: 50px 0px;
 }
 
@@ -170,8 +170,36 @@
         width: 80%;
     }
         
-    .sectionAfterTextContainer > p {
+    .sectionAfterTextContainer.features > p {
         width: 70%;
     }
 }
 
+/*
+    how it works.
+*/
+
+.sectionHeadlineContainer.ease, .sectionAfterTextContainer.ease{
+    width: 80%;
+    margin: 0px auto;
+}
+button.hiw-button-container {
+    padding: 0px 0px;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    border: 0px solid;
+    max-width: 300px;
+    color: white;
+    background-color: #281100;
+}
+
+
+
+/**
+Reviews
+*/
+
+.reviewsMainContainer{
+    background-color: #FFF7F2;
+}

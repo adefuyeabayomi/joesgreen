@@ -127,9 +127,14 @@ body,.no-space {
     margin: 0px auto;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .width-100{
     width: 100%;
 }
+
   
 @media (max-width: 1024px) {
     .mainSpacing {
