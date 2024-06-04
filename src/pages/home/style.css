@@ -112,7 +112,7 @@
     background-color: #FFE8E8;
 }
 
-.featuredContents,.howItWorksContents,.reviewsContents {
+.featuredContents,.howItWorksContents,.reviewsContents,.bannerSectionMain,.contactSectionMain {
     padding: 50px 0px;
 }
 
@@ -201,5 +201,46 @@ Reviews
 */
 
 .reviewsMainContainer{
+    background-color: #FFF7F2;
+}
+
+
+/**
+CTA Banners
+*/
+
+.ctaBannerContainer{
+    background-image: url(../../assets/banner1.png);
+    background-position: center;
+    background-size: cover;
+    border-radius: 16px;
+}
+
+.ctaBIContainer img {
+    width: 100%;
+}
+
+.ctaBIContainer{
+}
+
+.ctaBannerContents{
+    color: white
+}
+.cta-button-container {
+    color: white;
+    background: transparent;
+    border: 1.5px solid white;
+    border-radius: 10px;
+    max-width: 300px;
+    width: 100%;
+    display: block;
+    margin-top: 20px !important;
+    padding: 4px 0px !important;
+}
+/*
+Contact Section
+*/
+
+.contactSectionMain {
     background-color: #FFF7F2;
 }

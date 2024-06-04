@@ -5,12 +5,15 @@ import HowItem from '../../components/HowItem';
 import { useRef, useEffect } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import ReviewItem from '../../components/reviewItem';
+import ContactItem from '../../components/contactItem';
 
 //images
 import heroImage from "../../assets/hero-img.png"
 import tipDots from '../../assets/tipDots.png'
 import caretRight from '../../assets/caret right.png'
 import caretPink from '../../assets/caret-pink.png'
+import caretWhite from '../../assets/caret-white.png'
 import image_1 from "../../assets/image1.png"
 import image_2 from "../../assets/image2.png"
 import image_3 from "../../assets/image3.png"
@@ -19,6 +22,7 @@ import image_5 from "../../assets/image5.png"
 import image_6 from "../../assets/image6.png"
 import image_7 from "../../assets/image7.png"
 import image_8 from "../../assets/image8.png"
+
 let image1 = <img src={image_1} />
 let image2 = <img src={image_2} />
 let image3 = <img src={image_3} />
@@ -93,7 +97,7 @@ function Home(): React.JSX.Element {
                             <div className='py-3'></div>
                             <div className='orderspageLinkContainer'>
                                 <div className='w-max-content pointer new-delight row no-space align-items-center'>
-                                    <div className='w-max-content no-space'><p className='font-small font-family-bruno tipTitle'>Visit our orders page to view the menu</p></div>
+                                    <div className='w-max-content no-space'><p className='font-small tipTitle'>Visit our orders page to view the menu</p></div>
                                     <div className='w-max-content no-space'><img className='caretIcon' src={caretRight} /></div>
                                 </div>
                             </div>
@@ -131,7 +135,7 @@ function Home(): React.JSX.Element {
                             <div>
                                 <button className='hiw-button-container'> 
                                     <div className='w-max-content center pointer row no-space align-items-center'>
-                                        <div className='w-max-content no-space'><p className='font-small font-family-bruno tipTitle'>See Our Menu</p></div>
+                                        <div className='w-max-content no-space'><p className='font-small tipTitle'>See Our Menu</p></div>
                                         <div className='w-max-content no-space'><img className='caretIcon' src={caretPink} /></div>
                                     </div>
                                 </button>
@@ -151,23 +155,66 @@ function Home(): React.JSX.Element {
                         <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span> WORKS.</div>
                         <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                         <div>
-                            <Carousel>
+                            <Carousel autoPlay={true} infiniteLoop={true} interval={4000} showArrows={true}>
                                 <div>
-                                    {image1}
+                                    <ReviewItem name='Olaniyi Joseph' occupation='Staff at UBA, Arida, Ikotun.' image={image1} review="“I have been a loyal customer of Joe's Restaurant for years. The food is always delicious and the delivery service is prompt and reliable.”"  />
                                 </div>
                                 <div>
-                                    {image2}
+                                <ReviewItem name='Olaniyi Joseph' occupation='Staff at UBA, Arida, Ikotun.' image={image1} review="“I have been a loyal customer of Joe's Restaurant for years. The food is always delicious and the delivery service is prompt and reliable.”"  />
                                 </div>
                                 <div>
-                                    {image3}
+                                <ReviewItem name='Olaniyi Joseph' occupation='Staff at UBA, Arida, Ikotun.' image={image1} review="“I have been a loyal customer of Joe's Restaurant for years. The food is always delicious and the delivery service is prompt and reliable.”"  />
                                 </div>  
                             </Carousel>
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
+            <div id='cta-banner' className='mainSpacing'>
+                <div className='bannerSectionMain '>
+                    <div className='ctaBannerContainer'>
+                        <div className='ctaBannerContents py-5 px-2'>
+                            <p className='font-subtitle d-md-none font-bold text-center'>DELICIOUS FOOD, AMAZING DINING EXPERIENCE.</p>
+                            <p className='font-heading-6 d-none d-md-block font-bold text-center'>DELICIOUS FOOD, AMAZING DINING EXPERIENCE.</p>
+                            <p className='font-p font-regular text-center'>What are you waiting for? Place an order now!</p>
+                            <button className='cta-button-container center'> 
+                                <div className='w-max-content center pointer row no-space align-items-center'>
+                                    <div className='w-max-content no-space'><p className='font-p tipTitle no-space'>Order Now</p></div>
+                                    <div className='w-max-content no-space'><img className='caretIcon no-space' src={caretWhite} /></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='getInTouch' className='contactSectionMain'>
+                <div className='mainSpacing'>
+                    <div className='CSContainer'>
+                        <div>
+                        <div className='tipContent w-max-content center row no-space align-items-center'>
+                            <div className='w-max-content no-space'><p className='font-p font-family-bruno delicious tipTitle'>CONTACT US</p></div>
+                            <div className='w-max-content no-space'><img className='tipDots' src={tipDots} /></div>
+                        </div>
+                        <div className='sectionHeadlineContainer d-sm-none text-main text-center font-subtitle-big font-medium'><span className='delicious'>GET IN TOUCH</span> WITH US.</div>
+                        <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'><span className='delicious'>GET IN TOUCH</span> WITH US.</div>
+                        <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
 
+                        </div>
+                        <div>
+                            <div className='row no-space align-items-center justify-content-center'>
+                                <div className='col-12 col-md-4 col-lg-3'>
+                                <ContactItem image={image5} title='Email: ' text='joesgreen@gmail.com'></ContactItem>
+                                </div>
+                                <div className='col-12  col-md-4 col-lg-3'>
+                                <ContactItem image={image5} title='Email: ' text='joesgreen@gmail.com'></ContactItem>                                    
+                                </div>
+                                <div className='col-12 col-md-4 col-lg-3'>
+                                <ContactItem image={image5} title='Email: ' text='joesgreen@gmail.com'></ContactItem>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     )
