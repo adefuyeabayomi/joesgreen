@@ -13,20 +13,20 @@ function Home(): React.JSX.Element {
                     <div className='row flex-column flex-sm-row no-space align-items-center'>
                         <div className='col-md-6 col-12 no-space'>
                             <div className='htext-container'>
-                                <h1 className='font-black headline'><span className='headline-delish'>Delicious</span> Meals That <span className='headline-delish'>Delight</span> Your Senses.</h1>
-                                <p className='font-p'>Welcome to Joe's Green Restaurant Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
+                                <h1 className='font-black headline font-family-archivo'><span className='headline-delish'>Delicious</span> Meals That <span className='headline-delish'>Delight</span> Your Senses.</h1>
+                                <p className='font-p'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
                                 <div>
                                     <button className='headlinebutton font-p'>Order Now!</button>
                                 </div>
                             </div>
                         </div>
-                        <div className='col-md-6 col-12 pt-4 pt-sm-0 no-space'>
+                        <div className='himagecontainer col-md-6 col-12 pt-4 pt-md-0 no-space'>
                             <img className='hero-image' src={heroImage} />
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
+            <div id='featuredDishes'>
 
             </div>
             <div>
