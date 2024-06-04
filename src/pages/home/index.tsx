@@ -15,7 +15,7 @@ function Home(): React.JSX.Element {
                         <div className='row flex-column flex-sm-row no-space align-items-center'>
                             <div className='col-md-6 col-12 no-space'>
                                 <div className='htext-container'>
-                                    <h1 className='font-black headline font-family-archivo'><span className='headline-delish'>Delicious</span> Meals That <span className='headline-delish'>Delight</span> Your Senses.</h1>
+                                    <h1 className='font-black headline'><span className='headline-delish'>Delicious</span> Meals That <span className='headline-delish'>Delight</span> Your Senses.</h1>
                                     <p className='font-p'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
                                     <div className='py-2 py-sm-0 hbcontainer'>
                                         <button className='headlinebutton font-p'>Order Now!</button>
@@ -37,7 +37,8 @@ function Home(): React.JSX.Element {
                                 <div className='w-max-content no-space'><p className='font-p font-family-bruno tipTitle'>DELICIOUS</p></div>
                                 <div className='w-max-content no-space'><img className='tipDots' src={tipDots} /></div>
                             </div>
-                            <div className='sectionHeadlineContainer text-main font-subtitle-big font-medium'>OUR FEATURED CHOP <span className='delicious'>BELLE-FULL</span> MENU</div>
+                            <div className='sectionHeadlineContainer features d-sm-none text-main font-subtitle-big font-medium'>OUR FEATURED CHOP <span className='delicious'>BELLE-FULL</span> MENU</div>
+                            <div className='sectionHeadlineContainer features d-none d-sm-block text-main font-heading-5 font-medium'>OUR FEATURED CHOP <span className='delicious'>BELLE-FULL</span> MENU</div>
                             <div className='sectionAfterTextContainer'></div>
                             <div className='otherContents'></div>
                     </div>

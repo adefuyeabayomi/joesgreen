@@ -49,14 +49,23 @@ body,.no-space {
     font-size: 25px;
 }
 
-.font-heading-3 {
+.font-heading-6 {
+    font-size: 32px;
+}
+.font-heading-5 {
+    font-size: 40px;
+}
+.font-heading-4 {
     font-size: 48px;
 }
+.font-heading-3 {
+    font-size: 56px;
+}
 .font-heading-2 {
-    font-size: 55px;
+    font-size: 62px;
 }
 .font-header-1 {
-    font-size: 66px;
+    font-size: 68px;
 }
 
 .font-light {

@@ -43,21 +43,16 @@
     padding-right: 20px;
 }
 
-@media screen and (max-width: 1240px) {
-    .headline {
-        font-size: 45px;
-    }
-}
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
     .headline {
-        font-size: 38px;
+        font-size: 50px;
     }
 }
 
 @media screen and (max-width: 850px) {
     .headline {
-        font-size: 30px;
+        font-size: 50px;
     }
 }
 
@@ -79,6 +74,10 @@
     .hbcontainer {
         max-width: 300px;
         margin-left: 0px;
+    }
+    
+    .hero-section {
+        padding: 40px 0px;
     }
     
 }
@@ -129,3 +128,13 @@
 .tipContent p {
     padding-right: 10px;
 }
+.sectionHeadlineContainer.features {
+    width: 95%;
+}
+
+@media (min-width: 700px){
+    .sectionHeadlineContainer.features {
+        width: 80%;
+    }
+}
+
