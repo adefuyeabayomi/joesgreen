@@ -13,15 +13,18 @@ function Footer(): React.JSX.Element {
     return (
         <div id='footer'>
             <div className='mainSpacing'>
+                <div className='py-3'></div>
                 <div className='upperFooter'>
                     <div className='d-none'></div>
                     <div className='text-main text-center'>
-                        <p className='font-p font-medium'>QUICK LINKS</p>
-                        <p className='font-small'>HOME</p>
-                        <p className='font-small'>ORDER</p>
-                        <p className='font-small'>TRAINING PROGRAMS</p>
-                        <p className='font-small'>ABOUT US</p>
-                        <p className='font-small'>CONTACT US</p>
+                            <p className='font-p font-medium'>QUICK LINKS</p>
+                        <div className='row no-space align-items-center justify-content-center flex-column flex-md-row'>
+                            <p className='font-small w-max-content'>HOME</p>
+                            <p className='font-small w-max-content'>ORDER</p>
+                            <p className='font-small w-max-content'>TRAINING PROGRAMS</p>
+                            <p className='font-small w-max-content'>ABOUT US</p>
+                            <p className='font-small w-max-content'>CONTACT US</p>
+                        </div>
                     </div>
                     <div className='text-center'>                        
                     <p className='font-p font-medium'>FOLLOW ON SOCIAL MEDIA</p>
@@ -32,12 +35,18 @@ function Footer(): React.JSX.Element {
                             <p className='font-small w-max-content'>YOUTUBE <img src={youtube} className='socialIcon' /></p>
                         </div>
                     </div>
-                </div>
-                <div className='lowerFooter'>
-                    <div></div>
-                    <div></div>
+                    
+                <div className='py-3'></div>
                 </div>
             </div>
+    
+                <div className='lowerFooter mainSpacing'>
+                    <div className='text-center'>
+                        <p className='font-small font-regular'>&copy;copyright of Five and Six Technologies. 2024 June.</p>
+                        <p className='font-small font-regular'>Privacy Policy - Terms Of Service</p>
+                    </div>
+                    <div></div>
+                </div>
         </div>
     )
 }
