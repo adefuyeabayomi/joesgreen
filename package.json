@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-wow": "^1.0.6",
     "boostrap": "^2.0.0",
+    "hamburger-react": "^2.5.1",
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "react-wow": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

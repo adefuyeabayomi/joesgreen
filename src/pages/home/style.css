@@ -1,0 +1,57 @@
+.hero-section {
+    margin: 30px auto;
+    color: #390000
+}
+
+.hero-image {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.headline {
+    font-size: 55px;
+    color: #390000;
+    margin: 0px;
+}
+
+.headline-delish {
+    color: #8B3939;
+}
+
+.headlinebutton{
+    background-color: #281100;
+    padding: 4px 80px 5px 80px;
+    color: white;
+    border-radius: 5px;
+    border: 0px solid;
+}
+
+.headlinebutton:hover {
+    cursor: pointer;
+}
+
+.htext-container{
+    padding-right: 20px;
+}
+
+@media screen and (max-width: 1240px) {
+    .headline {
+        font-size: 45px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .headline {
+        font-size: 38px;
+    }
+}
+@media screen and (max-width: 850px) {
+    .headline {
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .htext-container {
+        padding-right: 0px;
+        text-align: center;
+    }
+}

@@ -2,10 +2,12 @@
 @font-face {
     font-family: 'Montserrat';
     src: url('./assets/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
     font-style: normal;
   }
 
+  *{
+    box-sizing: border-box;
+  }
 
 
 body,.no-space {
@@ -21,6 +23,7 @@ body,.no-space {
 }
 .font-p {
     font-size: 14px;
+    line-height: 2;
 }
 .font-small {
     font-size: 12px;
@@ -53,4 +56,15 @@ body,.no-space {
 
 .c-text-main {
     color: #8B3939
+}
+
+.mainSpacing {
+    padding: 5px 80px 6px 80px !important;
+}
+
+  
+@media (max-width: 1024px) {
+    .mainSpacing {
+        padding: 3px 20px 3px 20px !important;
+    }
 }
