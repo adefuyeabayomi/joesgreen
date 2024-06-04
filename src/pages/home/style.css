@@ -119,22 +119,59 @@
 .tipDots {
     height: 16px;
     position: relative;
-    top: 1px
+    top: 1px;
+    z-index: 0;
+}
+.caretIcon {
+    height: 23px;
+    position: relative;
+    top: 3px;
+    z-index: 0;
 }
 
-.tipContent {
-    color: #B85D19
-}
 .tipContent p {
     padding-right: 10px;
 }
 .sectionHeadlineContainer.features {
     width: 95%;
 }
+.sectionAfterTextContainer > p {
+    width: 100%;
+}
+
+.fi-content-container.firstchild{
+    margin-top: 15px !important;
+}
+.fi-content-container {
+    margin-top: 40px !important;
+    max-width: 400px;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .fi-content-container {
+        padding-right: 10px;
+        margin-top: 30px !important;
+    }
+    .fi-content-container.firstchild{
+        margin-top: 30px !important;
+    }
+}
+
+@media screen and (min-width: 10248px) {
+    .fi-content-container {
+        padding-right: 20px;
+    }
+}
+
 
 @media (min-width: 700px){
     .sectionHeadlineContainer.features {
         width: 80%;
+    }
+        
+    .sectionAfterTextContainer > p {
+        width: 70%;
     }
 }
 

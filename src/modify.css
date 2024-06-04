@@ -106,6 +106,30 @@ body,.no-space {
 .text-main {
     color: #390000;
 }
+
+.new-delight {
+    color: #8B3939;
+}
+
+.button-background {
+    color: #281100;
+}
+
+.deep-green {
+    color: #03351A;
+}
+
+.pointer:hover{
+    cursor: pointer;
+}
+
+.center {
+    margin: 0px auto;
+}
+
+.width-100{
+    width: 100%;
+}
   
 @media (max-width: 1024px) {
     .mainSpacing {
