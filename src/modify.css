@@ -134,6 +134,9 @@ body,.no-space {
 .width-100{
     width: 100%;
 }
+.mainVerticalSpace{
+    padding: 50px 0px;
+}
 
   
 @media (max-width: 1024px) {

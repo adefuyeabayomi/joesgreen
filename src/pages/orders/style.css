@@ -1,0 +1,19 @@
+.socialIcon {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 8px;
+}
+.lowerFooter{
+    background-color: #4D3B3B;
+    color: white;
+}
+.ordersBannerContainer{
+    background-image: url(../../assets/banner2.png);
+    background-position: center;
+    background-size: cover;
+    border-radius: 16px;
+}
+.OIContainer{
+    
+}

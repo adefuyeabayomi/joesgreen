@@ -13,7 +13,7 @@ function Footer(): React.JSX.Element {
     return (
         <div id='footer'>
             <div className='mainSpacing'>
-                <div className='py-3'></div>
+                <div className='py-1'></div>
                 <div className='upperFooter'>
                     <div className='d-none'></div>
                     <div className='text-main text-center'>
@@ -38,8 +38,7 @@ function Footer(): React.JSX.Element {
                     
                 <div className='py-3'></div>
                 </div>
-            </div>
-    
+            </div>    
                 <div className='lowerFooter mainSpacing'>
                     <div className='text-center'>
                         <p className='font-small font-regular'>&copy;copyright of Five and Six Technologies. 2024 June.</p>

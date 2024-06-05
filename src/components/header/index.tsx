@@ -24,16 +24,16 @@ function Header(): React.JSX.Element {
         return navigate('/')
     }
     function goToOrders () {
-        return navigate('/orders')
+        return navigate('/order')
     }
     function goToTrainings () {
         return navigate('/trainings')
     }
+    function goToTrainingEnrollment () {
+        return navigate('/training-enrollment')
+    }
     function goToAbout () {
         return navigate('/about')
-    }
-    function goToContact () {
-        return navigate('/contact')
     }
     return (
         <div className='container-fluid no-space'>
@@ -47,19 +47,19 @@ function Header(): React.JSX.Element {
                 <div className='nav-container-desktop'>
                     <div className='row h-nav-container justify-content-center w-100'>
                         <div className='w-max-content'>
-                            <p className='header-link'>Home</p>
+                            <p className='header-link' onClick={goToHome}>Home</p>
                         </div>
                         <div className='w-max-content'>
-                            <p  className='header-link'>Order</p>
+                            <p  className='header-link' onClick={goToOrders}>Order</p>
                         </div>
                         <div className='w-max-content'>
-                            <p className='header-link'>Trainings</p>
+                            <p className='header-link' onClick={goToTrainings}>Trainings</p>
                         </div>
                         <div className='w-max-content'>
-                            <p className='header-link'>About Us</p>
+                            <p className='header-link' onClick={goToAbout}>About Us</p>
                         </div>
                         <div className='w-max-content'>
-                            <p className='header-link'>Contact</p>
+                            <p className='header-link' >Contact</p>
                         </div>
                     </div>
                 </div>
@@ -79,19 +79,19 @@ function Header(): React.JSX.Element {
                         </div>                 
                         <div className='mobile-nav-links-container font-bold'>
                             <div className='w-max-content'>
-                                <p className='mobile-link' onClick={goToHome}>Home</p>
+                                <p className='mobile-link' onClick={()=>{goToHome(); toggleHamburger()}}>Home</p>
                             </div>
                             <div className='w-max-content'>
-                                <p  className='mobile-link' onClick={goToOrders}>Order</p>
+                                <p  className='mobile-link' onClick={()=>{goToOrders(); toggleHamburger()}}>Order</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='mobile-link' onClick={goToTrainings}>Trainings</p>
+                                <p className='mobile-link' onClick={()=>{goToTrainings(); toggleHamburger()}}>Trainings</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='mobile-link' onClick={goToAbout}>About Us</p>
+                                <p className='mobile-link' onClick={()=>{goToAbout(); toggleHamburger()}}>About Us</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='mobile-link' onClick={goToContact}>Contact</p>
+                                <p className='mobile-link'>Contact</p>
                             </div>                            
                         </div>
                     </div>
