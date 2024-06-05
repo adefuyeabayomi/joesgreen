@@ -1,10 +1,21 @@
 import React,{ useState } from 'react'
 import heroImage from '../../assets/trainingHero.png'
+import { useNavigate } from 'react-router-dom'
+
+import TrainingItem from '../../components/trainingsItem'
 
 import tipDots from '../../assets/tipDots.png'
 import './style.css'
 
+
+import image_1 from "../../assets/image1.png"
+let image1 = <img src={image_1} />
+
 function Trainings(): React.JSX.Element {
+    const navigate = useNavigate();
+    function goToEnroll(){
+        navigate("/training-enrollment")
+    }
     return (
         <main id='training'>
             <div className='mainSpacing'>
@@ -15,8 +26,7 @@ function Trainings(): React.JSX.Element {
                             <div className='col-md-6 col-12 no-space'>
                                 <div className='htext-container'>
                                     <h1 className='no-space font-black d-md-none d-lg-block font-heading-3'>Best in class culinary training programs.</h1>
-                                    <h1 className='no-space font-black d-none d-md-block d-lg-none font-heading-6'>Best in class culinary training programs.</h1>
-                                    
+                                    <h1 className='no-space font-black d-none d-md-block d-lg-none font-heading-6'>Best in class culinary training programs.</h1>                                    
                                     <p className='font-p'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
                                 </div>
                             </div>
@@ -39,6 +49,30 @@ function Trainings(): React.JSX.Element {
                         <div className='sectionAfterTextContainer features'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                     </div>
                            
+                    <div className='py-2 py-lg-4' />                    
+                </div>
+                <div>
+                    <div className='py-2 py-lg-4' />
+                        <div className='training-content'>
+                            <TrainingItem actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                       </div>
+                       
+                       <div className='py-2 py-md-4' />
+                        <div className='training-content'>
+                            <TrainingItem actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                       </div>
+                       
+                       <div className='py-2 py-md-4' />
+                        <div className='training-content'>
+                            <TrainingItem actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                       </div>
+                       
+                       <div className='py-2 py-md-4' />
+                        <div className='training-content'>
+                            <TrainingItem actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                       </div>     
+                       
+                       <div className='py-2 py-md-4' />                      
                     <div className='py-2 py-lg-4' />                    
                 </div>
             </div>
