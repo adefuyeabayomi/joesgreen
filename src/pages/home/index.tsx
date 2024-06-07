@@ -1,8 +1,9 @@
-import React,{ useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React,{ useState,useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom';
+import { animateScroll as scroll, scroller, Element } from 'react-scroll';
+import scrollToElement from 'scroll-to-element'
 import FeaturedCard from '../../components/featuredCard';
 import HowItem from '../../components/HowItem';
-import { useRef, useEffect } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import ReviewItem from '../../components/reviewItem';
@@ -22,6 +23,15 @@ import image_5 from "../../assets/image5.png"
 import image_6 from "../../assets/image6.png"
 import image_7 from "../../assets/image7.png"
 import image_8 from "../../assets/image8.png"
+import image_9 from "../../assets/image9.png"
+import image_10 from "../../assets/image10.png"
+import image_11 from "../../assets/image11.png"
+import image_12 from "../../assets/image12.png"
+import image_13 from "../../assets/image13.png"
+import image_14 from "../../assets/image14.png"
+import image_15 from "../../assets/image15.png"
+import image_16 from "../../assets/image16.png"
+import image_17 from "../../assets/image17.png"
 
 let image1 = <img src={image_1} />
 let image2 = <img src={image_2} />
@@ -31,15 +41,46 @@ let image5 = <img src={image_5} />
 let image6 = <img src={image_6} />
 let image7 = <img src={image_7} />
 let image8 = <img src={image_8} />
+let image9 = <img src={image_9} />
+let image10 = <img src={image_10} />
+let image11 = <img src={image_11} />
+let image12 = <img src={image_12} />
+let image13 = <img src={image_13} />
+let image14 = <img src={image_14} />
+let image15 = <img src={image_15} />
+let image16 = <img src={image_16} />
+let image17 = <img src={image_17} />
 import './style.css'
 
-function Home(): React.JSX.Element {
-    function sily () {
+function Home(): React.JSX.Element {    
+    const navigate = useNavigate()
+    const location = useLocation();
 
+    function goToOrders () {
+        return navigate('/order')
     }
+
+      useEffect(() => {
+        console.log({location})
+        if (location.hash === '#contact') {
+            scrollToElement('#contact', {
+                offset: -100,
+                ease: 'in-out-sine',
+                duration: 1500
+            })
+        }
+        else {
+        scroll.scrollToTop({
+          duration: 1500, // duration of the scrolling animation in milliseconds
+          smooth: 'easeInOutQuart', // the type of easing
+        });
+        }
+      }, [location]);
+
     return (
         <main id='home'>
             <div className='mainSpacing'>
+
                 <div className='hero-section'>
                     <div className='hContainerMain container-fluid no-space'>
                         <div className='row flex-column flex-sm-row no-space align-items-center'>
@@ -48,18 +89,18 @@ function Home(): React.JSX.Element {
                                     <h1 className='font-black headline'><span className='headline-delish'>Delicious</span> Meals That <span className='headline-delish'>Delight</span> Your Senses.</h1>
                                     <p className='font-p'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
                                     <div className='py-2 py-sm-0 hbcontainer'>
-                                        <button className='headlinebutton font-p'>Order Now!</button>
+                                        <button className='headlinebutton font-p' onClick={goToOrders}>Order Now!</button>
                                     </div>
                                 </div>
                             </div>
-                            <div className='himagecontainer col-md-6 col-12 pt-4 pt-md-0 no-space'>
-                                <img className='hero-image' src={heroImage} />
+                            <div className='col-md-6 col-12 no-space pt-4 pt-md-0'>
+                                <img className='d-block hero-image' src={heroImage} />
                             </div>
                         </div>
                     </div>                    
                 </div>
-
             </div>
+
             <div id='featuredDishes'>
                 <div className='featuredMainContainer mainSpacing'>
                     <div className='featuredContents'>
@@ -74,28 +115,28 @@ function Home(): React.JSX.Element {
                                 <div className='row no-space'>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
                                         <div className='fi-content-container firstchild center'>
-                                            <FeaturedCard image={image1} title='Jollof Rice and Fried Rice. Spicy and Tasty.' actionFn={sily} />
+                                            <FeaturedCard image={image4} title='Rice Specials: Flavorful Jollof, Savory Fried Rice, White Rice Stew' actionFn={goToOrders} />
                                         </div>
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
                                         <div className='fi-content-container center'>
-                                            <FeaturedCard image={image2} title='Jollof Rice and Fried Rice. Spicy and Tasty.' actionFn={sily} />
+                                            <FeaturedCard image={image2} title='Pasta Delights: Creamy Alfredo, Zesty Marinara, Pesto & More' actionFn={goToOrders} />
                                         </div>
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
                                         <div className='fi-content-container center'>
-                                            <FeaturedCard image={image3} title='Jollof Rice and Fried Rice. Spicy and Tasty.' actionFn={sily} />
+                                            <FeaturedCard image={image3} title='Peppersoup Varieties: Spicy Catfish, Goatmeat, Cowtail peppersoup..' actionFn={goToOrders} />
                                         </div>
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
                                         <div className='fi-content-container center'>
-                                            <FeaturedCard image={image4} title='Jollof Rice and Fried Rice. Spicy and Tasty.' actionFn={sily} />
+                                            <FeaturedCard image={image1} title='Nigerian Soups: Rich Egusi, Flavorful Ogbono, Vegetable & More' actionFn={goToOrders} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className='py-3'></div>
-                            <div className='orderspageLinkContainer'>
+                            <div className='orderspageLinkContainer' onClick={goToOrders}>
                                 <div className='w-max-content pointer new-delight row no-space align-items-center'>
                                     <div className='w-max-content no-space'><p className='font-small tipTitle'>Visit our orders page to view the menu</p></div>
                                     <div className='w-max-content no-space'><img className='caretIcon' src={caretRight} /></div>
@@ -104,6 +145,7 @@ function Home(): React.JSX.Element {
                     </div>
                 </div>
             </div>
+            
             <div id='howItWorks'>
                 <div className='howItWorksMainContainer mainSpacing'>
                     <div className='howItWorksContents'>
@@ -116,24 +158,32 @@ function Home(): React.JSX.Element {
                             <div className='sectionHeadlineContainer ease d-none d-sm-block text-main font-heading-5 font-medium'>HOW OUR <span className='delicious'>DELIVERY SERVICE</span> WORKS.</div>
                             <div className='sectionAfterTextContainer ease'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                             <div>
-                                <div className='row'>
+                                <div className='row align-items-center'>
                                     <div className='col-12 col-md-6 col-lg-3'>
-                                        <HowItem image={image5} title='Browse through our menu' text='Check throught our menu of mouthwatering dishes and choose your pick.'></HowItem>
+                                        <div className='HIContainerMain'>
+                                            <HowItem image={image8} title='Browse through the menu' text='Choose your pick from our menu.'></HowItem>
+                                        </div>                                        
+                                    </div>
+                                    <div className='col-12 col-md-6 col-lg-3 how_img_special'>
+                                        <div className='HIContainerMain'>
+                                            <HowItem image={image7} title='Place your Order' text='Check and confirm your order'></HowItem>
+                                        </div>
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3'>
-                                        <HowItem image={image5} title='Browse through our menu' text='Check throught our menu of mouthwatering dishes and choose your pick.'></HowItem>
+                                        <div className='HIContainerMain'>
+                                            <HowItem image={image5} title='Make Payment' text='Proceed to payment. Pay for the order'></HowItem>
+                                        </div>
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3'>
-                                        <HowItem image={image5} title='Browse through our menu' text='Check throught our menu of mouthwatering dishes and choose your pick.'></HowItem>
-                                    </div>
-                                    <div className='col-12 col-md-6 col-lg-3'>
-                                        <HowItem image={image5} title='Browse through our menu' text='Check throught our menu of mouthwatering dishes and choose your pick.'></HowItem>
+                                        <div className='HIContainerMain'>
+                                            <HowItem image={image6} title='Fast Delivery To You' text='Now wait. Your meal is on the way!'></HowItem>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div className='py-4'></div>
                             <div>
-                                <button className='hiw-button-container'> 
+                                <button className='hiw-button-container' onClick={goToOrders}> 
                                     <div className='w-max-content center pointer row no-space align-items-center'>
                                         <div className='w-max-content no-space'><p className='font-small tipTitle'>See Our Menu</p></div>
                                         <div className='w-max-content no-space'><img className='caretIcon' src={caretPink} /></div>
@@ -148,23 +198,62 @@ function Home(): React.JSX.Element {
                 <div className='reviewsMainContainer mainSpacing'>
                     <div className='reviewsContents'>
                         <div className='tipContent w-max-content center row no-space align-items-center'>
-                            <div className='w-max-content no-space'><p className='font-p font-family-bruno delicious tipTitle'>CONVINIENT</p></div>
+                            <div className='w-max-content no-space'><p className='font-p font-family-bruno delicious tipTitle'>OUR CUSTOMERS</p></div>
                             <div className='w-max-content no-space'><img className='tipDots' src={tipDots} /></div>
                         </div>
                         <div className='sectionHeadlineContainer d-sm-none text-main text-center font-subtitle-big font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span></div>
                         <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span> WORKS.</div>
                         <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                         <div>
-                            <Carousel autoPlay={true} infiniteLoop={true} interval={4000} showArrows={true}>
+                            <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} interval={4000} showArrows={true}>
                                 <div>
-                                    <ReviewItem name='Olaniyi Joseph' occupation='Staff at UBA, Arida, Ikotun.' image={image1} review="“I have been a loyal customer of Joe's Restaurant for years. The food is always delicious and the delivery service is prompt and reliable.”"  />
+                                    <ReviewItem 
+                                    name='Olaniyi Joseph' 
+                                    occupation='Staff at UBA, Arida, Ikotun.' 
+                                    image={image9} 
+                                    review="“I have been a loyal customer of Joe's Restaurant for years. The food is always delicious and the delivery service is prompt and reliable.”"  
+                                    />
                                 </div>
                                 <div>
-                                <ReviewItem name='Olaniyi Joseph' occupation='Staff at UBA, Arida, Ikotun.' image={image1} review="“I have been a loyal customer of Joe's Restaurant for years. The food is always delicious and the delivery service is prompt and reliable.”"  />
+                                    <ReviewItem
+                                        name='Adesola Adekunle'
+                                        occupation='Accountant at GTBank, Victoria Island.'
+                                        image={image10}
+                                        review="“Joe's Restaurant never disappoints! Their dishes are consistently flavorful and the portions are generous. Highly recommended!”"
+                                        />
                                 </div>
                                 <div>
-                                <ReviewItem name='Olaniyi Joseph' occupation='Staff at UBA, Arida, Ikotun.' image={image1} review="“I have been a loyal customer of Joe's Restaurant for years. The food is always delicious and the delivery service is prompt and reliable.”"  />
-                                </div>  
+                                    <ReviewItem
+                                        name='Chidinma Okonkwo'
+                                        occupation='IT Specialist at Chevron, Lekki.'
+                                        image={image12}
+                                        review="“I always look forward to ordering from Joe's Restaurant. Their pepper soup is my favorite comfort food after a long day at work. Delicious every time!”"
+                                        />
+                                </div>
+                                <div>
+                                    <ReviewItem
+                                        name='Bisi Ogunleye'
+                                        occupation='Teacher at Corona School, Gbagada.'
+                                        image={image13}
+                                        review="“I recently hosted a party and ordered catering from Joe's Restaurant. The guests couldn't stop raving about the delicious food! Thank you for making my event memorable.”"
+                                        />
+                                </div>
+                                <div>
+                                    <ReviewItem
+                                        name='Emeka Nwosu'
+                                        occupation='Marketing Manager at MTN Nigeria, Surulere.'
+                                        image={image11}
+                                        review="“Joe's Restaurant is my go-to spot for authentic Nigerian cuisine. Their jollof rice is the best I've ever tasted. Keep up the great work!”"
+                                        />
+                                </div>
+                                <div>
+                                    <ReviewItem
+                                        name='Amina Ibrahim'
+                                        occupation='Doctor at Lagos University Teaching Hospital (LUTH), Idi-Araba.'
+                                        image={image14}
+                                        review="“As a busy professional, I appreciate the convenience of ordering from Joe's Restaurant. The online ordering process is seamless and the delivery is always on time. Plus, the food is absolutely delicious!”"
+                                        />
+                                </div>
                             </Carousel>
                         </div>
                     </div>
@@ -177,7 +266,7 @@ function Home(): React.JSX.Element {
                             <p className='font-subtitle d-md-none font-bold text-center'>DELICIOUS FOOD, AMAZING DINING EXPERIENCE.</p>
                             <p className='font-heading-6 d-none d-md-block font-bold text-center'>DELICIOUS FOOD, AMAZING DINING EXPERIENCE.</p>
                             <p className='font-p font-regular text-center'>What are you waiting for? Place an order now!</p>
-                            <button className='cta-button-container center'> 
+                            <button className='cta-button-container center' onClick={goToOrders}> 
                                 <div className='w-max-content center pointer row no-space align-items-center'>
                                     <div className='w-max-content no-space'><p className='font-p tipTitle no-space'>Order Now</p></div>
                                     <div className='w-max-content no-space'><img className='caretIcon no-space' src={caretWhite} /></div>
@@ -187,7 +276,8 @@ function Home(): React.JSX.Element {
                     </div>
                 </div>
             </div>
-            <div id='getInTouch' className='contactSectionMain'>
+            <div id='contact' className='contactSectionMain'>
+            <Element name={'contact_target'} />
                 <div className='mainSpacing'>
                     <div className='CSContainer'>
                         <div>
@@ -203,13 +293,13 @@ function Home(): React.JSX.Element {
                         <div>
                             <div className='row no-space align-items-center justify-content-center'>
                                 <div className='col-12 col-md-4 col-lg-3'>
-                                <ContactItem image={image5} title='Email: ' text='joesgreen@gmail.com'></ContactItem>
+                                <ContactItem image={image15} title='Email: ' text='joesgreen@gmail.com'></ContactItem>
                                 </div>
                                 <div className='col-12  col-md-4 col-lg-3'>
-                                <ContactItem image={image5} title='Email: ' text='joesgreen@gmail.com'></ContactItem>                                    
+                                <ContactItem image={image16} title='Phone: ' text='+234-8398-4858, +234-8398-4858'></ContactItem>                                    
                                 </div>
                                 <div className='col-12 col-md-4 col-lg-3'>
-                                <ContactItem image={image5} title='Email: ' text='joesgreen@gmail.com'></ContactItem>                                    
+                                <ContactItem image={image17} title='Location: ' text='1, Lawal Street, Koma Road, Ogba, Lagos.'></ContactItem>                                    
                                 </div>
                             </div>
                         </div>

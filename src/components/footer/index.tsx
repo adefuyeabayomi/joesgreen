@@ -1,5 +1,5 @@
 import React,{ useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 import instagram from "../../assets/Frame 32.png"
 import facebook from "../../assets/Frame 31.png"
@@ -10,6 +10,24 @@ import youtube from "../../assets/Frame 33.png"
 import './style.css'
 
 function Footer(): React.JSX.Element {
+    
+    const navigate = useNavigate()
+    function goToHome () {
+        return navigate('/')
+    }
+    function goToOrders () {
+        return navigate('/order')
+    }
+    function goToTrainings () {
+        return navigate('/trainings')
+    }
+    function goToTrainingEnrollment () {
+        return navigate('/training-enrollment')
+    }
+    function goToAbout () {
+        return navigate('/about')
+    }
+
     return (
         <div id='footer'>
             <div className='mainSpacing'>
@@ -19,11 +37,11 @@ function Footer(): React.JSX.Element {
                     <div className='text-main text-center'>
                             <p className='font-p font-medium'>QUICK LINKS</p>
                         <div className='row no-space align-items-center justify-content-center flex-column flex-md-row'>
-                            <p className='font-small w-max-content'>HOME</p>
-                            <p className='font-small w-max-content'>ORDER</p>
-                            <p className='font-small w-max-content'>TRAINING PROGRAMS</p>
-                            <p className='font-small w-max-content'>ABOUT US</p>
-                            <p className='font-small w-max-content'>CONTACT US</p>
+                            <p className='font-small w-max-content pointer' onClick={goToHome}>HOME</p>
+                            <p className='font-small w-max-content pointer' onClick={goToOrders}>ORDER</p>
+                            <p className='font-small w-max-content pointer' onClick={goToTrainings}>TRAINING PROGRAMS</p>
+                            <p className='font-small w-max-content pointer' onClick={goToAbout}>ABOUT US</p>
+                            <p className='font-small w-max-content pointer'>CONTACT US</p>
                         </div>
                     </div>
                     <div className='text-center'>                        

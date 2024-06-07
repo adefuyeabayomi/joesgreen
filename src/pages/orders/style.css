@@ -17,3 +17,34 @@
 .OIContainer{
     
 }
+.order-mod button {
+    width: 36px;
+    height: 36px;
+    padding: 0px !important;
+}
+.order-mod span {
+    padding: 0px 10px;
+}
+.co-divider{
+    border-top: 2px solid rgb(255, 216, 222);
+}
+.co-img-container{
+    padding: 4px;
+    padding-bottom: 1px;
+    border-radius: 10px;
+    background-color: rgb(255, 216, 222);
+}
+.co-img-container img {
+    border-radius: 5px;
+}
+.co-container-main{
+    height: -webkit-fill-available;
+    overflow-y: scroll;
+}
+.co-button-container button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 244, 246);    
+    border: 0px solid;
+}

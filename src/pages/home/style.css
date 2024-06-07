@@ -7,6 +7,7 @@
 .hero-image {
     width: 100%;
     border-radius: 30px;
+    display: block;
 }
 
 .headline {
@@ -43,6 +44,17 @@
     padding-right: 20px;
 }
 
+.how_img_speci{
+    width: 53px !important;
+    height: 76px !important;
+}
+.HIContainerMain{
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid rgb(220, 220, 220);
+    height: -webkit-fill-available;
+}
 
 @media screen and (max-width: 1100px) {
     .headline {
@@ -97,10 +109,16 @@
         max-width: 500px;
         margin: 0px auto !important;
     }
-    .himagecontainer{
-        width: max-content !important;
-        margin: 0px auto !important;
+    .himagecontainer {
+        width: max-content;
     }
+}
+@media screen and (min-width: 768px) {
+      
+    .htext-container {
+        padding-right: 0px;
+        text-align: left;
+    }  
 }
 
 

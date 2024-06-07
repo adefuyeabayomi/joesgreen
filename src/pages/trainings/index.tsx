@@ -1,6 +1,7 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import heroImage from '../../assets/trainingHero.png'
 import { useNavigate } from 'react-router-dom'
+import { animateScroll as scroll } from 'react-scroll';
 
 import TrainingItem from '../../components/trainingsItem'
 
@@ -16,6 +17,13 @@ function Trainings(): React.JSX.Element {
     function goToEnroll(){
         navigate("/training-enrollment")
     }
+    useEffect(() => {
+        // Scroll to top when the component mounts
+        scroll.scrollToTop({
+          duration: 1000, // duration of the scrolling animation in milliseconds
+          smooth: 'easeInOutQuart', // the type of easing
+        });
+      }, []);
     return (
         <main id='training'>
             <div className='mainSpacing'>
@@ -25,13 +33,13 @@ function Trainings(): React.JSX.Element {
                         <div className='row flex-column flex-sm-row no-space align-items-center'>
                             <div className='col-md-6 col-12 no-space'>
                                 <div className='htext-container'>
-                                    <h1 className='no-space font-black d-md-none d-lg-block font-heading-3'>Best in class culinary training programs.</h1>
-                                    <h1 className='no-space font-black d-none d-md-block d-lg-none font-heading-6'>Best in class culinary training programs.</h1>                                    
-                                    <p className='font-p'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
+                                    <h1 className='no-space font-black d-md-none d-lg-block font-heading-3 text-main'>Best in class culinary training programs.</h1>
+                                    <h1 className='no-space font-black d-none d-md-block d-lg-none font-heading-6 text-main'>Best in class culinary training programs.</h1>                                    
+                                    <p className='font-p text-main'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
                                 </div>
                             </div>
-                            <div className='himagecontainer col-md-6 col-12 pt-4 pt-md-0 no-space'>
-                                <img className='hero-image' src={heroImage} />
+                            <div className='col-md-6 col-12 pt-4 pt-md-0 no-space'>
+                                <img className='hero-image d-block' src={heroImage} />
                             </div>
                         </div>
                     </div>  
@@ -54,22 +62,22 @@ function Trainings(): React.JSX.Element {
                 <div>
                     <div className='py-2 py-lg-4' />
                         <div className='training-content'>
-                            <TrainingItem actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                            <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
                        </div>
                        
                        <div className='py-2 py-md-4' />
                         <div className='training-content'>
-                            <TrainingItem actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                            <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
                        </div>
                        
                        <div className='py-2 py-md-4' />
                         <div className='training-content'>
-                            <TrainingItem actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                            <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
                        </div>
                        
                        <div className='py-2 py-md-4' />
                         <div className='training-content'>
-                            <TrainingItem actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                            <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
                        </div>     
                        
                        <div className='py-2 py-md-4' />                      
