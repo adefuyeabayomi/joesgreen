@@ -21,12 +21,12 @@ function Footer(): React.JSX.Element {
     function goToTrainings () {
         return navigate('/trainings')
     }
-    function goToTrainingEnrollment () {
-        return navigate('/training-enrollment')
-    }
     function goToAbout () {
         return navigate('/about')
-    }
+    }    
+    function goToContact () {
+        navigate('/#contact')
+   }
 
     return (
         <div id='footer'>
@@ -41,7 +41,7 @@ function Footer(): React.JSX.Element {
                             <p className='font-small w-max-content pointer' onClick={goToOrders}>ORDER</p>
                             <p className='font-small w-max-content pointer' onClick={goToTrainings}>TRAINING PROGRAMS</p>
                             <p className='font-small w-max-content pointer' onClick={goToAbout}>ABOUT US</p>
-                            <p className='font-small w-max-content pointer'>CONTACT US</p>
+                            <p className='font-small w-max-content pointer' onClick={goToContact}>CONTACT US</p>
                         </div>
                     </div>
                     <div className='text-center'>                        

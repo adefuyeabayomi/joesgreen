@@ -87,7 +87,7 @@ function Header(): React.JSX.Element {
                                     <p className='mobile-link' onClick={()=>{goToAbout(); toggleHamburger()}}>About Us</p>
                                 </div>
                                 <div className='w-max-content'>
-                                    <p className='mobile-link'>Contact</p>
+                                    <p className='mobile-link' onClick={()=>{goToContact(); toggleHamburger()}}>Contact</p>
                                 </div>                                   
                             </div>
                         </Overlay>
