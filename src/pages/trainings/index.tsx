@@ -52,8 +52,8 @@ function Trainings(): React.JSX.Element {
                             <div className='w-max-content no-space'><p className='font-p font-family-bruno delicious tipTitle'>Enroll</p></div>
                             <div className='w-max-content no-space'><img className='tipDots' src={tipDots} /></div>
                         </div>
-                        <div className='sectionHeadlineContainer features d-sm-none text-main font-subtitle-big font-medium'>OUR FEATURED CHOP <span className='delicious'>BELLE-FULL</span> MENU</div>
-                        <div className='sectionHeadlineContainer features d-none d-sm-block text-main font-heading-5 font-medium'>OUR FEATURED CHOP <span className='delicious'>BELLE-FULL</span> MENU</div>
+                        <div className='sectionHeadlineContainer features d-sm-none text-main font-subtitle-big font-medium'>ENROLL IN A <span className='delicious'> TRAINING PROGRAM.</span> </div>
+                        <div className='sectionHeadlineContainer features d-none d-sm-block text-main font-heading-5 font-medium'>ENROLL IN   A <span className='delicious'>TRAINING PROGRAM.</span> </div>
                         <div className='sectionAfterTextContainer features'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                     </div>
                            
@@ -63,8 +63,7 @@ function Trainings(): React.JSX.Element {
                     <div className='py-2 py-lg-4' />
                         <div className='training-content'>
                             <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
-                       </div>
-                       
+                       </div>                       
                        <div className='py-2 py-md-4' />
                         <div className='training-content'>
                             <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
