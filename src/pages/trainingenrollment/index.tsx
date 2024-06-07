@@ -5,6 +5,9 @@ import './style.css'
 
 import tipDots from '../../assets/tipDots.png'
 function TrainingEnrollment(): React.JSX.Element {
+    const [fullname,setFullName] = useState('')
+    const [email,setEmail] = useState('')
+    const [phoneNo, setPhoneNo]=useState('')
     return (
         <div id='enrollment'>
             <div className='mainSpacing'>
@@ -28,33 +31,27 @@ function TrainingEnrollment(): React.JSX.Element {
                             <div className='sectionAfterTextContainer features'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                         </div>
                     </div>
-                    <div id='form'>
+                    <div id='form' className='font-p text-main' >
                         
-                    <div className='py-2' />
+                        <div className='py-2' />
                         <div>
-                            <label>Name</label>
+                            <label>Full Name: </label>
+                            <div className='py-1' />
                             <input id='name' className='enrollment-input' />
                         </div>
                         <div className='py-2' />
                         <div>
-                            <label>Name</label>
+                            <label>Email: </label>
+                            <div className='py-1' />
                             <input id='name' className='enrollment-input' />
                         </div>
                         <div className='py-2' />
                         <div>
-                            <label>Name</label>
+                            <label>Phone Number: </label>
+                            <div className='py-1' />
                             <input id='name' className='enrollment-input' />
                         </div>
-                        <div className='py-2' />
-                        <div>
-                            <label>Name</label>
-                            <input id='name' className='enrollment-input' />
-                        </div>
-                        <div className='py-2' />
-                        <div>
-                            <label>Name</label>
-                            <input id='name' className='enrollment-input' />
-                        </div>
+
                         <div className='py-2' />
                         <div className='py-2' />
                         

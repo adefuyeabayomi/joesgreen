@@ -14,17 +14,58 @@ import './style.css'
 
 function Order(): React.JSX.Element {
     const navigate = useNavigate()
-    const [currentMeal,setCurrentMeal] = useState({})
-    const [currentAddons,setCurrentAddons] = useState({})
+    let [currentMeal,setCurrentMeal] = useState(
+        {
+            price: '',
+            image: image1,
+            title: '',
+            description: '',
+            actionFn: () => {confirmOrder('jollofRiceAndFriedRice', 'riceSpecials')},
+        }
+    )
+    const [currentAddons,setCurrentAddons] = useState([])
+    const [currentAddonsAmounts,setCurrentAddonsAmount]= useState([])
+    const updateAddonCount = (name='', action='') => {
+        setCurrentAddonsAmount(prevCounts => {
+          // Find the addon by name
+          const updatedCounts = prevCounts.map(addon => {
+            if (addon.name === name) {
+              // Increase or decrease the count based on the action
+              return {
+                ...addon,
+                count: action === 'increase' ? addon.count + 1 : Math.max(addon.count - 1, 0)
+              };
+            }
+            return addon;
+          });
+          return updatedCounts;
+        });
+      };
     const [title,setTitle] = useState('')
     const [description,setDescription] = useState('')
     const [isOpen, setOpen] = useState(false)
     function toggle () {
         setOpen(!isOpen)
     }
-    function confirmOrder(mealName,category){
+    const formatNumberWithCommas = (number) => {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      };
+    const calculateTotalPrice = (addons) => {
+        return addons.reduce((total, addon) => {
+          return total + (parseFloat(addon.price) * addon.count);
+        }, 0);
+      };
+    function confirmOrder(dish='',category=''){
         toggle();
-        
+        console.log('dish',dish,'category',category)
+        let currentAddons = menu[category]['addOn']
+        let currentMeal = menu[category][dish]
+        let currentAddonsCount = menu[category]['addOn'].map(x=>{
+            return {name: x.name,price: x.price, count: 0,increase: x.increase, decrease: x.decrease}
+        })
+        setCurrentMeal(currentMeal)
+        setCurrentAddons(currentAddons)
+        setCurrentAddonsAmount(currentAddonsCount)
     }
     useEffect(() => {
         // Scroll to top when the component mounts
@@ -45,7 +86,7 @@ function Order(): React.JSX.Element {
           jollofRiceAndFriedRice: {
             price: '4500',
             image: image1,
-            title: 'Jollof Rice and Fried Rice',
+            title: 'Jollof and Fried Rice',
             description: 'This option is for jollof and fried rice. It comes with one beef. You can then choose to add more beef, chicken or turkey at additional charges.',
             actionFn: () => {confirmOrder('jollofRiceAndFriedRice', 'riceSpecials')},
           },
@@ -57,13 +98,13 @@ function Order(): React.JSX.Element {
             actionFn: () => {confirmOrder('ofadaRiceAndStew', 'riceSpecials')},
           },
           addOn: [
-            { name: 'Plantain', price: '500' },
-            { name: 'Chicken', price: '1000' },
-            { name: 'Beef', price: '700' },
-            { name: 'Turkey', price: '1200' },
-            { name: 'Beans', price: '400' },
-            { name: 'Coleslaw', price: '300' },
-            { name: 'Moi Moi', price: '500' },
+            { name: 'Plantain', price: '500', increase: () => updateAddonCount('Plantain', 'increase'), decrease: () => updateAddonCount('Plantain', 'decrease') },
+            { name: 'Chicken', price: '1000', increase: () => updateAddonCount('Chicken', 'increase'), decrease: () => updateAddonCount('Chicken', 'decrease') },
+            { name: 'Beef', price: '700', increase: () => updateAddonCount('Beef', 'increase'), decrease: () => updateAddonCount('Beef', 'decrease') },
+            { name: 'Turkey', price: '1200', increase: () => updateAddonCount('Turkey', 'increase'), decrease: () => updateAddonCount('Turkey', 'decrease') },
+            { name: 'Beans', price: '400', increase: () => updateAddonCount('Beans', 'increase'), decrease: () => updateAddonCount('Beans', 'decrease') },
+            { name: 'Coleslaw', price: '300', increase: () => updateAddonCount('Coleslaw', 'increase'), decrease: () => updateAddonCount('Coleslaw', 'decrease') },
+            { name: 'Moi Moi', price: '500', increase: () => updateAddonCount('Moi Moi', 'increase'), decrease: () => updateAddonCount('Moi Moi', 'decrease') },
           ]
         },
         pastaSpecials: {
@@ -89,26 +130,26 @@ function Order(): React.JSX.Element {
             actionFn: () => {confirmOrder('pestoPasta', 'pastaSpecials')},
           },
           addOn: [
-            { name: 'Garlic Bread', price: '500' },
-            { name: 'Chicken', price: '1000' },
-            { name: 'Shrimp', price: '1200' },
-            { name: 'Extra Sauce', price: '300' },
-            { name: 'Parmesan Cheese', price: '200' },
+            { name: 'Garlic Bread', price: '500', increase: () => updateAddonCount('Garlic Bread', 'increase'), decrease: () => updateAddonCount('Garlic Bread', 'decrease') },
+            { name: 'Chicken', price: '1000', increase: () => updateAddonCount('Chicken', 'increase'), decrease: () => updateAddonCount('Chicken', 'decrease') },
+            { name: 'Shrimp', price: '1200', increase: () => updateAddonCount('Shrimp', 'increase'), decrease: () => updateAddonCount('Shrimp', 'decrease') },
+            { name: 'Extra Sauce', price: '300', increase: () => updateAddonCount('Extra Sauce', 'increase'), decrease: () => updateAddonCount('Extra Sauce', 'decrease') },
+            { name: 'Parmesan Cheese', price: '200', increase: () => updateAddonCount('Parmesan Cheese', 'increase'), decrease: () => updateAddonCount('Parmesan Cheese', 'decrease') },
           ]
         },
         peppersoupVarieties: {
           spicyCatfish: {
             price: '6000',
             image: image1,
-            title: 'Spicy Catfish Peppersoup',
+            title: 'Catfish Peppersoup',
             description: 'Hot and spicy catfish peppersoup that will warm you up. Add yam or plantain at additional charges.',
             actionFn: () => {confirmOrder('spicyCatfish', 'peppersoupVarieties')},
           },
           heartyGoatmeat: {
             price: '6200',
             image: image1,
-            title: 'Hearty Goatmeat Peppersoup',
-            description: 'Rich and hearty goatmeat peppersoup, perfect for any occasion. Add yam or plantain at additional charges.',
+            title: 'Goatmeat Peppersoup',
+            description: 'Delicious goatmeat peppersoup, good for chilling. Add yam or plantain at additional charges.',
             actionFn: () => {confirmOrder('heartyGoatmeat', 'peppersoupVarieties')},
           },
           cowtailPeppersoup: {
@@ -122,15 +163,15 @@ function Order(): React.JSX.Element {
             price: '6500',
             image: image1,
             title: 'Cowleg Peppersoup',
-            description: 'Delicious and flavorful cowleg peppersoup. Perfect for warming up and enjoyed with yam or plantain at added costs.',
+            description: 'Delicious cowleg peppersoup. Perfect for chilling. Enjoy with yam or plantain at added costs.',
             actionFn: () => {confirmOrder('cowlegPeppersoup', 'peppersoupVarieties')},
           },
           addOn: [
-            { name: 'Yam', price: '500' },
-            { name: 'Plantain', price: '500' },
-            { name: 'Extra Meat', price: '1000' },
-            { name: 'Pepper Sauce', price: '300' },
-            { name: 'Fish', price: '1200' },
+            { name: 'Yam', price: '500', increase: () => updateAddonCount('Yam', 'increase'), decrease: () => updateAddonCount('Yam', 'decrease') },
+            { name: 'Plantain', price: '500', increase: () => updateAddonCount('Plantain', 'increase'), decrease: () => updateAddonCount('Plantain', 'decrease') },
+            { name: 'Extra Meat', price: '1000', increase: () => updateAddonCount('Extra Meat', 'increase'), decrease: () => updateAddonCount('Extra Meat', 'decrease') },
+            { name: 'Pepper Sauce', price: '300', increase: () => updateAddonCount('Pepper Sauce', 'increase'), decrease: () => updateAddonCount('Pepper Sauce', 'decrease') },
+            { name: 'Fish', price: '1200', increase: () => updateAddonCount('Fish', 'increase'), decrease: () => updateAddonCount('Fish', 'decrease') },
           ]
         },
         nigerianSoups: {
@@ -177,13 +218,13 @@ function Order(): React.JSX.Element {
             actionFn: () => {confirmOrder('edikangIkongSoup', 'nigerianSoups')},
           },
           addOn: [
-            { name: 'Pounded Yam', price: '500' },
-            { name: 'Garri', price: '400' },
-            { name: 'Semovita', price: '450' },
-            { name: 'Wheat', price: '450' },
-            { name: 'Extra Meat', price: '1000' },
-            { name: 'Fish', price: '1200' },
-            { name: 'Snail', price: '1500' },
+            { name: 'Pounded Yam', price: '500', increase: () => updateAddonCount('Pounded Yam', 'increase'), decrease: () => updateAddonCount('Pounded Yam', 'decrease') },
+            { name: 'Garri', price: '400', increase: () => updateAddonCount('Garri', 'increase'), decrease: () => updateAddonCount('Garri', 'decrease') },
+            { name: 'Semovita', price: '450', increase: () => updateAddonCount('Semovita', 'increase'), decrease: () => updateAddonCount('Semovita', 'decrease') },
+            { name: 'Wheat', price: '450', increase: () => updateAddonCount('Wheat', 'increase'), decrease: () => updateAddonCount('Wheat', 'decrease') },
+            { name: 'Extra Meat', price: '1000', increase: () => updateAddonCount('Extra Meat', 'increase'), decrease: () => updateAddonCount('Extra Meat', 'decrease') },
+            { name: 'Fish', price: '1200', increase: () => updateAddonCount('Fish', 'increase'), decrease: () => updateAddonCount('Fish', 'decrease') },
+            { name: 'Snail', price: '1500', increase: () => updateAddonCount('Snail', 'increase'), decrease: () => updateAddonCount('Snail', 'decrease') },
           ]
         }
       };
@@ -202,34 +243,39 @@ function Order(): React.JSX.Element {
                         <div className='row no-space p-3'>
                             <div className='col-12 no-space'>
                                 <div className='row no-space align-items-center justify-content-center'>
-                                    <div className='col-12 d-none d-md-block col-md-6 no-space'>
+                                    <div className='col-12 d-none d-lg-block col-md-6 no-space'>
                                         <div className='co-img-container'>
-                                            {image1}
+                                            {currentMeal.image}
                                         </div>
                                     </div>
-                                    <div className='col-12 col-md-6 no-space'>
+                                    <div className='col-12 col-md-9 col-lg-6 no-space'>
                                         <div className='confirm-contents px-md-3'>
-                                            <p className='no-space font-subtitle font-bold delicious'>{title}</p>
+                                            <p className='no-space font-subtitle font-bold delicious'>{currentMeal.title}</p>
                                             <div className='py-1' />
                                             <p className='no-space font-p font-medium'>Description: </p>
                                             <div className='py-1' />
-                                            <p className='no-space font-p font-light'>{description}</p>
+                                            <p className='no-space font-p font-light'>{currentMeal.description}</p>
                                             <div className='py-1' />
                                             <p className='no-space font-p font-bold delicious'>Add to your order</p>
-                                            <div className='py-1' />
-                                            <div className='row no-space align-items-center font-p font-light'>
-                                                <div className='col-6 no-space'><p className='no-space'>Chicken (1200)</p></div>
-                                                <div className='col-6 no-space order-mod'> <button className='p-1 font-bold font-subtitle'>+</button> <span className='font-subtitle'>0</span> <button className='p-1 font-bold  font-subtitle'> - </button> </div>
-                                            </div>
-                                            <div className='py-1' />
-                                            <div className='row no-space align-items-center font-p font-light'>
-                                                <div className='col-6 no-space'><p className='no-space'>Turkey (5400)</p></div>
-                                                <div className='col-6 no-space order-mod'> <button className='p-1 font-bold font-subtitle'>+</button> <span className='font-subtitle'>0</span> <button className='p-1 font-bold  font-subtitle'> - </button> </div>
-                                            </div>
-                                            <div className='py-1' />
-                                            <div className='row no-space align-items-center font-p font-light'>
-                                                <div className='col-6 no-space'><p className='no-space'>Titus Fish (1000)</p></div>
-                                                <div className='col-6 no-space order-mod'> <button className='p-1 font-bold font-subtitle'>+</button> <span className='font-subtitle'>0</span> <button className='p-1 font-bold  font-subtitle'> - </button> </div>
+                                            
+                                            <div className='border addOnDivide' />
+                                            <div>
+                                                {
+                                                    currentAddonsAmounts.map(addon=>{
+                                                        let {name,price,increase,decrease,count}=addon
+                                                        let addOnRender = (
+                                                            <div>
+                                                                <div className='py-1' />
+                                                                <div className='row no-space align-items-center font-p font-light'>
+                                                                    <div className='col no-space'><p className='no-space'>{name} ({price})</p></div>
+                                                                    <div className='w-max-content no-space order-mod'> <button className='p-1 font-bold font-subtitle' onClick={increase}>+</button> <span className='font-subtitle'>{count}</span> <button className='p-1 font-bold  font-subtitle' onClick={decrease}> - </button> </div>
+                                                                </div>
+                                                                <div className='border addOnDivide' />
+                                                            </div>                                                            
+                                                        )
+                                                        return addOnRender
+                                                    })
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -247,57 +293,44 @@ function Order(): React.JSX.Element {
                                         <div className='py-1' />
                                         <div className='row no-space'>
                                             <div className='col'>                                        
-                                                <p className='no-space'>Item </p> 
+                                                <p className='no-space'>{currentMeal.title}</p> 
                                             </div>
                                             <div className='w-max-content'>
-                                                <p className='no-space'>(NGN) 1200</p> 
+                                                <p className='no-space'>(NGN) {currentMeal.price}</p> 
                                             </div>
                                         </div>
+                                        <div>
+                                            {
+                                                currentAddonsAmounts.map(x=>{
+
+                                                    let summaryItem = (
+                                                        <div>                        
+                                                            <div className='py-2' />
+                                                            <div className='row no-space'>
+                                                                <div className='col'>                                        
+                                                                    <p className='no-space'>{x.name} ({x.count})</p> 
+                                                                </div>
+                                                                <div className='w-max-content'>
+                                                                    <p className='no-space'>(NGN) {x.price * x.count}</p> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                    return x.count > 0 ? summaryItem : null
+                                                })
+                                            }
+                                        </div>                               
+                                                                                                                      
                                         
-                                                                    
-                                        <div className='py-1' />
-                                        <div className='row no-space'>
-                                            <div className='col'>                                        
-                                                <p className='no-space'>Item </p> 
-                                            </div>
-                                            <div className='w-max-content'>
-                                                <p className='no-space'>(NGN) 1200</p> 
-                                            </div>
-                                        </div>
-                                        
-                                                                    
-                                        <div className='py-1' />
-                                        <div className='row no-space'>
-                                            <div className='col'>                                        
-                                                <p className='no-space'>Item </p> 
-                                            </div>
-                                            <div className='w-max-content'>
-                                                <p className='no-space'>(NGN) 1200</p> 
-                                            </div>
-                                        </div>
-                                        
-                                                                    
-                                        <div className='py-1' />
-                                        <div className='row no-space'>
-                                            <div className='col'>                                        
-                                                <p className='no-space'>Item </p> 
-                                            </div>
-                                            <div className='w-max-content'>
-                                                <p className='no-space'>(NGN) 1200</p> 
-                                            </div>
-                                        </div>
-                                        
-                                                                    
                                         <div className='py-2' />
                                         <div className='row no-space font-subtitle'>
                                             <div className='col'>                                        
                                                 <p className='no-space'>Total: </p> 
                                             </div>
                                             <div className='w-max-content'>
-                                                <p className='no-space'>(NGN) 1200</p> 
+                                                <p className='no-space' style={{letterSpacing: '1px'}}> = {formatNumberWithCommas(Number(currentMeal.price) + calculateTotalPrice(currentAddonsAmounts))}</p> 
                                             </div>
                                         </div>
-
                                         <div className='py-2' />
                                     </div>
                                     <div className='co-button-container p-2'>

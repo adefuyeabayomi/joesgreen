@@ -48,3 +48,17 @@
     background-color: rgb(255, 244, 246);    
     border: 0px solid;
 }
+.addOnDivide{
+    margin-top: 15px;
+    border-bottom: 1px soild rgb(255, 195, 195);
+    border-color: rgba(230, 230, 230, 0.066) !important;
+}
+@media screen and (min-width: 1024px) {
+      
+    .confirm-contents{
+        padding-left:  25px !important;
+        margin-left : 10px !important;
+        border-left: 2px solid !important;
+        border-color: rgba(230, 230, 230, 0.151) !important;
+    }  
+}
