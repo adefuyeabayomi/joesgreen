@@ -2,6 +2,8 @@ import React,{ useState,useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { animateScroll as scroll, scroller, Element } from 'react-scroll';
 import scrollToElement from 'scroll-to-element'
+import TrackVisibility from 'react-on-screen';
+import WOW from 'wowjs'
 import FeaturedCard from '../../components/featuredCard';
 import HowItem from '../../components/HowItem';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -59,7 +61,11 @@ function Home(): React.JSX.Element {
     function goToOrders () {
         return navigate('/order')
     }
-
+    useEffect(() => {
+        new WOW.WOW({
+          live: false
+        }).init();
+      }, [])
       useEffect(() => {
         console.log({location})
         if (location.hash === '#contact') {
@@ -75,7 +81,7 @@ function Home(): React.JSX.Element {
           smooth: 'easeInOutQuart', // the type of easing
         });
         }
-      }, [location]);
+      }, [location])
 
     return (
         <main id='home'>
@@ -85,7 +91,7 @@ function Home(): React.JSX.Element {
                     <div className='hContainerMain container-fluid no-space'>
                         <div className='row flex-column flex-sm-row no-space align-items-center'>
                             <div className='col-md-6 col-12 no-space'>
-                                <div className='htext-container'>
+                                <div className='htext-container '>
                                     <h1 className='font-black headline'><span className='headline-delish'>Delicious</span> Meals That <span className='headline-delish'>Delight</span> Your Senses.</h1>
                                     <p className='font-p'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
                                     <div className='py-2 py-sm-0 hbcontainer'>
@@ -94,7 +100,7 @@ function Home(): React.JSX.Element {
                                 </div>
                             </div>
                             <div className='col-md-6 col-12 no-space pt-4 pt-md-0'>
-                                <img className='d-block hero-image' src={heroImage} />
+                                <img className='d-block hero-image animate__animated animate__fadeInUp  wow' src={heroImage} />
                             </div>
                         </div>
                     </div>                    
@@ -102,7 +108,7 @@ function Home(): React.JSX.Element {
             </div>
 
             <div id='featuredDishes'>
-                <div className='featuredMainContainer mainSpacing'>
+                <div className='featuredMainContainer mainSpacing wow fadeInUp'>
                     <div className='featuredContents'>
                             <div className='tipContent row no-space align-items-center'>
                                 <div className='w-max-content no-space'><p className='font-p font-family-bruno delicious tipTitle'>DISCOVER</p></div>
