@@ -1,5 +1,7 @@
 import React,{ useState,useEffect } from 'react'
 import { animateScroll as scroll } from 'react-scroll';
+import { Button, notification, Space, Spin } from 'antd';
+import axios from 'axios';
 
 import tipDots from '../../assets/tipDots.png'
 import OrderItem from '../../components/orderItem'
@@ -41,16 +43,33 @@ import image_26 from '../../assets/image26.png'
 let image26 = <img style={{width: '100%'}} src={image_26} />
 
 import './style.css'
+import useNotification from 'antd/es/notification/useNotification';
+type NotificationType = 'success' | 'info' | 'warning' | 'error';
+import type { NotificationArgsProps } from 'antd';
+
+type NotificationPlacement = NotificationArgsProps['placement'];
 
 function Order(): React.JSX.Element {
     const navigate = useNavigate()
+    const [spinning,setSpinning] = useState(false)
+    const [api,contextHolder] = notification.useNotification()
+    const [customerName , setCustomerName]= useState('')
+    const [customerPhoneNumber, setCustomerPhoneNumber] = useState('')
+    const openNotificationWithIcon = (type: NotificationType,placement: NotificationPlacement,title: string,description: string) => {
+        api[type]({
+          message: title,
+          placement,
+          duration: 7,
+          description
+        })
+      }
     let [currentMeal,setCurrentMeal] = useState(
         {
             price: '',
             image: image1,
             title: '',
             description: '',
-            actionFn: () => {confirmOrder('jollofRiceAndFriedRice', 'riceSpecials')},
+            actionFn: () => {openOrder('jollofRiceAndFriedRice', 'riceSpecials')},
         }
     )
     const [currentAddons,setCurrentAddons] = useState([])
@@ -109,7 +128,7 @@ function Order(): React.JSX.Element {
           return total + (parseFloat(addon.price) * addon.count);
         }, 0);
       };
-    function confirmOrder(dish='',category=''){
+    function openOrder(dish='',category=''){
         toggle();
         console.log('dish',dish,'category',category)
         let currentAddons = menu2[category][dish]['addOn']
@@ -121,6 +140,46 @@ function Order(): React.JSX.Element {
         setCurrentAddons(currentAddons)
         setCurrentAddonsAmount(currentAddonsCount)
     }
+
+    function confirmOrder (){
+        let addons = currentAddonsAmounts.map(x=>{
+            let {name,price,count} = x;
+            return {name,price,count}
+        })
+        let totalPrice = Number(currentMeal.price) + calculateTotalPrice(addons)
+        let meal = {...currentMeal, image: undefined}
+        let data = {addons,meal,totalPrice}
+        let requestBody = {
+          addons,
+          meal,
+          totalPrice,
+          contactNumber: customerPhoneNumber,
+          name: customerName
+        }
+        console.log('confirming order', requestBody)
+        if(customerName == ''){
+          openNotificationWithIcon('error','bottomLeft','Add Your Name', 'Please Input your name to process the order.')
+          return ''
+        }
+        if(customerPhoneNumber.length !== 11 ){
+          openNotificationWithIcon('error','bottomLeft','Phone Number Incorrect', 'Make sure your phone number is up to 11 digits.')
+          return ''
+        }
+        setSpinning(true)
+        axios.post('https://joe-server-gkwg.onrender.com/process-order', requestBody)
+          .then(response => {
+            setSpinning(false)
+            toggle()
+            openNotificationWithIcon('info','topRight','Order Processed Successfully', 'Thanks for your patronage. We would contact you on via call/whatsapp to follow up on your order.')
+            console.log('Order processed successfully:', response.data);
+          })
+          .catch(error => {
+            setSpinning(false)
+            openNotificationWithIcon('error','topRight','Unable to process order At The Moment.', 'It appears that our server is down at the moment. Please try again.')
+            console.error('Error processing order:', error)
+    })
+    }
+
     useEffect(() => {
         // Scroll to top when the component mounts
         scroll.scrollToTop({
@@ -136,7 +195,7 @@ function Order(): React.JSX.Element {
             image: image18,
             title: 'Brown Noodles Soup with Sunny Side Up',
             description: 'A delicious soup made with brown noodles, topped with a perfectly cooked sunny side up egg.',
-            actionFn: () => {confirmOrder('brownNoodlesSoupWithSunnySideUp', 'lightCravings')},
+            actionFn: () => {openOrder('brownNoodlesSoupWithSunnySideUp', 'lightCravings')},
             addOn: []
           },
           grilledChickenWithColeslawSaladAndPotatoChips: {
@@ -144,7 +203,7 @@ function Order(): React.JSX.Element {
             image: image19,
             title: 'Grilled Chicken with Coleslaw Salad and Potato Chips',
             description: 'Tender grilled chicken accompanied by coleslaw salad and crispy potato chips.',
-            actionFn: () => {confirmOrder('grilledChickenWithColeslawSaladAndPotatoChips', 'lightCravings')},
+            actionFn: () => {openOrder('grilledChickenWithColeslawSaladAndPotatoChips', 'lightCravings')},
             addOn: []
           },
           sotehMeatWithBrownSauce: {
@@ -152,7 +211,7 @@ function Order(): React.JSX.Element {
             image: image20,
             title: 'Soteh Meat with Brown Sauce',
             description: 'Tender soteh meat served with a savory brown sauce, perfect for a hearty meal.',
-            actionFn: () => {confirmOrder('sotehMeatWithBrownSauce', 'lightCravings')},
+            actionFn: () => {openOrder('sotehMeatWithBrownSauce', 'lightCravings')},
             addOn: []
           },
           beefPlatterKebab: {
@@ -160,7 +219,7 @@ function Order(): React.JSX.Element {
             image: image21,
             title: 'Beef Platter Kebab',
             description: 'A savory assortment of grilled beef kebabs, perfect for any occasion.',
-            actionFn: () => {confirmOrder('beefPlatterKebab', 'lightCravings')},
+            actionFn: () => {openOrder('beefPlatterKebab', 'lightCravings')},
             addOn: []
           }
         },
@@ -170,7 +229,7 @@ function Order(): React.JSX.Element {
             image: image22,
             title: 'Jollof Rice with Avocado Salad',
             description: 'Flavorful Jollof Rice served with a side of fresh avocado salad.',
-            actionFn: () => {confirmOrder('jollofRiceWithAvocadoSalad', 'nigerianSpecials')},
+            actionFn: () => {openOrder('jollofRiceWithAvocadoSalad', 'nigerianSpecials')},
             addOn: [
                 { name: 'Plantain', price: '500', increase: () => updateAddonCount('Plantain', 'increase'), decrease: () => updateAddonCount('Plantain', 'decrease') },
             ]
@@ -180,7 +239,7 @@ function Order(): React.JSX.Element {
             image: image23,
             title: 'Pericandy with Native Sauce',
             description: 'Pericandy served with traditional native sauce, bursting with local flavors.',
-            actionFn: () => {confirmOrder('pericandyWithNativeSauce', 'nigerianSpecials')},
+            actionFn: () => {openOrder('pericandyWithNativeSauce', 'nigerianSpecials')},
             addOn: []
           },
           whiteRiceWithAssortedMeatGarnishedWithNapoSauce: {
@@ -188,7 +247,7 @@ function Order(): React.JSX.Element {
             image: image4,
             title: 'White Rice with Assorted Meat Garnished with Napo Sauce',
             description: 'Steamed white rice served with assorted meats and garnished with Napo sauce for a flavorful meal.',
-            actionFn: () => {confirmOrder('whiteRiceWithAssortedMeatGarnishedWithNapoSauce', 'nigerianSpecials')},
+            actionFn: () => {openOrder('whiteRiceWithAssortedMeatGarnishedWithNapoSauce', 'nigerianSpecials')},
             addOn: []
           },
           jollofRiceWithBBQSauce: {
@@ -196,7 +255,7 @@ function Order(): React.JSX.Element {
             image: image24,
             title: 'Jollof Rice with BBQ Sauce',
             description: 'Delicious Jollof Rice finished with BBQ sauce, served with a side of pepper sauce.',
-            actionFn: () => {confirmOrder('jollofRiceWithBBQSauce', 'nigerianSpecials')},
+            actionFn: () => {openOrder('jollofRiceWithBBQSauce', 'nigerianSpecials')},
             addOn: []
           },
           bangaSoup: {
@@ -204,7 +263,7 @@ function Order(): React.JSX.Element {
             image: image25,
             title: 'Banga Soup',
             description: 'Traditional Banga Soup made with fresh palm fruit extract, rich in flavor and perfect with any choice of swallow.',
-            actionFn: () => {confirmOrder('bangaSoup', 'nigerianSpecials')},
+            actionFn: () => {openOrder('bangaSoup', 'nigerianSpecials')},
             addOn: []
           },
           omiobeYorubaStew: {
@@ -212,7 +271,7 @@ function Order(): React.JSX.Element {
             image: image26,
             title: 'Omiobe Yoruba Stew',
             description: 'Authentic Yoruba stew known for its rich flavors and aromatic spices.',
-            actionFn: () => {confirmOrder('omiobeYorubaStew', 'nigerianSpecials')},
+            actionFn: () => {openOrder('omiobeYorubaStew', 'nigerianSpecials')},
             addOn: []
           },
           addOn: []
@@ -226,21 +285,21 @@ function Order(): React.JSX.Element {
             image: image1,
             title: 'White Rice and Stew',
             description: 'This option is for white rice and stew. It comes with one beef. You can then choose to add more beef, chicken or turkey at additional charges.',
-            actionFn: () => {confirmOrder('whiteRiceAndStew', 'riceSpecials')},
+            actionFn: () => {openOrder('whiteRiceAndStew', 'riceSpecials')},
           },
           jollofRiceAndFriedRice: {
             price: '4500',
             image: image1,
             title: 'Jollof and Fried Rice',
             description: 'This option is for jollof and fried rice. It comes with one beef. You can then choose to add more beef, chicken or turkey at additional charges.',
-            actionFn: () => {confirmOrder('jollofRiceAndFriedRice', 'riceSpecials')},
+            actionFn: () => {openOrder('jollofRiceAndFriedRice', 'riceSpecials')},
           },
           ofadaRiceAndStew: {
             price: '5000',
             image: image1,
             title: 'Ofada Rice and Stew',
             description: 'This option is for ofada rice and stew. It comes with one beef. You can then choose to add more beef, chicken or turkey at additional charges.',
-            actionFn: () => {confirmOrder('ofadaRiceAndStew', 'riceSpecials')},
+            actionFn: () => {openOrder('ofadaRiceAndStew', 'riceSpecials')},
           },
           addOn: [
             { name: 'Plantain', price: '500', increase: () => updateAddonCount('Plantain', 'increase'), decrease: () => updateAddonCount('Plantain', 'decrease') },
@@ -258,21 +317,21 @@ function Order(): React.JSX.Element {
             image: image1,
             title: 'Creamy Alfredo',
             description: 'Rich and creamy Alfredo pasta with a hint of garlic and Parmesan cheese. Add chicken or shrimp at additional charges.',
-            actionFn: () => {confirmOrder('creamyAlfredo', 'pastaSpecials')},
+            actionFn: () => {openOrder('creamyAlfredo', 'pastaSpecials')},
           },
           zestyMarinara: {
             price: '5200',
             image: image1,
             title: 'Zesty Marinara',
             description: 'Pasta in a zesty marinara sauce made with fresh tomatoes and herbs. Add meatballs or sausage at additional charges.',
-            actionFn: () => {confirmOrder('zestyMarinara', 'pastaSpecials')},
+            actionFn: () => {openOrder('zestyMarinara', 'pastaSpecials')},
           },
           pestoPasta: {
             price: '5400',
             image: image1,
             title: 'Pesto Pasta',
             description: 'Delicious pasta tossed in a fresh basil pesto sauce. Satiate your Craving. Add chicken or shrimp at additional charges.',
-            actionFn: () => {confirmOrder('pestoPasta', 'pastaSpecials')},
+            actionFn: () => {openOrder('pestoPasta', 'pastaSpecials')},
           },
           addOn: [
             { name: 'Garlic Bread', price: '500', increase: () => updateAddonCount('Garlic Bread', 'increase'), decrease: () => updateAddonCount('Garlic Bread', 'decrease') },
@@ -288,28 +347,28 @@ function Order(): React.JSX.Element {
             image: image1,
             title: 'Catfish Peppersoup',
             description: 'Hot and spicy catfish peppersoup that will warm you up. Add yam or plantain at additional charges.',
-            actionFn: () => {confirmOrder('spicyCatfish', 'peppersoupVarieties')},
+            actionFn: () => {openOrder('spicyCatfish', 'peppersoupVarieties')},
           },
           heartyGoatmeat: {
             price: '6200',
             image: image1,
             title: 'Goatmeat Peppersoup',
             description: 'Delicious goatmeat peppersoup, good for chilling. Add yam or plantain at additional charges.',
-            actionFn: () => {confirmOrder('heartyGoatmeat', 'peppersoupVarieties')},
+            actionFn: () => {openOrder('heartyGoatmeat', 'peppersoupVarieties')},
           },
           cowtailPeppersoup: {
             price: '6400',
             image: image1,
             title: 'Cowtail Peppersoup',
             description: 'Flavorful cowtail peppersoup with a blend of spices. Add yam or plantain at additional charges.',
-            actionFn: () => {confirmOrder('cowtailPeppersoup', 'peppersoupVarieties')},
+            actionFn: () => {openOrder('cowtailPeppersoup', 'peppersoupVarieties')},
           },
           cowlegPeppersoup: {
             price: '6500',
             image: image1,
             title: 'Cowleg Peppersoup',
             description: 'Delicious cowleg peppersoup. Perfect for chilling. Enjoy with yam or plantain at added costs.',
-            actionFn: () => {confirmOrder('cowlegPeppersoup', 'peppersoupVarieties')},
+            actionFn: () => {openOrder('cowlegPeppersoup', 'peppersoupVarieties')},
           },
           addOn: [
             { name: 'Yam', price: '500', increase: () => updateAddonCount('Yam', 'increase'), decrease: () => updateAddonCount('Yam', 'decrease') },
@@ -325,42 +384,42 @@ function Order(): React.JSX.Element {
             image: image1,
             title: 'Rich Egusi Soup',
             description: 'Traditional Nigerian Egusi soup with melon seeds, leafy greens, and assorted meats. Served with your choice of swallow.',
-            actionFn: () => {confirmOrder('egusiSoup', 'nigerianSoups')},
+            actionFn: () => {openOrder('egusiSoup', 'nigerianSoups')},
           },
           ogbonoSoup: {
             price: '6300',
             image: image1,
             title: 'Flavorful Ogbono Soup',
             description: 'Thick and flavorful Ogbono soup made with wild mango seeds and assorted meats. Served with your choice of swallow.',
-            actionFn: () => {confirmOrder('ogbonoSoup', 'nigerianSoups')},
+            actionFn: () => {openOrder('ogbonoSoup', 'nigerianSoups')},
           },
           vegetableSoup: {
             price: '6100',
             image: image1,
             title: 'Vegetable Soup',
             description: 'Healthy and delicious vegetable soup with a mix of leafy greens and assorted meats. Served with your choice of swallow.',
-            actionFn: () => {confirmOrder('vegetableSoup', 'nigerianSoups')},
+            actionFn: () => {openOrder('vegetableSoup', 'nigerianSoups')},
           },
           bangaSoup: {
             price: '6800',
             image: image1,
             title: 'Banga Soup',
             description: 'Rich and savory Banga soup made from palm nut extract, with assorted meats and fish. Served with your choice of swallow.',
-            actionFn: () => {confirmOrder('bangaSoup', 'nigerianSoups')},
+            actionFn: () => {openOrder('bangaSoup', 'nigerianSoups')},
           },
           afangSoup: {
             price: '6700',
             image: image1,
             title: 'Afang Soup',
             description: 'Delicious Afang soup made with a blend of okazi and waterleaf, and assorted meats. Served with your choice of swallow.',
-            actionFn: () => {confirmOrder('afangSoup', 'nigerianSoups')},
+            actionFn: () => {openOrder('afangSoup', 'nigerianSoups')},
           },
           edikangIkongSoup: {
             price: '6900',
             image: image1,
             title: 'Edikang Ikong Soup',
             description: 'Edikang Ikong soup made with pumpkin leaves and waterleaf, with assorted meats and fish. Served with any swallow.',
-            actionFn: () => {confirmOrder('edikangIkongSoup', 'nigerianSoups')},
+            actionFn: () => {openOrder('edikangIkongSoup', 'nigerianSoups')},
           },
           addOn: [
             { name: 'Pounded Yam', price: '500', increase: () => updateAddonCount('Pounded Yam', 'increase'), decrease: () => updateAddonCount('Pounded Yam', 'decrease') },
@@ -377,7 +436,9 @@ function Order(): React.JSX.Element {
 
     return (
         <main id='orders-page' className='mainSpacing'>
+            {contextHolder}
             <div className='mainVerticalSpace'>
+            <Spin fullscreen tip={'Logging In, Please Wait'} spinning={spinning}></Spin>
                 <Overlay isOpen={isOpen} toggle={toggle}>
                     <div className='co-container-main'>
                         <div className='pt-5' />
@@ -388,12 +449,13 @@ function Order(): React.JSX.Element {
                         <div className='row no-space p-3'>
                             <div className='col-12 no-space'>
                                 <div className='row no-space align-items-center justify-content-center'>
-                                    <div className='col-12 d-none d-lg-block col-md-6 no-space'>
+                                    <div className='col-11 col-sm-9 col-md-6 col-lg-6 col-xl-5 no-space'>
                                         <div className='co-img-container'>
                                             {currentMeal.image}
                                         </div>
+                                        <div className='d-block d-md-none py-3' />
                                     </div>
-                                    <div className='col-12 col-md-9 col-lg-6 no-space'>
+                                    <div className='col-11 col-sm-9 col-md-6 col-lg-4 no-space'>
                                         <div className='confirm-contents px-md-3'>
                                             <p className='no-space font-subtitle font-bold delicious'>{currentMeal.title}</p>
                                             <div className='py-1' />
@@ -438,12 +500,12 @@ function Order(): React.JSX.Element {
                                         <div className='py-1' />
                                         <div className='row no-space'>
                                             <div className='col'>                                        
-                                                <p className='no-space'>{currentMeal.title}</p> 
+                                                <p className='no-space font-regular font-p'>{currentMeal.title}</p> 
                                             </div>
                                             <div className='w-max-content'>
-                                                <p className='no-space'>(NGN) {currentMeal.price}</p> 
+                                                <p className='no-space font-p font-regular'>(NGN) {currentMeal.price}</p> 
                                             </div>
-                                        </div>
+                                        </div>                                         
                                         <div>
                                             {
                                                 currentAddonsAmounts.map(x=>{
@@ -453,10 +515,10 @@ function Order(): React.JSX.Element {
                                                             <div className='py-2' />
                                                             <div className='row no-space'>
                                                                 <div className='col'>                                        
-                                                                    <p className='no-space'>{x.name} ({x.count})</p> 
+                                                                    <p className='no-space font-p font-regular'>{x.name} ({x.count})</p> 
                                                                 </div>
                                                                 <div className='w-max-content'>
-                                                                    <p className='no-space'>(NGN) {x.price * x.count}</p> 
+                                                                    <p className='no-space font-p font-regular'>(NGN) {x.price * x.count}</p> 
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -464,8 +526,7 @@ function Order(): React.JSX.Element {
                                                     return x.count > 0 ? summaryItem : null
                                                 })
                                             }
-                                        </div>                               
-                                                                                                                      
+                                        </div>
                                         
                                         <div className='py-2' />
                                         <div className='row no-space font-subtitle'>
@@ -476,10 +537,30 @@ function Order(): React.JSX.Element {
                                                 <p className='no-space' style={{letterSpacing: '1px'}}> = {formatNumberWithCommas(Number(currentMeal.price) + calculateTotalPrice(currentAddonsAmounts))}</p> 
                                             </div>
                                         </div>
+
+                                        <div className='py-3' />
+                                        <div className='col-12 co-divider'/>
+                                        <div className='py-3' />
+
+                                        <div className='p-1'>
+                                            <div>
+                                                <p className='no-space font-subtitle white font-regular text-center'>Contact Details</p> 
+                                                <p>Please input your contact details to proceed.</p>
+                                                <div className='input-container-order'>
+                                                    <label className='d-block py-2 font-small'>Name: </label>
+                                                    <input placeholder='Please input your name' value={customerName} onChange={(e)=>{setCustomerName(e.target.value)}} />
+                                                </div>
+                                                <div className='py-2' />
+                                                <div className='input-container-order'>
+                                                    <label className='d-block py-2 font-small'>Phone / Whatsapp Number: </label>
+                                                    <input placeholder='Please input your phone number' maxLength={11} value={customerPhoneNumber} onChange={(e)=>{setCustomerPhoneNumber(e.target.value)}} />
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div className='py-2' />
                                     </div>
                                     <div className='co-button-container p-2'>
-                                        <button className='font-p'>Confirm Order</button>
+                                        <button className='font-p' onClick={confirmOrder}>Confirm Order</button>
                                     </div>                                
                                 </div>
                             </div>

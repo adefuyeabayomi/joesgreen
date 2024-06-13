@@ -62,3 +62,16 @@
         border-color: rgba(230, 230, 230, 0.151) !important;
     }  
 }
+.input-container-order input {
+    width: 100%;
+    display: block;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 0px solid;
+    background: #a58a8a;
+}
+
+.input-container-order input::placeholder {
+    color: rgb(255, 220, 220);
+}

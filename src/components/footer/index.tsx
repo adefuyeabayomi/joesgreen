@@ -47,10 +47,10 @@ function Footer(): React.JSX.Element {
                     <div className='text-center'>                        
                     <p className='font-p font-medium'>FOLLOW ON SOCIAL MEDIA</p>
                         <div className='row no-space align-items-center justify-content-center'>
-                            <p className='font-small w-max-content'>INSTAGRAM <img src={instagram} className='socialIcon' /></p>
-                            <p className='font-small w-max-content'>FACEBOOK <img src={facebook} className='socialIcon' /></p>
-                            <p className='font-small w-max-content'>TWITTER <img src={twitter} className='socialIcon' /></p>
-                            <p className='font-small w-max-content'>YOUTUBE <img src={youtube} className='socialIcon' /></p>
+                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.instagram.com/joegreencafe' target='_blank'>INSTAGRAM <img src={instagram} className='socialIcon' /></a></p>
+                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.facebook.com/profile.php?id=61559723398072&mibextid=ZbWKwL' target='_blank'>FACEBOOK <img src={facebook} className='socialIcon' /></a></p>
+                            <p className='font-small w-max-content pointer'><a className='text-main' href='' target='_blank'>TWITTER <img src={twitter} className='socialIcon' /></a></p>
+                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://youtube.com/@joegreencafeteriaservice?si=KsGhmTILyEFz-cv9' target='_blank'>YOUTUBE <img src={youtube} className='socialIcon' /></a></p>
                         </div>
                     </div>
                     

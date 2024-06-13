@@ -12,6 +12,8 @@
   "dependencies": {
     "@types/react-wow": "^1.0.6",
     "animate.css": "^4.1.1",
+    "antd": "^5.18.1",
+    "axios": "^1.7.2",
     "boostrap": "^2.0.0",
     "hamburger-react": "^2.5.1",
     "react": "^18.2.0",

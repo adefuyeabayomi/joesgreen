@@ -28,6 +28,10 @@ body {
     font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .font-family-archivo {
     font-family: 'Archivo';
 }
