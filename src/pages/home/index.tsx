@@ -1,9 +1,7 @@
 import React,{ useState,useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
-import { animateScroll as scroll, scroller, Element } from 'react-scroll';
-import scrollToElement from 'scroll-to-element'
-import TrackVisibility from 'react-on-screen';
-import WOW from 'wowjs'
+import { animateScroll as scroll, Element } from 'react-scroll';
+import scrollToElement from 'scroll-to-element';
 import FeaturedCard from '../../components/featuredCard';
 import HowItem from '../../components/HowItem';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -61,11 +59,6 @@ function Home(): React.JSX.Element {
     function goToOrders () {
         return navigate('/order')
     }
-    useEffect(() => {
-        new WOW.WOW({
-          live: false
-        }).init();
-      }, [])
       useEffect(() => {
         console.log({location})
         if (location.hash === '#contact') {
@@ -131,7 +124,7 @@ function Home(): React.JSX.Element {
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
                                         <div className='fi-content-container center'>
-                                            <FeaturedCard image={image3} title='Peppersoup Varieties: Spicy Catfish, Goatmeat, Cowtail peppersoup..' actionFn={goToOrders} />
+                                            <FeaturedCard image={image3} title='Light Cravings: Savory BBQ and Sauce served to satisfy your buds.' actionFn={goToOrders} />
                                         </div>
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
@@ -211,7 +204,7 @@ function Home(): React.JSX.Element {
                         <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span> WORKS.</div>
                         <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                         <div>
-                            <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} interval={4000} showArrows={true}>
+                            <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} interval={2500} showArrows={true}>
                                 <div>
                                     <ReviewItem 
                                     name='Olaniyi Joseph' 
@@ -299,13 +292,13 @@ function Home(): React.JSX.Element {
                         <div>
                             <div className='row no-space align-items-center justify-content-center'>
                                 <div className='col-12 col-md-4 col-lg-3'>
-                                <ContactItem image={image15} title='Email: ' text='joesgreen@gmail.com'></ContactItem>
+                                    <ContactItem image={image15} title='Email: ' text='joegreencafeteriaservice@gmail.com'></ContactItem>
                                 </div>
                                 <div className='col-12  col-md-4 col-lg-3'>
-                                <ContactItem image={image16} title='Phone: ' text='+234-8398-4858, +234-8398-4858'></ContactItem>                                    
+                                    <ContactItem image={image16} title='Phone: ' text='+234-8398-4858, +234-8398-4858'></ContactItem>                                    
                                 </div>
                                 <div className='col-12 col-md-4 col-lg-3'>
-                                <ContactItem image={image17} title='Location: ' text='1, Lawal Street, Koma Road, Ogba, Lagos.'></ContactItem>                                    
+                                    <ContactItem image={image17} title='Location: ' text='1, Lawal Street, Koma Road, Ogba, Lagos.'></ContactItem>                                    
                                 </div>
                             </div>
                         </div>
