@@ -93,7 +93,7 @@ function Home(): React.JSX.Element {
                                 </div>
                             </div>
                             <div className='col-md-6 col-12 no-space pt-4 pt-md-0'>
-                                <img className='d-block hero-image animate__animated animate__fadeInUp  wow' src={heroImage} />
+                                <img className='d-block hero-image' src={heroImage} />
                             </div>
                         </div>
                     </div>                    
@@ -295,10 +295,10 @@ function Home(): React.JSX.Element {
                                     <ContactItem image={image15} title='Email: ' text='joegreencafeteriaservice@gmail.com'></ContactItem>
                                 </div>
                                 <div className='col-12  col-md-4 col-lg-3'>
-                                    <ContactItem image={image16} title='Phone: ' text='+234-8398-4858, +234-8398-4858'></ContactItem>                                    
+                                    <ContactItem image={image16} title='Phone: ' text='0916478 0187, 07043536861'></ContactItem>                                    
                                 </div>
                                 <div className='col-12 col-md-4 col-lg-3'>
-                                    <ContactItem image={image17} title='Location: ' text='1, Lawal Street, Koma Road, Ogba, Lagos.'></ContactItem>                                    
+                                    <ContactItem image={image17} title='Location: ' text='25 Trans-woji road Port Harcourt. Rivers State'></ContactItem>                                    
                                 </div>
                             </div>
                         </div>
