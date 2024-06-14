@@ -49,7 +49,7 @@ function Footer(): React.JSX.Element {
                         <div className='row no-space align-items-center justify-content-center'>
                             <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.instagram.com/joegreencafe' target='_blank'>INSTAGRAM <img src={instagram} className='socialIcon' /></a></p>
                             <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.facebook.com/profile.php?id=61559723398072&mibextid=ZbWKwL' target='_blank'>FACEBOOK <img src={facebook} className='socialIcon' /></a></p>
-                            <p className='font-small w-max-content pointer'><a className='text-main' href='' target='_blank'>TWITTER <img src={twitter} className='socialIcon' /></a></p>
+                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>TWITTER <img src={twitter} className='socialIcon' /></a></p>
                             <p className='font-small w-max-content pointer'><a className='text-main' href='https://youtube.com/@joegreencafeteriaservice?si=KsGhmTILyEFz-cv9' target='_blank'>YOUTUBE <img src={youtube} className='socialIcon' /></a></p>
                         </div>
                     </div>
