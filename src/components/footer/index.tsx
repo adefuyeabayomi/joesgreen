@@ -5,6 +5,8 @@ import instagram from "../../assets/Frame 32.png"
 import facebook from "../../assets/Frame 31.png"
 import twitter from "../../assets/Frame 34.png"
 import youtube from "../../assets/Frame 33.png"
+import linkedIn from '../../assets/linkedin-logo.png'
+import tiktok from '../../assets/tiktok-logo.png'
 
 
 import './style.css'
@@ -50,13 +52,14 @@ function Footer(): React.JSX.Element {
                             <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.instagram.com/joegreencafe' target='_blank'>INSTAGRAM <img src={instagram} className='socialIcon' /></a></p>
                             <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.facebook.com/profile.php?id=61559723398072&mibextid=ZbWKwL' target='_blank'>FACEBOOK <img src={facebook} className='socialIcon' /></a></p>
                             <p className='font-small w-max-content pointer'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>TWITTER <img src={twitter} className='socialIcon' /></a></p>
+                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>LINKEDIN <img src={linkedIn} className='socialIcon' /></a></p>
+                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>TIKTOK <img src={tiktok} className='socialIcon' /></a></p>
                             <p className='font-small w-max-content pointer'><a className='text-main' href='https://youtube.com/@joegreencafeteriaservice?si=KsGhmTILyEFz-cv9' target='_blank'>YOUTUBE <img src={youtube} className='socialIcon' /></a></p>
                         </div>
-                    </div>
-                    
+                    </div>                    
                 <div className='py-3'></div>
                 </div>
-            </div>    
+            </div>
                 <div className='lowerFooter mainSpacing'>
                     <div className='text-center'>
                         <p className='font-small font-regular'>&copy;copyright of Five and Six Technologies. 2024 June.</p>

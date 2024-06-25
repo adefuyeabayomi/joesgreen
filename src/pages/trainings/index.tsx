@@ -62,21 +62,39 @@ function Trainings(): React.JSX.Element {
                 <div>
                     <div className='py-2 py-lg-4' />
                         <div className='training-content'>
-                            <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                            <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='HOSPITALITY/CATERING' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
                        </div>                       
                        <div className='py-2 py-md-4' />
                         <div className='training-content'>
-                            <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                            <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='CULINARY ARTS' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
                        </div>
                        
                        <div className='py-2 py-md-4' />
                         <div className='training-content'>
-                            <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                            <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='PASTRY, DESERTS, PUDDING AND SNACKS' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
                        </div>
                        
                        <div className='py-2 py-md-4' />
                         <div className='training-content'>
-                            <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='Training 1' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                            <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='BEVERAGES AND DRINKS' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                       </div>     
+                        <div className='py-2 py-lg-4' />
+                        <div className='training-content'>
+                            <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='BREAD BAKING AND PACKAGING' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                       </div>                       
+                       <div className='py-2 py-md-4' />
+                        <div className='training-content'>
+                            <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='CAKES' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                       </div>
+                       
+                       <div className='py-2 py-md-4' />
+                        <div className='training-content'>
+                            <TrainingItem reverse={false} actionFn={goToEnroll} price={35000} title='TYPES OF ICING FOR CAKE DECORATIONS' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
+                       </div>
+                       
+                       <div className='py-2 py-md-4' />
+                        <div className='training-content'>
+                            <TrainingItem reverse={true} actionFn={goToEnroll} price={35000} title='WEDDING CAKE' image={image1} text='Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i Lorem ipsum dolor sit amet cnsectur i.'  />
                        </div>     
                        
                        <div className='py-2 py-md-4' />                      

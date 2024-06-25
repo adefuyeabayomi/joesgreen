@@ -129,7 +129,7 @@ function Home(): React.JSX.Element {
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
                                         <div className='fi-content-container center'>
-                                            <FeaturedCard image={image1} title='Nigerian Soups: Rich Egusi, Flavorful Ogbono, Vegetable & More' actionFn={goToOrders} />
+                                            <FeaturedCard image={image1} title='Nigerian Soups: Rich Egusi, Ogbono, Vegetable & More' actionFn={goToOrders} />
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +201,7 @@ function Home(): React.JSX.Element {
                             <div className='w-max-content no-space'><img className='tipDots' src={tipDots} /></div>
                         </div>
                         <div className='sectionHeadlineContainer d-sm-none text-main text-center font-subtitle-big font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span></div>
-                        <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span> WORKS.</div>
+                        <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span></div>
                         <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                         <div>
                             <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} interval={2500} showArrows={true}>
