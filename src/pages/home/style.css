@@ -12,12 +12,16 @@
 
 .headline {
     font-size: 55px;
-    color: #390000;
     margin: 0px;
 }
 
-.headline-delish {
-    color: #8B3939;
+.hAccentItem{
+    background-color: #FFEED4;
+    color: #A06815;
+    border-radius: 15px;
+    padding: 10px 30px;
+    width: max-content;
+    margin: 0px auto;
 }
 
 .hbcontainer {
@@ -26,12 +30,11 @@
 }
 
 .headlinebutton{
-    background-color: #281100;
-    background-image: linear-gradient(-20deg,#E13600,#8B3939);
-    padding: 3px 10px;
+    background-image: linear-gradient(-196deg, #2d7004, #79c500);
+    padding: 10px 10px;
     font-size: 12px;
     color: white;
-    border-radius: 5px;
+    border-radius: 50px;
     border: 0px solid;
     width: 100%;
 }
@@ -77,7 +80,6 @@
         padding: 40px 0px;
     }
     .hbcontainer {
-        max-width: 300px;
     }
     
 }
@@ -91,6 +93,13 @@
     .hero-section {
         padding: 40px 0px;
     }
+    .hAccentItem {
+        margin: 0px;
+    }
+    .htext-container{
+        padding-right: 15px;
+        text-align: left;
+    }
     
 }
 @media screen and (max-width: 400px) {
@@ -98,6 +107,9 @@
     .htext-container {
         padding-right: 0px;
         text-align: left;
+    }
+    .hAccentItem{
+        margin: 0px;
     }
 }
 @media screen and (min-width: 575px) and (max-width: 768px) {
@@ -113,14 +125,6 @@
         width: max-content;
     }
 }
-@media screen and (min-width: 768px) {
-      
-    .htext-container {
-        padding-right: 0px;
-        text-align: left;
-    }  
-}
-
 
 /*
     Featured Dishes

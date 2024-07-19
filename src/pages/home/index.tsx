@@ -77,7 +77,7 @@ function Home(): React.JSX.Element {
       }, [location])
 
     return (
-        <main id='home'>
+        <main id='home' className='text-main'>
             <div className='mainSpacing'>
 
                 <div className='hero-section'>
@@ -85,8 +85,11 @@ function Home(): React.JSX.Element {
                         <div className='row flex-column flex-sm-row no-space align-items-center'>
                             <div className='col-md-6 col-12 no-space'>
                                 <div className='htext-container '>
-                                    <h1 className='font-black headline'><span className='headline-delish'>Delicious</span> Meals That <span className='headline-delish'>Delight</span> Your Senses.</h1>
-                                    <p className='font-p'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
+                                    <p className='hAccentItem font-regular'>Satisfy those cravings here</p>
+                                    <div className='py-2' />
+                                    <h1 className='text-main headline'><span className='green-color-main'>Delicious</span> Meals That <span className='green-color-main'>Delight</span> Your Senses.</h1>
+                                    <p className='font-p text-main'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
+                                    <div className='py-2' />
                                     <div className='py-2 py-sm-0 hbcontainer'>
                                         <button className='headlinebutton font-p' onClick={goToOrders}>Order Now!</button>
                                     </div>
@@ -101,7 +104,7 @@ function Home(): React.JSX.Element {
             </div>
 
             <div id='featuredDishes'>
-                <div className='featuredMainContainer mainSpacing wow fadeInUp'>
+                <div className='featuredMainContainer mainSpacing'>
                     <div className='featuredContents'>
                             <div className='tipContent row no-space align-items-center'>
                                 <div className='w-max-content no-space'><p className='font-p font-family-bruno delicious tipTitle'>DISCOVER</p></div>

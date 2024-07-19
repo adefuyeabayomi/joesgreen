@@ -16,15 +16,19 @@ function Header(): React.JSX.Element {
     }
 
     const navigate = useNavigate()
+    
     function goToHome () {
         return navigate('/')
     }
+
     function goToOrders () {
         return navigate('/order')
     }
+
     function goToTrainings () {
         return navigate('/trainings')
     }
+
     function goToTrainingEnrollment () {
         return navigate('/training-enrollment')
     }
@@ -32,7 +36,7 @@ function Header(): React.JSX.Element {
     function goToAbout () {
         return navigate('/about')
     }
-    
+
     function goToContact () {
          navigate('/#contact')
     }
@@ -118,7 +122,7 @@ function Header(): React.JSX.Element {
                                 <div className='col-6 no-space px-1'>
                                 <button onClick={goToOrders} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
-                            </div>                  
+                            </div>
                             <div className='py-3' />
                                 <div className='no-space px-3'>
                                     <button onClick={goToOrders} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out<FontAwesomeIcon icon={faShoppingCart} /> </button>
