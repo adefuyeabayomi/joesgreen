@@ -1,28 +1,36 @@
-.orders-image-container{
-    background-color: #FFE1E1;
-    padding: 0px;
+.orders-image-container {
+    background-color: #FFEED4;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.oIFrame {
+    max-height: 250px;
+    overflow: hidden;
+    height: -webkit-fill-available;
+    border-radius: 7px;
 }
 
 .orders-image-container img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 7px;
 }
 
 .fc-title-container{
     padding: 5px 0px;
 }
 
-.fc-button-container button {
+.order-button-container button {
     padding: 10px 0px 9px 0px;
     width: 100%;
     border-radius: 8px;
     color: white;
     border: 0px solid;
+    background-color: #0F1C07;;
 }
 
 .order-item-container-main{
     border-radius: 10px;
-    border: 2px solid #FFE1E1;
 }
 
 

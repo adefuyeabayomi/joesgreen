@@ -3,6 +3,8 @@ import { animateScroll as scroll } from 'react-scroll';
 import { Button, notification, Space, Spin } from 'antd';
 import axios from 'axios';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import tipDots from '../../assets/tipDots.png'
 import OrderItem from '../../components/orderItem'
 import Overlay from '../../components/overlay';
@@ -10,37 +12,37 @@ import Overlay from '../../components/overlay';
 import { useNavigate } from 'react-router-dom';
 
 import image_1 from '../../assets/image1.png'
-let image1 = <img style={{width: '100%'}} src={image_1} />
+let image1 = <img src={image_1} />
 
 import image_4 from '../../assets/image4.png'
-let image4 = <img style={{width: '100%'}} src={image_4} />
+let image4 = <img src={image_4} />
 
 import image_18 from '../../assets/image18.png'
-let image18 = <img style={{width: '100%'}} src={image_18} />
+let image18 = <img src={image_18} />
 
 import image_19 from '../../assets/image19.png'
-let image19 = <img style={{width: '100%'}} src={image_19} />
+let image19 = <img src={image_19} />
 
 import image_20 from '../../assets/image20.png'
-let image20 = <img style={{width: '100%'}} src={image_20} />
+let image20 = <img src={image_20} />
 
 import image_21 from '../../assets/image21.png'
-let image21 = <img style={{width: '100%'}} src={image_21} />
+let image21 = <img src={image_21} />
 
 import image_22 from '../../assets/image22.png'
-let image22 = <img style={{width: '100%'}} src={image_22} />
+let image22 = <img src={image_22} />
 
 import image_23 from '../../assets/image23.png'
-let image23 = <img style={{width: '100%'}} src={image_23} />
+let image23 = <img src={image_23} />
 
 import image_24 from '../../assets/image24.png'
-let image24 = <img style={{width: '100%'}} src={image_24} />
+let image24 = <img src={image_24} />
 
 import image_25 from '../../assets/image25.png'
-let image25 = <img style={{width: '100%'}} src={image_25} />
+let image25 = <img src={image_25} />
 
 import image_26 from '../../assets/image26.png'
-let image26 = <img style={{width: '100%'}} src={image_26} />
+let image26 = <img src={image_26} />
 
 import './style.css'
 import useNotification from 'antd/es/notification/useNotification';

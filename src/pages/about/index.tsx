@@ -36,7 +36,7 @@ function About(): React.JSX.Element {
                 </div>
             </div>
 
-            <div className='mainSpacing about-section-bg'>
+            <div className='mainSpacing green-bg'>
                 <div className='about-herosection'>
                     <div className='py-4 py-lg-6'/>
                     <div className='hContainerMain container-fluid no-space'>
@@ -80,7 +80,7 @@ function About(): React.JSX.Element {
                     </div>
             </div>            
 
-            <div className='mainSpacing about-section-bg'>
+            <div className='mainSpacing green-bg'>
                 <div className='about-herosection'>
                         <div className='py-4 py-lg-6'/>
                         <div className='hContainerMain container-fluid no-space'>

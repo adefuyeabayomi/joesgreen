@@ -16,7 +16,7 @@ function Header(): React.JSX.Element {
     }
 
     const navigate = useNavigate()
-    
+
     function goToHome () {
         return navigate('/')
     }
@@ -115,14 +115,12 @@ function Header(): React.JSX.Element {
                                 </div>
                             </div>                            
                             <div className='py-3' />
-                            <div className='row no-space align-items-center px-3'>
-                                <div className='col-6 no-space px-1'>
-                                <button onClick={goToOrders} className='green-bg-main mobile-menu-login font-small font-regular'>Login <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                <div className='no-space px-3 py-2'>
+                                    <button onClick={goToOrders} className='green-bg-main mobile-menu-login font-small font-regular'>Login <FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
-                                <div className='col-6 no-space px-1'>
-                                <button onClick={goToOrders} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                <div className='no-space px-3 py-2'>
+                                    <button onClick={goToOrders} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
-                            </div>
                             <div className='py-3' />
                                 <div className='no-space px-3'>
                                     <button onClick={goToOrders} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out<FontAwesomeIcon icon={faShoppingCart} /> </button>

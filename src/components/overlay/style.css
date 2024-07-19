@@ -14,10 +14,10 @@
 }
 
 .jg-overlay-container.active {
-    left: 40%;
+    left: 30%;
     top: 0px;
     opacity: 1;
-    width: 75%;
+    width: 70%;
     height: 100vh;
 }
 

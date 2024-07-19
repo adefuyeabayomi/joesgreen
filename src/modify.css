@@ -162,6 +162,18 @@ a {
     background-color: #00A826;
 }
 
+.deep-green-bg {
+    background-color: #03351A;
+}
+.deep-green-color {
+    color: #03351A;
+}
+
+.text-main {
+    color: #101D09;
+}
+
+
 .brown {
     color: #4D3B3B;
 }
@@ -169,11 +181,6 @@ a {
 .delight {
     color: #F50057;
 }
-
-.text-main {
-    color: #101D09;
-}
-
 .new-delight {
     color: #8B3939;
 }
