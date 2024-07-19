@@ -1,5 +1,4 @@
 import React,{ useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 import './style.css'
 
@@ -19,6 +18,7 @@ function HowItem({image,title,text}: HowItemPropType): React.JSX.Element {
             <div className='HITextContainer center'>
                 <p className='text-main font-small'>{text}</p>
             </div>
+            <div className='py-3' />
         </div>
     )
 }

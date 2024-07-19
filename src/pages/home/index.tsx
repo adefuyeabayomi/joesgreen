@@ -9,7 +9,7 @@ import { Carousel } from 'react-responsive-carousel';
 import ReviewItem from '../../components/reviewItem';
 import ContactItem from '../../components/contactItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 //images
 import heroImage from "../../assets/hero-img.png"
 import tipDots from '../../assets/tipDots.png'
@@ -140,8 +140,8 @@ function Home(): React.JSX.Element {
                             </div>
                             <div className='py-3'></div>
                             <div className='orderspageLinkContainer' onClick={goToOrders}>
-                                <div className='w-max-content pointer new-delight row no-space align-items-center'>
-                                    <div className='w-max-content no-space'><p className='font-p font-regular text-main'>Visit our orders page to view the menu <FontAwesomeIcon className='text-main' icon={faCaretRight} /></p></div>
+                                <div className='pointer new-delight row no-space align-items-center'>
+                                    <div className='no-space'><p className='font-p font-regular text-main'>Visit our orders page to view the menu <FontAwesomeIcon className='text-main' icon={faCaretRight} /></p></div>
                                 </div>
                             </div>
                     </div>
@@ -184,20 +184,17 @@ function Home(): React.JSX.Element {
                                 </div>
                             </div>
                             <div className='py-4'></div>
-                            <div>
-                                <button className='hiw-button-container' onClick={goToOrders}> 
-                                    <div className='w-max-content center pointer row no-space align-items-center'>
-                                        <div className='w-max-content no-space'><p className='font-small tipTitle'>See Our Menu</p></div>
-                                        <div className='w-max-content no-space'><img className='caretIcon' src={caretPink} /></div>
-                                    </div>
-                                </button>
+                            <div>                                    
+                                <div className='py-2 py-sm-0 col-12 col-md-8 col-lg-6 center' onClick={goToOrders}>
+                                    <button className='moreMenuBtn font-p' onClick={goToOrders}>See The Menu <FontAwesomeIcon icon={faArrowRight} /></button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className='reviewsContainer'>
-                <div className='reviewsMainContainer mainSpacing'>
+                <div className='green-bg mainSpacing'>
                     <div className='reviewsContents'>
                         <div className='tipContent w-max-content center row no-space align-items-center'>
                             <div className='w-max-content no-space'><p className='font-p font-family-bruno delicious tipTitle'>OUR CUSTOMERS</p></div>
@@ -205,7 +202,9 @@ function Home(): React.JSX.Element {
                         </div>
                         <div className='sectionHeadlineContainer d-sm-none text-main text-center font-subtitle-big font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span></div>
                         <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span></div>
-                        <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
+                        <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See what our loyal customers have to say about their experiences with our services.</p></div>
+                        <div className='py-3' />
+                       
                         <div>
                             <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} interval={2500} showArrows={true}>
                                 <div>
@@ -278,7 +277,7 @@ function Home(): React.JSX.Element {
                     </div>
                 </div>
             </div>
-            <div id='contact' className='contactSectionMain'>
+            <div id='contact' className='contactSectionMain green-bg'>
             <Element name={'contact_target'} />
                 <div className='mainSpacing'>
                     <div className='CSContainer'>
