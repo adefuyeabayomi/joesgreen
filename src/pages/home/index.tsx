@@ -8,7 +8,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import ReviewItem from '../../components/reviewItem';
 import ContactItem from '../../components/contactItem';
-  
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 //images
 import heroImage from "../../assets/hero-img.png"
 import tipDots from '../../assets/tipDots.png'
@@ -140,8 +141,7 @@ function Home(): React.JSX.Element {
                             <div className='py-3'></div>
                             <div className='orderspageLinkContainer' onClick={goToOrders}>
                                 <div className='w-max-content pointer new-delight row no-space align-items-center'>
-                                    <div className='w-max-content no-space'><p className='font-small tipTitle'>Visit our orders page to view the menu</p></div>
-                                    <div className='w-max-content no-space'><img className='caretIcon' src={caretRight} /></div>
+                                    <div className='w-max-content no-space'><p className='font-p font-regular text-main'>Visit our orders page to view the menu <FontAwesomeIcon className='text-main' icon={faCaretRight} /></p></div>
                                 </div>
                             </div>
                     </div>
