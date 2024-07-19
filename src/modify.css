@@ -14,6 +14,10 @@ font-family: 'Bruno Ace';
 src: url('./assets/BrunoAce-Regular.ttf') format('truetype');
 }
   
+@font-face {
+    font-family: 'Quicksand';
+    src: url('./assets/Quicksand/Quicksand-VariableFont_wght.ttf');
+}
 
 * {
     box-sizing: border-box;
@@ -24,8 +28,12 @@ body, .no-space {
     padding: 0px;
 }
 
-body {    
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+body, button {    
+    font-family: Quicksand,Montserrat, Arial, Helvetica, sans-serif;
+}
+p {
+    margin-bottom: 0px;
+    margin-top: 8px;
 }
 
 a {
@@ -38,6 +46,11 @@ a {
 
 .font-family-bruno{
     font-family: 'Bruno Ace'
+}
+
+.font-mini {
+    font-size: 11px;
+    line-height: 1.8;
 }
 
 .font-small {
@@ -133,6 +146,22 @@ a {
     width: 100%;
 }
 
+.green-bg {
+    background-color: #EDFFF2;
+}
+.green-color-1 {
+    color: #009F23
+}
+.green-color-2 {
+    color: #00A826;
+}
+.green-color-main {
+    color: #00A826;
+}
+.green-bg-main {
+    background-color: #00A826;
+}
+
 .brown {
     color: #4D3B3B;
 }
@@ -146,7 +175,7 @@ a {
 }
 
 .text-main {
-    color: #390000;
+    color: #101D09;
 }
 
 .new-delight {

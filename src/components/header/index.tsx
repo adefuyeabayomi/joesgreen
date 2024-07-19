@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Twirl as Hamburger } from 'hamburger-react';
 import Overlay from '../overlay';
 
-import { animateScroll as scroll, Element } from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import "./style.css"
 import logo from "../../assets/logo.png"
-
 
 function Header(): React.JSX.Element {
     const [isOpen, setOpen] = useState(false)
@@ -28,15 +28,18 @@ function Header(): React.JSX.Element {
     function goToTrainingEnrollment () {
         return navigate('/training-enrollment')
     }
+
     function goToAbout () {
         return navigate('/about')
     }
+    
     function goToContact () {
          navigate('/#contact')
     }
+
     return (
         <div className='container-fluid no-space'>
-            <div className='row no-space align-items-center header-container'>
+            <div className='row no-space align-items-center green-bg header-container'>
                 <div className='w-max-content'>
                     <div className='logo-container'>
                         <img className='header-logo' src={logo} />
@@ -65,31 +68,62 @@ function Header(): React.JSX.Element {
                 </div>
                 <div className='col d-block d-lg-none'></div>
                 <div className='d-none d-sm-block w-max-content no-space'>
-                    <div className='button-container'>
-                        <button onClick={goToOrders} className='header-button'>Order</button>
+                    <div className='row align-items-center'>
+                        <div className='w-max-content header-login-button no-space'>
+                            <button onClick={()=>{}} className='pointer font-regular text-main'>Login</button>
+                        </div>
+                        <div className='w-max-content button-container no-space'>
+                            <button onClick={goToOrders} className='green-bg-main header-button'>Checkout <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                        </div>
                     </div>
                 </div>
                 <div className='w-max-content d-block d-lg-none'>
                     <div className='nav-container-mobile'>
-                        <Hamburger toggled={isOpen} color='#772424' size={25} toggle={toggleHamburger} />
+                        <Hamburger toggled={isOpen} color='#00A826' size={20} toggle={toggleHamburger} />
                         <Overlay isOpen={isOpen} toggle={toggleHamburger} >
-                            <div className='mobile-nav-links-container font-bold'>
-                                <div className='w-max-content'>
-                                    <p className='mobile-link' onClick={()=>{goToHome(); toggleHamburger()}}>Home</p>
+                            <div className='py-4' />
+                            <div className='row no-space align-items-center px-3'>
+                                <div className='w-max-content no-space'>
+                                    <div className='menu-image-container'></div>
                                 </div>
-                                <div className='w-max-content'>
-                                    <p  className='mobile-link' onClick={()=>{goToOrders(); toggleHamburger()}}>Order</p>
+                                <div className='col no-space'>
+                                    <p style={{lineHeight: '0.8'}} className='font-p font-medium no-space'>Guest User</p>
+                                    <small style={{lineHeight: '0.8'}} className='font-mini no-space'>Not Logged In</small>
                                 </div>
-                                <div className='w-max-content'>
-                                    <p className='mobile-link' onClick={()=>{goToTrainings(); toggleHamburger()}}>Trainings</p>
-                                </div>
-                                <div className='w-max-content'>
-                                    <p className='mobile-link' onClick={()=>{goToAbout(); toggleHamburger()}}>About Us</p>
-                                </div>
-                                <div className='w-max-content'>
-                                    <p className='mobile-link' onClick={()=>{goToContact(); toggleHamburger()}}>Contact</p>
-                                </div>                                   
                             </div>
+                            <div className='mobileLinksContainer'>
+                                <div>
+                                    <p className='font-p font-medium'>Site Main Pages</p>
+                                    <p className='font-small font-regular pointer'>Home</p>
+                                    <p className='font-small font-regular pointer'>Order</p>
+                                    <p className='font-small font-regular pointer'>Training</p>
+                                    <p className='font-small font-regular pointer'>About Us</p>
+                                    <p className='font-small font-regular pointer'>Contact Us</p>
+                                    <p className='font-small font-regular pointer'>Blog</p>
+                                </div>
+                                <div className='py-1' />
+                                <div>
+                                    <p className='font-p font-medium'>My Account</p>
+                                    <p className='font-small font-regular pointer'>My Orders</p>
+                                    <p className='font-small font-regular pointer'>Transactions History</p>
+                                    <p className='font-small font-regular pointer'>Account Settings</p>
+                                    <p className='font-small font-regular pointer'>Support Page</p>
+                                </div>
+                            </div>                            
+                            <div className='py-3' />
+                            <div className='row no-space align-items-center px-3'>
+                                <div className='col-6 no-space px-1'>
+                                <button onClick={goToOrders} className='green-bg-main mobile-menu-login font-small font-regular'>Login <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                </div>
+                                <div className='col-6 no-space px-1'>
+                                <button onClick={goToOrders} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                </div>
+                            </div>                  
+                            <div className='py-3' />
+                                <div className='no-space px-3'>
+                                    <button onClick={goToOrders} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out<FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                </div>
+                            <div className='py-5' />
                         </Overlay>
                     </div>
                 </div>
