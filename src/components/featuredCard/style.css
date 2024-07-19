@@ -1,5 +1,5 @@
 .fc-image-container{
-    background-color: white;
+    background-color: #FFEED4;
     padding: 5px 5px 2px 5px;
     border-radius: 10px;
 }
@@ -17,7 +17,6 @@
     padding: 10px 0px 9px 0px;
     width: 100%;
     border-radius: 8px;
-    background-color: #281100;
     color: white;
     border: 0px solid;
 }

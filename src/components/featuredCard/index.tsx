@@ -19,7 +19,7 @@ function FeaturedCard({image,title,actionFn}: FeaturedCardPropType): React.JSX.E
                 <p>{title}</p>
             </div>
             <div className='fc-button-container'>
-                <button className='pointer' onClick={actionFn}>Order Now</button>
+                <button className='pointer green-bg-main' onClick={actionFn}>View full menu</button>
             </div>
         </div>
     )

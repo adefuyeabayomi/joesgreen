@@ -104,7 +104,7 @@ function Home(): React.JSX.Element {
             </div>
 
             <div id='featuredDishes'>
-                <div className='featuredMainContainer mainSpacing'>
+                <div className='featuredMainContainer green-bg mainSpacing'>
                     <div className='featuredContents'>
                             <div className='tipContent row no-space align-items-center'>
                                 <div className='w-max-content no-space'><p className='font-p font-family-bruno delicious tipTitle'>DISCOVER</p></div>
@@ -132,7 +132,7 @@ function Home(): React.JSX.Element {
                                     </div>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
                                         <div className='fi-content-container center'>
-                                            <FeaturedCard image={image1} title='Nigerian Soups: Rich Egusi, Ogbono, Vegetable & More' actionFn={goToOrders} />
+                                            <FeaturedCard image={image1} title='Nigerian Soups: Rich Egusi, Ogbono, Banga, Vegetable & More' actionFn={goToOrders} />
                                         </div>
                                     </div>
                                 </div>

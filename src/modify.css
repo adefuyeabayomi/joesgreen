@@ -155,7 +155,7 @@ a {
 .green-color-2 {
     color: #00A826;
 }
-.green-color-main {
+.green-color-main, .delicious {
     color: #00A826;
 }
 .green-bg-main {
@@ -168,10 +168,6 @@ a {
 
 .delight {
     color: #F50057;
-}
-
-.delicious {
-    color: #B85D19;
 }
 
 .text-main {

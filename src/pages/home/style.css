@@ -130,9 +130,6 @@
     Featured Dishes
 */
 
-.featuredMainContainer {
-    background-color: #FFE8E8;
-}
 
 .featuredContents,.howItWorksContents,.reviewsContents,.bannerSectionMain,.contactSectionMain {
     padding: 50px 0px;
@@ -153,6 +150,7 @@
 
 .tipContent p {
     padding-right: 10px;
+    margin-top: 0px;
 }
 .sectionHeadlineContainer.features {
     width: 95%;
