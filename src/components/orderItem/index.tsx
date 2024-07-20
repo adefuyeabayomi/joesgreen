@@ -5,7 +5,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './style.css'
 
 interface FeaturedCardPropType {
-    image?: React.JSX.Element,
+    image?: React.JSX.Element | string
     title: string,
     actionFn?: ()=>void,
     description?: string,
