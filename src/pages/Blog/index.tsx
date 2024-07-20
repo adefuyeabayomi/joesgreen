@@ -22,7 +22,6 @@ export default function Blog (): React.JSX.Element {
                             <BlogItem description={'Summer is the perfect time to experiment with fresh, seasonal ingredients. From juicy tomatoes to sweet berries, learn how to make the most of what this vibrant season has to offer.'}  title={'Exploring Seasonal Ingredients: Summer Delights'} />
                         </div>
                         )
-                        
                     })}
                 </div>
 
