@@ -1,6 +1,5 @@
 .hero-section {
     margin: 0px auto;
-    color: #390000;
     padding: 40px 20px;
 }
 
@@ -51,6 +50,7 @@
     width: 53px !important;
     height: 76px !important;
 }
+
 .HIContainerMain{
     border-radius: 10px;
     margin: 10px;

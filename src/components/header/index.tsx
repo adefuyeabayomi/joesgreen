@@ -29,8 +29,8 @@ function Header(): React.JSX.Element {
         return navigate('/trainings')
     }
 
-    function goToTrainingEnrollment () {
-        return navigate('/training-enrollment')
+    function goToBlog () {
+        return navigate('/blog')
     }
 
     function goToAbout () {
@@ -39,6 +39,18 @@ function Header(): React.JSX.Element {
 
     function goToContact () {
          navigate('/#contact')
+    }
+
+    function goToLogin () {
+        navigate('/login')
+    }
+
+    function goToSignup(){
+        navigate('/signup')
+    }
+
+    function goToCheckout(){
+        navigate('/checkout')
     }
 
     return (
@@ -62,6 +74,9 @@ function Header(): React.JSX.Element {
                                 <p className='header-link' onClick={goToTrainings}>Trainings</p>
                             </div>
                             <div className='w-max-content'>
+                                <p className='header-link' onClick={goToBlog}>Blog</p>
+                            </div>
+                            <div className='w-max-content'>
                                 <p className='header-link' onClick={goToAbout}>About Us</p>
                             </div>
                             <div className='w-max-content'>
@@ -74,10 +89,10 @@ function Header(): React.JSX.Element {
                 <div className='d-none d-sm-block w-max-content no-space'>
                     <div className='row align-items-center'>
                         <div className='w-max-content header-login-button no-space'>
-                            <button onClick={()=>{}} className='pointer font-regular text-main'>Login</button>
+                            <button onClick={()=>{goToLogin()}} className='pointer font-regular text-main'>Login</button>
                         </div>
                         <div className='w-max-content button-container no-space'>
-                            <button onClick={goToOrders} className='green-bg-main header-button'>Checkout <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                            <button onClick={goToCheckout} className='green-bg-main header-button'>Checkout <FontAwesomeIcon icon={faShoppingCart} /> </button>
                         </div>
                     </div>
                 </div>
@@ -98,12 +113,30 @@ function Header(): React.JSX.Element {
                             <div className='mobileLinksContainer'>
                                 <div>
                                     <p className='font-p font-medium'>Site Main Pages</p>
-                                    <p className='font-small font-regular pointer'>Home</p>
-                                    <p className='font-small font-regular pointer'>Order</p>
-                                    <p className='font-small font-regular pointer'>Training</p>
-                                    <p className='font-small font-regular pointer'>About Us</p>
-                                    <p className='font-small font-regular pointer'>Contact Us</p>
-                                    <p className='font-small font-regular pointer'>Blog</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToHome()
+                                    }}>Home</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToOrders()
+                                    }}>Order</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToTrainings()
+                                    }}>Training</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToAbout()
+                                    }}>About Us</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToContact()
+                                    }}>Contact Us</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToBlog()
+                                    }}>Blog</p>
                                 </div>
                                 <div className='py-1' />
                                 <div>
@@ -116,14 +149,14 @@ function Header(): React.JSX.Element {
                             </div>                            
                             <div className='py-3' />
                                 <div className='no-space px-3 py-2'>
-                                    <button onClick={goToOrders} className='green-bg-main mobile-menu-login font-small font-regular'>Login <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                    <button onClick={goToLogin} className='green-bg-main mobile-menu-login font-small font-regular'>Login <FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
                                 <div className='no-space px-3 py-2'>
-                                    <button onClick={goToOrders} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                    <button onClick={goToSignup} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
                             <div className='py-3' />
                                 <div className='no-space px-3'>
-                                    <button onClick={goToOrders} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out<FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                    <button onClick={()=>{}} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out<FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
                             <div className='py-5' />
                         </Overlay>

@@ -29,6 +29,10 @@ function Footer(): React.JSX.Element {
     function goToContact () {
         navigate('/#contact')
    }
+   
+   function goToBlog () {
+    return navigate('/blog')
+}
 
     return (
         <div id='footer'>
@@ -42,12 +46,13 @@ function Footer(): React.JSX.Element {
                             <p className='font-small w-max-content pointer' onClick={goToHome}>HOME</p>
                             <p className='font-small w-max-content pointer' onClick={goToOrders}>ORDER</p>
                             <p className='font-small w-max-content pointer' onClick={goToTrainings}>TRAINING PROGRAMS</p>
+                            <p className='font-small w-max-content pointer' onClick={goToBlog}>BLOG</p>
                             <p className='font-small w-max-content pointer' onClick={goToAbout}>ABOUT US</p>
                             <p className='font-small w-max-content pointer' onClick={goToContact}>CONTACT US</p>
                         </div>
                     </div>
                     <div className='py-2' />
-                    <div className='text-center'>                        
+                    <div className='text-center'>
                     <p className='font-p font-medium'>FOLLOW ON SOCIAL MEDIA</p>
                         <div className='row no-space align-items-center justify-content-center'>
                             <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.instagram.com/joegreencafe' target='_blank'>INSTAGRAM <img src={instagram} className='socialIcon' /></a></p>
@@ -66,7 +71,7 @@ function Footer(): React.JSX.Element {
                         <p className='font-small font-regular'>&copy;copyright of Five and Six Technologies. 2024 June.</p>
                         <p className='font-small font-regular'>Privacy Policy - Terms Of Service</p>
                     </div>
-                    <div></div>
+                    <div className='py-1'></div>
                 </div>
         </div>
     )
