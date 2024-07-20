@@ -24,7 +24,6 @@ export default function Blog (): React.JSX.Element {
                         )
                     })}
                 </div>
-
                 <div className="py-4" />
             </div>
         </main>

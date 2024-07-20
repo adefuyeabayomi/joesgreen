@@ -75,32 +75,32 @@ a {
     letter-spacing: -1px;
 }
 
-.font-heading-6 {
+.font-heading-6, h6 {
     font-size: 32px;
     line-height: 1.4;
     letter-spacing: -1.5px;
 }
-.font-heading-5 {
+.font-heading-5, h5 {
     font-size: 40px;
     line-height: 1.4;
     letter-spacing: -1.5px;
 }
-.font-heading-4 {
+.font-heading-4, h4 {
     font-size: 48px;
     line-height: 1.4;
     letter-spacing: -2px;
 }
-.font-heading-3 {
+.font-heading-3, h3 {
     font-size: 56px;
     line-height: 1.4;
     letter-spacing: -2px;
 }
-.font-heading-2 {
+.font-heading-2, h2 {
     font-size: 62px;
     line-height: 1.4;
     letter-spacing: -2px;
 }
-.font-header-1 {
+.font-header-1, h1 {
     font-size: 68px;
     line-height: 1.4;
     letter-spacing: -2px;

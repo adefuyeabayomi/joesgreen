@@ -5,7 +5,20 @@ import './style.css'
 export default function UserAccount (): React.JSX.Element {
     return (
         <div>
-            User Account Page
+            <div className="mainSpacing">
+                <div className="py-3" />
+                <div className="container-fluid">
+                    <div className="row no-space">
+                        <div className="loginFormContainer col-12 no-space">
+
+                        </div>
+                        <div className="formSupport col-12 no-space">
+
+                        </div>
+                    </div>
+                </div>
+                <div className="py-3" />
+            </div>
         </div>
     )
 }
