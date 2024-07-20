@@ -149,14 +149,14 @@ function Header(): React.JSX.Element {
                             </div>                            
                             <div className='py-3' />
                                 <div className='no-space px-3 py-2'>
-                                    <button onClick={goToLogin} className='green-bg-main mobile-menu-login font-small font-regular'>Login <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                    <button onClick={()=>{goToLogin(); setOpen(!isOpen)}} className='green-bg-main mobile-menu-login font-small font-regular'>Login <FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
                                 <div className='no-space px-3 py-2'>
-                                    <button onClick={goToSignup} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                    <button onClick={()=>{goToSignup(); setOpen(!isOpen)}} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
                             <div className='py-3' />
                                 <div className='no-space px-3'>
-                                    <button onClick={()=>{}} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out<FontAwesomeIcon icon={faShoppingCart} /> </button>
+                                    <button onClick={()=>{ setOpen(!isOpen) }} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out<FontAwesomeIcon icon={faShoppingCart} /> </button>
                                 </div>
                             <div className='py-5' />
                         </Overlay>

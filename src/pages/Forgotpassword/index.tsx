@@ -60,11 +60,11 @@ export default function ForgotPassword (): React.JSX.Element {
                                     <h4 style={{color: 'white'}} className="font-heading-6 text center">For Further Assistance, Reach out to us via our support page.</h4>
                                 </div>
                                 <div className="center">
-                                    <button className="FSupportButton font-medium pointer">Go To Support Page</button>
+                                    <button className="FSupportButton font-medium pointer" onClick={goToSupport}>Go To Support Page</button>
                                 </div>
                                 <div className="py-1" />
                                 <div className="center">
-                                    <button className="FSupportButton font-medium pointer">Login</button>
+                                    <button className="FSupportButton font-medium pointer" onClick={goToLogin}>Login</button>
                                 </div>
                             </div>
                             <div className="py-5 py-md-0" />
