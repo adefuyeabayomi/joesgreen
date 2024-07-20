@@ -18,12 +18,15 @@ export default function ForgotPassword (): React.JSX.Element {
     function goToSignup(){
         navigate('/signup')
     }
+    
     function goToForgotPassword(){
         navigate('/forgot-password')
     }
+
     function goToSupport(){
         navigate('/support')
     }
+
     return (
         <div>
             <div className="mainSpacing">

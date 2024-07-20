@@ -53,6 +53,9 @@ type NotificationPlacement = NotificationArgsProps['placement'];
 
 function Order(): React.JSX.Element {
     const navigate = useNavigate()
+    function goToAddToCart(){
+      navigate('/add-to-cart')
+    }
     const [spinning,setSpinning] = useState(false)
     const [api,contextHolder] = notification.useNotification()
     const [customerName , setCustomerName]= useState('')
@@ -595,7 +598,7 @@ function Order(): React.JSX.Element {
                                     if(item === 'addOn') return null
                                     description = truncateStringByCharCount(description,70)
                                     title = truncateStringByCharCount(title,35)
-                                    let element = <OrderItem price={price} image={image} title={title} description={description} actionFn={actionFn} />
+                                    let element = <OrderItem price={price} image={image} title={title} description={description} actionFn={goToAddToCart} />
                                     return (
                                         <div className='no-space col-12 col-md-6 col-lg-4 col-xl-3'>
                                             <div className='OIContainer px-1 px-md-2'>
@@ -629,7 +632,7 @@ function Order(): React.JSX.Element {
                                     if(item === 'addOn') return null
                                     title = truncateStringByCharCount(title,35)
                                     description = truncateStringByCharCount(description,70)
-                                    let element = <OrderItem price={price} image={image} title={title} description={description} actionFn={actionFn} />
+                                    let element = <OrderItem price={price} image={image} title={title} description={description} actionFn={goToAddToCart} />
                                     return (
                                         <div className='no-space col-12 col-md-6 col-lg-4 col-xl-3'>
                                             <div className='OIContainer px-1 px-md-2'>

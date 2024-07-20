@@ -19,6 +19,7 @@ import Signup from '../pages/SIgnup';
 import UserAccount from '../pages/UserAccount';
 import UserTransactionHistory from '../pages/UserTransactionHistory';
 import AddToCart from '../pages/AddToCart';
+import PasswordReset from '../pages/PasswordReset';
 
 
 
@@ -40,6 +41,7 @@ function Navigation(): React.JSX.Element {
                     <Route path='/login' Component={Login} />
                     <Route path='/signup' Component={Signup} />
                     <Route path='/forgot-password' Component={ForgotPassword} />
+                    <Route path='/reset-password' Component={PasswordReset} />
                     <Route path='/user/orders' Component={UserOrders} />
                     <Route path='/support' Component={SupportPage} />
                     <Route path='/user/account' Component={UserAccount} />
