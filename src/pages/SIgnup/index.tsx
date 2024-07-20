@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import { useNavigate, useLocation } from 'react-router-dom';
 import { InputMain } from "../../components/input";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,9 +7,20 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 
 import './style.css'
 
-export default function Signup (): React.JSX.Element {
+export default function Signup (): React.JSX.Element { 
+    const navigate = useNavigate()
     let [email,setEmail] = useState('')
     let [password,setPassword] = useState('')
+    function goToLogin () {
+        navigate('/login')
+    }
+
+    function goToSignup(){
+        navigate('/signup')
+    }
+    function goToForgotPassword(){
+        navigate('/forgot-password')
+    }
     return (
         <div>
             <div className="mainSpacing">
@@ -18,7 +30,7 @@ export default function Signup (): React.JSX.Element {
                         <div className="col-12 col-sm-6 no-space">
                             <div className="loginFormContainer">
                                 <div className="py-2" />
-                                <h3 className="font-heading-6 text-center no-space green-color-main">Login</h3>
+                                <h3 className="font-heading-6 text-center no-space green-color-main">CREATE NEW ACCOUNT</h3>
                                 <p className="font-p no-space text-center font-regular">Please input your valid credentials</p>
                                 <div className="py-2" />
                                 <div>
@@ -30,11 +42,7 @@ export default function Signup (): React.JSX.Element {
                                 </div>                
                                 <div className="py-2" />
                                 <div className='no-space'>
-                                    <button onClick={()=>{}} className='pointer green-bg-main login-button '>Login</button>
-                                </div>
-                                <div className="py-2" />
-                                <div>
-                                    <p className="font-small text-center no-space">Forgot Password? <span className="font-regular pointer">Click to recover it now.</span> </p>
+                                    <button onClick={()=>{}} className='pointer green-bg-main login-button '>Create Account</button>
                                 </div>
                                 <div className="py-2" />
                                 <div className="green-divider"></div>
@@ -65,10 +73,10 @@ export default function Signup (): React.JSX.Element {
                             <div className="py-5 py-md-0" />
                             <div>
                                 <div className="center text-center" style={{width: '80%'}}>
-                                    <h4 style={{color: 'white'}} className="font-heading-6 text center">Don't have an account? Sign Up Now!</h4>
+                                    <h4 style={{color: 'white'}} className="font-heading-6 text center">Already have an account? Login Here!</h4>
                                 </div>
                                 <div className="center">
-                                    <button className="FSupportButton font-medium pointer">Sign Up</button>
+                                    <button className="FSupportButton font-medium pointer" onClick={goToLogin}>Login</button>
                                 </div>
                             </div>
                             <div className="py-5 py-md-0" />
