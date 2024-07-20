@@ -54,7 +54,6 @@ export function OrderCheckOutItem (): React.JSX.Element {
                     </div>
                 </div>
                 <div className='col-6 no-space p-1'>
-
                     <div>
                         <p className='font-p font-bold no-space'>White Rice and Stew.</p>
                     </div>
@@ -64,7 +63,6 @@ export function OrderCheckOutItem (): React.JSX.Element {
                     <div>
                         <p className='font-p font-regular no-space'>Total : N 34,500</p>
                     </div>
-                    <div className='py-1' />
                     <div className='row no-space'>
                         <div className='col no-space' >
                             <button className='OCI_Button BEdit font-small font-regular'>Edit Order</button>

@@ -14,8 +14,23 @@ export default function CheckOut (): React.JSX.Element {
                                 <p className="font-heading-6 green-color-main font-medium">PROCEED TO CHECKOUT</p>
                                 <p className="font-p col-12 col-md-9">Check out your cart items. You can edit your meals with our addons. Just click the edit button.</p>
                             </div>
-                            <div>
-                                <div>
+                            <div className="row no-space">
+                                <div className="w-max-content no-space p10">
+                                    <OrderCheckOutItem />
+                                </div>
+                                <div className="w-max-content no-space p10">
+                                    <OrderCheckOutItem />
+                                </div>
+                                <div className="w-max-content no-space p10">
+                                    <OrderCheckOutItem />
+                                </div>
+                                <div className="w-max-content no-space p10">
+                                    <OrderCheckOutItem />
+                                </div>
+                                <div className="w-max-content no-space p10">
+                                    <OrderCheckOutItem />
+                                </div>
+                                <div className="w-max-content no-space p10">
                                     <OrderCheckOutItem />
                                 </div>
                             </div>
