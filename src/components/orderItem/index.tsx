@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import image from '../../assets/image26.png'
 import './style.css'
 
 interface FeaturedCardPropType {
@@ -42,3 +43,38 @@ function OrderItem({image,title,actionFn, description='',price}: FeaturedCardPro
 }
 
 export default OrderItem
+
+export function OrderCheckOutItem (): React.JSX.Element {
+    return (
+        <div className='container-fluid no-space'>
+            <div className='row no-space orderCheckOutItemContainer align-items-center'>
+                <div className='col-6 no-space'>
+                    <div className='OCIImageContainer'>
+                        <img src={image} />
+                    </div>
+                </div>
+                <div className='col-6 no-space p-1'>
+
+                    <div>
+                        <p className='font-p font-bold no-space'>White Rice and Stew.</p>
+                    </div>
+                    <div>
+                        <p className='font-small font-regular no-space'>12 Plates</p>
+                    </div>
+                    <div>
+                        <p className='font-p font-regular no-space'>Total : N 34,500</p>
+                    </div>
+                    <div className='py-1' />
+                    <div className='row no-space'>
+                        <div className='col no-space' >
+                            <button className='OCI_Button BEdit font-small font-regular'>Edit Order</button>
+                        </div>
+                        <div className='w-max-content no-space'>
+                            <button className='OCI_Button BRemove font-small font-regular'>Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
