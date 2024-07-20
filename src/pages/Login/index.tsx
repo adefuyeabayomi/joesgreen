@@ -18,7 +18,7 @@ export default function Login (): React.JSX.Element {
                         <div className="col-12 col-sm-6 no-space">
                             <div className="loginFormContainer">
                                 <div className="py-2" />
-                                <h3 className="font-subtitle text-center no-space green-color-main">Login</h3>
+                                <h3 className="font-heading-6 text-center no-space green-color-main">Login</h3>
                                 <p className="font-p no-space text-center font-regular">Please input your valid credentials</p>
                                 <div className="py-2" />
                                 <div>
@@ -65,7 +65,7 @@ export default function Login (): React.JSX.Element {
                             <div className="py-5 py-md-0" />
                             <div>
                                 <div className="center text-center" style={{width: '80%'}}>
-                                    <h4 style={{color: 'white'}} className="font-subtitle text center">Don't have an account? Sign Up Now</h4>
+                                    <h4 style={{color: 'white'}} className="font-heading-6 text center">Don't have an account? Sign Up Now!</h4>
                                 </div>
                                 <div className="center">
                                     <button className="FSupportButton font-medium pointer">Sign Up</button>
