@@ -53,6 +53,19 @@ function Header(): React.JSX.Element {
         navigate('/checkout')
     }
 
+    function goToUserOrders(){
+        navigate('/user/orders')
+    }
+    function goToUserAccount(){
+        navigate('/user/account')        
+    }
+    function goToUserTransactionHistory(){
+        navigate('/user/transaction-history')
+    }
+    function goToSupport(){
+        navigate('/support')
+    }
+
     return (
         <div className='container-fluid no-space'>
             <div className='row no-space align-items-center green-bg header-container'>
@@ -141,10 +154,22 @@ function Header(): React.JSX.Element {
                                 <div className='py-1' />
                                 <div>
                                     <p className='font-p font-medium'>My Account</p>
-                                    <p className='font-small font-regular pointer'>My Orders</p>
-                                    <p className='font-small font-regular pointer'>Transactions History</p>
-                                    <p className='font-small font-regular pointer'>Account Settings</p>
-                                    <p className='font-small font-regular pointer'>Support Page</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToUserOrders()
+                                    }}>My Orders</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToUserTransactionHistory()
+                                    }}>Transactions History</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToUserAccount()
+                                    }}>Account Settings</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        goToSupport()
+                                    }}>Support Page</p>
                                 </div>
                             </div>                            
                             <div className='py-3' />
