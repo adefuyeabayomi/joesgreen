@@ -34,7 +34,7 @@
 }
 
 .orderCheckOutItemContainer{
-    max-width: 350px;
+    max-width: 370px;
     box-shadow: 0px 0px 8px rgb(165, 202, 228);
     border: 0px solid;
     border-radius: 10px;
@@ -47,6 +47,7 @@
 .OCIImageContainer img {
     width: 100%;
     border-radius: 5px;
+    min-height: 140px;
 }
 .OCI_Button.BEdit{
     background: #0F1C07;

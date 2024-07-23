@@ -1,0 +1,10 @@
+.util-divider {
+    height: 1.5px;
+    border-radius: 10px;
+    background: #e5e5e5;
+}
+.SIImageContainer{
+    background-color: #037e03;
+    padding: 13px 10px 10px 10px;
+    border-radius: 65px;
+}
