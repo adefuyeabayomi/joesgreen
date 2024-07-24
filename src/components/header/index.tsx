@@ -78,22 +78,22 @@ function Header(): React.JSX.Element {
                     <div className='nav-container-desktop'>
                         <div className='row h-nav-container justify-content-center w-100'>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToHome}>Orders</p>
+                                <p className='header-link' onClick={goToHome}>Home</p>
                             </div>
                             <div className='w-max-content'>
-                                <p  className='header-link' onClick={goToOrders}>Records</p>
+                                <p  className='header-link' onClick={goToOrders}>Order</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToTrainings}>Customer Support</p>
+                                <p className='header-link' onClick={goToTrainings}>Trainings</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToBlog}>Menu</p>
+                                <p className='header-link' onClick={goToBlog}>Blog</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToAbout}>Blog</p>
+                                <p className='header-link' onClick={goToAbout}>About Us</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToContact}>Site Users</p>
+                                <p className='header-link' onClick={goToContact}>Contact</p>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@ function Header(): React.JSX.Element {
                             <button onClick={()=>{goToLogin()}} className='pointer font-regular text-main'>Login</button>
                         </div>
                         <div className='w-max-content button-container no-space'>
-                            <button onClick={goToCheckout} className='green-bg-main header-button'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                            <button onClick={goToCheckout} className='green-bg-main header-button'>Checkout <FontAwesomeIcon icon={faShoppingCart} /> </button>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
 import React,{useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
-import { Modal } from "antd";
 import CustomDialog from "../../components/customDialog";
 import { useNavigate } from 'react-router-dom'
 import './style.css'
