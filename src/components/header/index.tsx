@@ -1,16 +1,25 @@
-import React,{ useState } from 'react'
+import React,{ useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Twirl as Hamburger } from 'hamburger-react';
 import Overlay from '../overlay';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faArrowAltCircleRight, faShoppingCart,faUser } from '@fortawesome/free-solid-svg-icons';
 
 import "./style.css"
 import logo from "../../assets/logo.png"
+import { useAuth } from '../../navigation/AuthContext';
+import { useNotificationTrigger } from "../../components/utils/notificationTrigger";
 
 function Header(): React.JSX.Element {
+    let auth = useAuth()
+    const {triggerInfo,triggerError,triggerSuccess} = useNotificationTrigger() 
+    console.log('auth', auth.isAuthenticated)
     const [isOpen, setOpen] = useState(false)
+    const [showDesktopMenu,setShowDesktopMenu] = useState(false)
+    const toggleDesktopMenu = () =>{
+        setShowDesktopMenu(!showDesktopMenu)
+    }
     function toggleHamburger () {
         setOpen(!isOpen)
     }
@@ -78,37 +87,75 @@ function Header(): React.JSX.Element {
                     <div className='nav-container-desktop'>
                         <div className='row h-nav-container justify-content-center w-100'>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToHome}>Home</p>
+                                <p className='header-link no-space' onClick={goToHome}>Home</p>
                             </div>
                             <div className='w-max-content'>
-                                <p  className='header-link' onClick={goToOrders}>Order</p>
+                                <p  className='header-link no-space' onClick={goToOrders}>Order</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToTrainings}>Trainings</p>
+                                <p className='header-link no-space' onClick={goToTrainings}>Trainings</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToBlog}>Blog</p>
+                                <p className='header-link no-space' onClick={goToBlog}>Blog</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToAbout}>About Us</p>
+                                <p className='header-link no-space' onClick={goToAbout}>About Us</p>
                             </div>
                             <div className='w-max-content'>
-                                <p className='header-link' onClick={goToContact}>Contact</p>
+                                <p className='header-link no-space' onClick={goToContact}>Contact</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='col d-block d-lg-none'></div>
+                {auth.isAuthenticated?
+                (
+                    <div className='d-none d-sm-block w-max-content no-space pointer userButtonContainer'>
+                        <p className='font-p font-regular deep-green' onClick={toggleDesktopMenu}><FontAwesomeIcon icon={faUser} /> {auth.email} {showDesktopMenu? <FontAwesomeIcon icon={faAngleUp}/>:<FontAwesomeIcon icon={faAngleDown} /> }</p>
+                        {
+                            showDesktopMenu ? (
+                        <div className='userOptionsDesktopContainer shadow p-2'>
+                            <div>
+                                <p className='font-p font-medium px-3'>Account Activities</p>
+                                <div className='util-divider' />
+                                <p className='font-small font-regular pointer' onClick={()=>{
+                                        toggleDesktopMenu()
+                                        goToUserOrders()
+                                    }}>My Orders</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        toggleDesktopMenu()
+                                        goToUserTransactionHistory()
+                                    }}>Transactions History</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        toggleDesktopMenu()
+                                        goToUserAccount()
+                                    }}>Account Settings</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        toggleDesktopMenu()
+                                        goToSupport()
+                                    }}>Support Page</p>
+                                <p className='font-small font-regular pointer' onClick={()=>{
+                                    toggleDesktopMenu()
+                                    triggerInfo({title:'Log Out',message: 'You have successfully logged out'})
+                                    auth.logout()
+                                }}>Logout</p>
+                            </div>
+                        </div>) : null
+                        }
+                    </div>
+                ):(
                 <div className='d-none d-sm-block w-max-content no-space'>
                     <div className='row align-items-center'>
                         <div className='w-max-content header-login-button no-space'>
                             <button onClick={()=>{goToLogin()}} className='pointer font-regular text-main'>Login</button>
                         </div>
                         <div className='w-max-content button-container no-space'>
-                            <button onClick={goToCheckout} className='green-bg-main header-button'>Checkout <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                            <button onClick={goToSignup} className='green-bg-main header-button'>Sign Up <FontAwesomeIcon icon={faUser} /> </button>
                         </div>
                     </div>
-                </div>
+                </div>                    
+                )}
+
                 <div className='w-max-content d-block d-lg-none'>
                     <div className='nav-container-mobile'>
                         <Hamburger toggled={isOpen} color='#00A826' size={20} toggle={toggleHamburger} />
@@ -171,18 +218,26 @@ function Header(): React.JSX.Element {
                                         goToSupport()
                                     }}>Support Page</p>
                                 </div>
-                            </div>                            
-                            <div className='py-3' />
-                                <div className='no-space px-3 py-2'>
-                                    <button onClick={()=>{goToLogin(); setOpen(!isOpen)}} className='green-bg-main mobile-menu-login font-small font-regular'>Login <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                            </div>                     
+                            {auth.isAuthenticated?(
+                                <div>
+                                    <div className='py-3' />
+                                    <div className='no-space px-3'>
+                                        <button onClick={()=>{ setOpen(!isOpen) }} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out <FontAwesomeIcon icon={faArrowAltCircleRight} /> </button>
+                                    </div>                                    
                                 </div>
-                                <div className='no-space px-3 py-2'>
-                                    <button onClick={()=>{goToSignup(); setOpen(!isOpen)}} className='mobile-menu-signin font-small font-regular'>Sign Up <FontAwesomeIcon icon={faShoppingCart} /> </button>
+                            ):(
+                                <div>
+                                    <div className='py-3' />
+                                    <div className='no-space px-3 py-2'>
+                                        <button onClick={()=>{goToLogin(); setOpen(!isOpen)}} className='green-bg-main mobile-menu-login font-small font-regular'> <FontAwesomeIcon icon={faUser} /> Login</button>
+                                    </div>
+                                    <div className='no-space px-3 py-2'>
+                                        <button onClick={()=>{goToSignup(); setOpen(!isOpen)}} className='mobile-menu-signin font-small font-regular'> <FontAwesomeIcon icon={faUser} /> Sign Up</button>
+                                    </div>                                    
                                 </div>
-                            <div className='py-3' />
-                                <div className='no-space px-3'>
-                                    <button onClick={()=>{ setOpen(!isOpen) }} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out<FontAwesomeIcon icon={faShoppingCart} /> </button>
-                                </div>
+
+                            )}
                             <div className='py-5' />
                         </Overlay>
                     </div>

@@ -10,11 +10,10 @@ import ReviewItem from '../../components/reviewItem';
 import ContactItem from '../../components/contactItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { useNotificationTrigger } from '../../components/utils/notificationTrigger';
 //images
 import heroImage from "../../assets/hero-img.png"
 import tipDots from '../../assets/tipDots.png'
-import caretRight from '../../assets/caret right.png'
-import caretPink from '../../assets/caret-pink.png'
 import caretWhite from '../../assets/caret-white.png'
 import image_1 from "../../assets/image1.png"
 import image_2 from "../../assets/image2.png"
@@ -53,10 +52,14 @@ let image16 = <img src={image_16} />
 let image17 = <img src={image_17} />
 import './style.css'
 
-function Home(): React.JSX.Element {    
+function Home(): React.JSX.Element {   
     const navigate = useNavigate()
     const location = useLocation();
+    const { triggerNotification } = useNotificationTrigger();
 
+    const handleClick = () => {
+      triggerNotification('success', { title: 'Success!', message: 'Your action was successful.' });
+    };
     function goToOrders () {
         return navigate('/order')
     }

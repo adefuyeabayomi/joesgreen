@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 import tipDots from '../../assets/tipDots.png'
 import OrderItem from '../../components/orderItem'
 import Overlay from '../../components/overlay';
@@ -57,9 +58,10 @@ function Order(): React.JSX.Element {
       navigate('/add-to-cart')
     }
     const [spinning,setSpinning] = useState(false)
-    const [api,contextHolder] = notification.useNotification()
+    const [api,contextHolder] = useNotification()
     const [customerName , setCustomerName]= useState('')
     const [customerPhoneNumber, setCustomerPhoneNumber] = useState('')
+
     const openNotificationWithIcon = (type: NotificationType,placement: NotificationPlacement,title: string,description: string) => {
         api[type]({
           message: title,
