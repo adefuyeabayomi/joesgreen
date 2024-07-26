@@ -21,7 +21,7 @@ export function InputMain({
   value,
   placeholder,
   onChange,
-  icon = <FontAwesomeIcon icon={faCircleNotch} />,
+  icon = <FontAwesomeIcon icon={faCircleNotch} color="#aeaeae" />,
   errorMessage = 'Invalid Input! Check and try again.',
   showError = false,
   onFocus = ()=>{return},
