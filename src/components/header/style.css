@@ -126,6 +126,7 @@
     background-color: #84F39D;
     border-radius: 50px;
     margin-right: 6px;
+    padding-top: 13px;
 }
 @media (max-width: 1024px) {
     .header-container {

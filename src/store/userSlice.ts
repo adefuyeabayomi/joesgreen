@@ -1,8 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let initialState = {
+export interface CartItem {
+  id?: string;
+  name: string;
+  addons: { name: string; price: number; quantity: number }[];
+  description: string;
+  price: number;
+  published?: boolean;
+  category?:string;
+  image?: string; // Add this property
+  message?: string;
+  quantity:number
+}
+
+interface UserState {
+  email: string;
+  accessToken: string;
+  userCart: CartItem[];
+}
+
+const initialState: UserState = {
   email: "",
   accessToken: "",
+  userCart: [],
 };
 
 export const userSlice = createSlice({
@@ -15,9 +35,23 @@ export const userSlice = createSlice({
     updateAccessToken: (state, action) => {
       state.accessToken = action.payload;
     },
+    addToCart: (state, action) => {
+      const newItem = action.payload;
+      const existingItemIndex = state.userCart.findIndex(item => item.id === newItem.id);
+      if (existingItemIndex > -1) {
+        state.userCart[existingItemIndex].quantity = newItem.quantity;
+        state.userCart[existingItemIndex].addons = newItem.addons
+      } else {
+        state.userCart.push(newItem);
+      }
+    },
+    removeFromCart: (state, action) => {
+      state.userCart = state.userCart.filter(item => item.id !== action.payload);
+      console.log('patload',state)
+    },
   },
 });
 
-export const { updateEmail, updateAccessToken } = userSlice.actions;
+export const { updateEmail, updateAccessToken, addToCart, removeFromCart } = userSlice.actions;
 
 export default userSlice.reducer;

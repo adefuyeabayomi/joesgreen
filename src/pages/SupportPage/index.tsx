@@ -1,14 +1,55 @@
 import React,{useState} from "react";
 
 import call from '../../assets/image16.png'
-import message from '../../assets/image15.png'
+import messageImg from '../../assets/image15.png'
 
 import './style.css'
-import { InputMain } from "../../components/input";
+import { InputMain, TextAreaMain } from "../../components/input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faAt, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { useLoading } from "../../components/utils/loadingContext";
+import { customerService } from "joegreen-service-library";
+import { useNotificationTrigger } from "../../components/utils/notificationTrigger";
+import { useAuth } from "../../navigation/AuthContext";
+import { isValidEmail } from "../../functions/utils";
 
 export default function SupportPage (): React.JSX.Element {
+    let {setLoading,setLoadingText} = useLoading()
+    let auth = useAuth();
+    const [email, setEmail] = useState(auth.email || '');
+    let {triggerError,triggerInfo,triggerSuccess} = useNotificationTrigger()
+    const [message, setMessage] = useState('');
+    const [emailError, setEmailError] = useState<boolean>(false);
+    const resetEmailError = () => {
+        setEmailError(false);
+    };
+    const resetMessageError = () => {
+        setEmailError(false);
+    };
+    
+    async function sendMessage() {
+        // Validate inputs
+        if (!isValidEmail(email)) {
+          setEmailError(true);
+          return;
+        }
+        // If inputs are valid, proceed with signup
+        setLoading(true);
+        setLoadingText("Submitting Message...");
+    
+        try {
+          const response = await customerService.postCustomerMessage(email,message);
+          triggerInfo({title: 'Message Recieved',message: 'Dear User, We would respond to your message as soon as possible. Thank you.'})
+          
+        } catch (error) {
+            triggerError({title: 'Login Error',message: error.message})
+          console.error("Login error:", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    
+
     return (
         <div>
             <div className="mainSpacing">
@@ -35,7 +76,7 @@ export default function SupportPage (): React.JSX.Element {
                                         <div className="row no-space align-items-center">
                                             <div className="w-max-content no-space">
                                                 <div className="SIImageContainer">
-                                                    <img src={message} />
+                                                    <img src={messageImg} />
                                                 </div>
                                                 
                                 <div className="py-2" />
@@ -45,7 +86,7 @@ export default function SupportPage (): React.JSX.Element {
                                                     <p className="font-subtitle font-medium no-space">Email</p>
                                                 </div>
                                                 <div className="px-1">
-                                                    <p className="font-p font-medium no-space">support@joegreencafe.com</p>
+                                                    <p className="font-p font-regular no-space">support@joegreencafe.com</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +103,7 @@ export default function SupportPage (): React.JSX.Element {
                                                     <p className="font-subtitle font-medium no-space">Call</p>
                                                 </div>
                                                 <div className="px-1">
-                                                    <p className="font-p font-medium no-space">+234 90-8374-4758</p>
+                                                    <p className="font-p font-regular no-space">+234 90-8374-4758</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -74,22 +115,21 @@ export default function SupportPage (): React.JSX.Element {
                                 <div className="py-3 py-md-0" />
                                 <div className="supportFormContainer">
                                     <div>
-                                        <p className="font-subtitle font-medium">Send An Instant Message</p>
+                                        <p className="font-subtitle font-medium">Send An Instant Message (Enquires/Feedback/Complaints)</p>
                                     </div>
                                     <div>
                                         <p className="font-small font-regular">Your Email</p>
-                                        <InputMain icon={<FontAwesomeIcon icon={faShoppingCart}/>} value='' onChange={()=>{}} />
+                                        <InputMain onFocus={resetEmailError} showError={emailError} errorMessage="Email is invalid" icon={<FontAwesomeIcon color="#aeaeae" icon={faAt} />} value={email} onChange={setEmail} placeholder={'Your Email'} />
                                     </div>
-                                    
                                     <div>
-                                        <p className="font-small font-regular">Your Email</p>
-                                        <textarea className="SFTextArea">
-                                            
-                                        </textarea>
+                                        <p className="font-small font-regular">Write Your Message Here</p>
+                                        <TextAreaMain onChange={setMessage} value={message}>
+
+                                        </TextAreaMain>
                                     </div>
                                     <div className="py-1" />
                                     <div>
-                                        <button className="support-cta-button">Send Message</button>
+                                        <button onClick={sendMessage} className="support-cta-button">Send Message</button>
                                     </div>
                                 </div>
                             </div>

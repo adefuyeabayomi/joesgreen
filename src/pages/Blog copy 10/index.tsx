@@ -22,5 +22,3 @@ export function Blog (): React.JSX.Element {
         </div>
     )
 }
-
-

@@ -5,6 +5,7 @@
     margin-top: 25px;
     border-radius: 10px;
 }
+
 .checkout-btn{
     display: block;
     padding: 11px;
@@ -15,8 +16,22 @@
     color: white;
 }
 
-
-
+.addonOpButton {
+    background-color: rgb(43, 43, 43);
+    color: white;
+    border: 0px solid;
+    padding: 1px 10px;
+    border-radius: 3px;
+}
+.UpdateAddonButton {
+    display: block;
+    padding: 11px;
+    border-radius: 5px;
+    border: 0px solid;
+    background-color: #202020;
+    width: 100%;
+    color: white;
+}
 
 
 

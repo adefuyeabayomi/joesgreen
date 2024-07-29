@@ -163,11 +163,13 @@ function Header(): React.JSX.Element {
                             <div className='py-4' />
                             <div className='row no-space align-items-center px-3'>
                                 <div className='w-max-content no-space'>
-                                    <div className='menu-image-container'></div>
+                                    <div className='menu-image-container text-center'>
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </div>
                                 </div>
                                 <div className='col no-space'>
-                                    <p style={{lineHeight: '0.8'}} className='font-p font-medium no-space'>Guest User</p>
-                                    <small style={{lineHeight: '0.8'}} className='font-mini no-space'>Not Logged In</small>
+                                    <p style={{lineHeight: '0.8'}} className='font-p font-medium no-space'>{auth.email}</p>
+                                    <small style={{lineHeight: '0.8'}} className='font-mini no-space'>{auth.isAuthenticated? 'Logged In': 'Not Logged In'} </small>
                                 </div>
                             </div>
                             <div className='mobileLinksContainer'>

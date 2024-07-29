@@ -20,4 +20,36 @@ export function isValidEmail(email: string): boolean {
     return str.length > minLength;
   }
 
+  export const formatNumberWithCommas = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+  export function truncateStringByWordCount(str, wordCount) {
+    // Split the string by spaces to get an array of words
+    const words = str.split(' ');
+  
+    // Check if the array length is greater than the specified word count
+    if (words.length > wordCount) {
+      // Return the first `wordCount` words joined by a space, followed by '...'
+      return words.slice(0, wordCount).join(' ') + '...';
+    }
+  
+    // If the array length is less than or equal to the word count, return the original string
+    return str;
+  }
+  export function truncateStringByCharCount(str, charCount) {
+    // Check if the string length is greater than the specified character count
+    if (str.length > charCount) {
+      // Return the first `charCount` characters followed by '...'
+      return str.slice(0, charCount) + '...';
+    }
+  
+    // If the string length is less than or equal to the character count, return the original string
+    return str;
+  }
+  
+  export const calculateTotalPrice = (addons) => {
+    return addons.reduce((total, addon) => {
+      return total + (parseFloat(addon.price) * addon.count);
+    }, 0);
+  };
   

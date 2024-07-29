@@ -1,14 +1,29 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 import CustomDialog from "../../components/customDialog";
-import { useNavigate } from 'react-router-dom'
 import './style.css'
 import image from '../../assets/image25.png'
+import { useDispatch } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLoading } from "../../components/utils/loadingContext";
+import { useNotificationTrigger } from "../../components/utils/notificationTrigger";
+import { dishService } from "joegreen-service-library";
+import { Dish } from "joegreen-service-library/dist/services/dishService";
+import { addToCart, removeFromCart } from "../../store/userSlice";
+import { formatNumberWithCommas } from "../../functions/utils";
+import { InputMain } from "../../components/input";
 
 export default function AddToCart (): React.JSX.Element {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const [dish, setDish] = useState<Dish>(); // Replace 'any' with appropriate type
+    const [quantity, setQuantity] = useState<number>(1);
+    const [showMoreInput, setShowMoreInput] = useState<boolean>(false);
+    const dispatch = useDispatch();
+    const { setLoading, setLoadingText } = useLoading();
+    const { triggerError, triggerSuccess } = useNotificationTrigger();
     function goToCheckout(){
         navigate("/checkout")
     }
@@ -23,7 +38,46 @@ export default function AddToCart (): React.JSX.Element {
     const closeDialog = () => {
       setIsDialogOpen(false);
     };
-    let [showModal,setShowModal] = useState(false)
+  
+    const dishId = searchParams.get('dishId');
+  
+    useEffect(() => {
+      const fetchDish = async () => {
+        if (dishId) {
+          try {
+            setLoading(true);
+            setLoadingText('Fetching dish details...');
+            const data = await dishService.getDishById(dishId);
+            setDish(data);
+            console.log({dish:data})
+          } catch (error) {
+            triggerError({ title: 'Error', message: 'Failed to fetch dish details' });
+            console.error(error);
+          } finally {
+            setLoading(false);
+          }
+        }
+      };
+  
+      fetchDish();
+    }, [dishId]);
+  
+    const handleAddToCart = () => {
+        if (dish) {
+            let addons = dish.addons.map(x=>{return {...x,quantity: 0}})
+          const cartItem = {
+              ...dish,
+              addons,
+            id: dish._id,
+            name: dish.name,
+            price: dish.price,
+            quantity,
+          };
+    
+          dispatch(addToCart(cartItem));
+          triggerSuccess({ title: 'Success', message: 'Dish added to cart successfully' });
+        }
+      };
     return (
         <div>
             <CustomDialog isOpen={isDialogOpen} onClose={closeDialog}>
@@ -33,10 +87,10 @@ export default function AddToCart (): React.JSX.Element {
                 <div className="container-fluid no-space">
                     <div className="row no-space">
                         <div className="col-12 col-md-6 no-space">
-                            <button className="ATCMButton Continue font-small font-regular pointer" onClick={goToOrders}>Continue Shopping</button>
+                            <button className="ATCMButton Continue font-small font-regular pointer" onClick={()=>{handleAddToCart(); goToOrders()}}>Continue Shopping</button>
                         </div>
                         <div className="col-12 col-md-6 no-space px-1">
-                            <button className="ATCMButton PTC font-small font-regular pointer" onClick={goToCheckout}>Proceed To Checkout</button>
+                            <button className="ATCMButton PTC font-small font-regular pointer" onClick={()=>{handleAddToCart(); goToCheckout()}}>Proceed To Checkout</button>
                         </div>
                     </div>
                 </div>
@@ -59,27 +113,23 @@ export default function AddToCart (): React.JSX.Element {
                             <div className="col-12 col-md-6">
                                 <div className="ATCContentsContainer font-p">
                                     <div>
-                                        <p className="font-subtitle font-medium">White Rice and Stew.</p>
+                                        <p className="font-subtitle font-medium no-space">{dish?.name || ''}</p>
                                     </div>
                                     <div>
                                         <p className="font-medium">Meal Description:</p>
                                     </div>
                                     <div>
-                                        <p>This option is for white rice and stew. It comes with one beef. You can then choose to add more beef, chicken or turkey at additional charges.</p>
+                                        <p>{dish?.description || ''}</p>
                                     </div>
                                     <div>
-                                        <p className="font-subtitle">₦ 2500 Per Plate</p>
+                                        <p className="font-subtitle">₦ {formatNumberWithCommas(dish?.price || 0)} Per Plate</p>
                                     </div>
                                     <div>
-                                        <p className="font-regular">How many plate would you like to order?</p>
+                                        <p className="font-regular">How many plate would you like to order?<button className="ATCButton pointer active px-3 mx-2">{quantity} Plate{Number(quantity)>1?'s':''}</button></p>
                                     </div>
+                                    <div className="py-1" />
                                     <div>
-                                        <button className="ATCButton pointer active">1 Plate</button>
-                                        <button className="ATCButton pointer">2 Plates</button>
-                                        <button className="ATCButton pointer">3 Plates</button>
-                                        <button className="ATCButton pointer">4 Plates</button>
-                                        <button className="ATCButton pointer">5 Plates</button>
-                                        <button className="ATCButtonGray pointer">More Than 5 Plates</button>
+                                        <InputMain type="number" value={quantity} onChange={(e) => setQuantity(Number(e))} />
                                     </div>
                                     <div className="py-1" />
                                     <div className='order-button-container'>
@@ -90,6 +140,8 @@ export default function AddToCart (): React.JSX.Element {
                         </div>
                     </div>
                 </div>
+                <div>
+            </div>
                 <div className="py-3" />
             </div>
         </div>
