@@ -10,6 +10,7 @@ interface COIType {
     dish: CartItem;
     onEdit?: ()=>void;
     onRemove?: (id)=>void;
+    payFn?:()=>void;
 }
 
 interface FeaturedCardPropType {
@@ -124,7 +125,7 @@ export function OrderCheckOutItem({ dish, onEdit,onRemove }:COIType) {
                 </div>
     );
 }
-export function UserOrderItem({ dish }:COIType) {
+export function UserOrderItem({ dish, payFn }:COIType) {
     function getAddonText (arr) {
         let res = arr.map(addon => {
             if(addon.quantity == 0){

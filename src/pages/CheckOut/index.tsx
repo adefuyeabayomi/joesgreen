@@ -101,7 +101,7 @@ export default function CheckOut (): React.JSX.Element {
                 //Implement what happens when the transaction is completed.
                 console.log({response})
                 let data = response
-                    if(data.paymentStatus == 'PAID'){
+                    if(data.status == 'SUCCESS'){
                     setLoading(true)
                     setLoadingText('Saving Payment Status')
                     let updateData = {
