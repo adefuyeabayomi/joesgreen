@@ -1,10 +1,31 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 
 import filterIcon from '../../assets/filter-icon.png'
 
 import './style.css'
-
+import { orderService } from "joegreen-service-library";
+import { Order } from "joegreen-service-library/dist/services/orderService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { UserOrderItem } from "../../components/orderItem";
 export default function UserOrders (): React.JSX.Element {
+    let token = window.localStorage.getItem('accessToken')
+    let [orders,setOrders] = useState<Order[]>([])
+    let [currentId,setCurrentId] = useState('')
+
+    useEffect(()=>{
+        orderService.fetchOrders(token).then(x=>{
+            setOrders(x)
+            console.log({x})
+        }).catch(error=>{
+            throw error
+        })
+    },[])
+
+    function toggleCurrent (id) {
+        id == currentId ? setCurrentId(''): setCurrentId(id)
+    }
+    
     return (
         <div>
             <div className="mainSpacing">
@@ -41,51 +62,72 @@ export default function UserOrders (): React.JSX.Element {
                     <div className="container-fluid no-space">
                         <div className="row no-space">
                             {
-                                [1,2,3,4,5,5,6,7].map((x,index)=>{
+                                orders.map((x,index)=>{
                                     return (
-                                        <div className="col-12 col-md-6 col-xl-4" key={index}>
-                                            <div className="UserOrderItemContainer">
+                                        <div className="col-12 col-lg-6" key={index}>
+                                            <div className="UserOrderItemContainer" style={{position: 'relative'}}>
                                                 <div>
                                                     <div className="orderName">
-                                                        <p className="font-subtitle font-medium">White Rice and Stew (12)</p>
-                                                    </div>
-                                                    <div className="">
-                                                        <p className="font-p font-regular">Addons: Shrimp, coleslaw, plantain,chicken(2)</p>
-                                                    </div>
-                                                    <div className="py-1" />                            
-                                                    <div className="util-divider" />
+                                                        <div></div>
+                                                        <div className="row">
+                                                            <div className="col"><p className="font-subtitle font-medium"> {x.narration} </p></div>
+                                                            
+                                                            <div>
+                                                                <p className="no-space font-p font-regular">Payment Status: {x.paymentStatus}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p className="no-space font-p font-regular">Order Status: {x.fufilled?'Fulfilled' :"Your Order is Still being Processed."}</p>
+                                                            </div>
+                                                            <div className="py-1" />
+                                                            <div className="container-fluid">
+                                                                <div className="row no-space">
+                                                                    {x.paymentStatus == 'Pending'? (
+                                                                        <div className="col no-space">
+                                                                            <div className=" no-space">
+                                                                                <button className="font-p text-center addonOpButton" style={{backgroundColor: '#00a826', width: '100%', height: '35px'}}>Make Payment</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    ):null}
+                                                                    
+                                                                    <div className="col no-space mx-1">
+                                                                    <div className="no-space"><p className=" no-space"> <button style={{width: '100%', height: '35px'}} className="font-p text-center addonOpButton no-space px-4" onClick={()=>{toggleCurrent(x._id)}}>View Details <FontAwesomeIcon icon={faAngleDown} /></button></p></div>
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>                        
+                                                </div>
+                                                {currentId == x._id ? (
+                                                <div className="userOrderDetailsContainer">
+                                                <div>
+                                                    <p className="no-space font-p font-regular">Payment Status: {x.paymentStatus}</p>
+                                                </div>
+                                                
+                                                <div>
+                                                    <p className="no-space font-p font-regular">Phone Number: {x.phoneNumber}</p>
                                                 </div>
                                                 <div>
-                                                    <div className="orderName">
-                                                        <p className="font-subtitle font-medium">White Rice and Stew (12)</p>
-                                                    </div>
-                                                    <div className="">
-                                                        <p className="font-p font-regular">Addons: Shrimp, coleslaw, plantain,chicken(2)</p>
-                                                    </div>
-                                                    <div className="py-1" />                            
-                                                    <div className="util-divider" />
-                                                </div>
-                                            <div>
-                                                <p className="no-space font-p font-regular">Field: Value</p>
+                                                    <p className="no-space font-p font-regular">Delivery Address: {x.deliveryInfo}</p>
                                                 </div>
                                                 <div>
-                                                    <p className="no-space font-p font-regular">Field: Value</p>
+                                                    <p className="no-space font-p font-regular">Transaction Reference: {x.transactionRef}</p>
+                                                </div> 
+                                                    <div className="py-2" />
+                                                    {x.cartItems.map(dish=>{
+                                                        return (
+                                                            <div style={{marginBottom: '20px'}}>
+                                                        <UserOrderItem dish={dish} />
+
+                                                            </div>
+                                                    )
+                                                    })}
                                                 </div>
-                                                <div>
-                                                    <p className="no-space font-p font-regular">Field: Value</p>
-                                                </div>
-                                                <div>
-                                                    <p className="no-space font-p font-regular">Field: Value</p>
-                                                </div>
-                                                <div>
-                                                    <p className="no-space font-p font-regular">Field: Value</p>
-                                                </div>
-                                                <div>
-                                                    <p className="no-space font-p font-regular">Field: Value</p>
-                                                </div>
-                                                <div>
-                                                    <p className="no-space font-p font-regular">Field: Value</p>
-                                                </div>
+
+                                                ): null}
+                                                
+                                         
                                             </div>
                                         </div>
                                     )

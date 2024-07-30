@@ -12,8 +12,17 @@
 .UserOrderItemContainer{
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid #cfcfcf;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgb(213, 213, 213);
+}
+.userOrderDetailsContainer{
+    position: absolute;
+    background-color: rgb(237, 237, 237);
+    z-index: 2;
+    border: 2px solid rgb(216, 216, 216);
+    border-radius: 10px;
+    padding: 15px;
+    right: 0px;
 }
 
 .snWidth{

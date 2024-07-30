@@ -16,7 +16,7 @@
     border-radius: 7px;
 }
 
-.fc-title-container{
+.fc-title-container {
     padding: 5px 0px;
 }
 
@@ -46,31 +46,34 @@
     padding-bottom: 1px;
     border-radius: 10px;
 }
+
 .OCIImageContainer img {
     width: 100%;
     border-radius: 5px;
     min-height: 140px;
 }
+
 .OCI_Button.BEdit{
     background: #0F1C07;
     color: white;
     width: 100%;
-    padding: 2px 5px;
+    padding: 6px 5px;
     border-radius: 5px;
     border: 0px solid;
-
 }
+
 .OCI_Button.BRemove{
     background-color: #FF3131;
     color: white;
     width: max-content;
-    padding: 2px 5px;
+    padding: 6px 5px;
     border-radius: 5px;
     border: 0px solid;
     display: block;
     margin-left: 6px;
     margin-right: 6px;
 }
+
 .p10{
     padding: 5px !important;
 }

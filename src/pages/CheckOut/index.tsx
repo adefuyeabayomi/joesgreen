@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { OrderCheckOutItem } from "../../components/orderItem";
 import './style.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faMapLocation, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { InputMain } from "../../components/input";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -11,22 +11,166 @@ import { useNotificationTrigger } from "../../components/utils/notificationTrigg
 import { removeFromCart,addToCart } from "../../store/userSlice";
 import CustomDialog from "../../components/customDialog";
 import { Dish } from "joegreen-service-library/dist/services/dishService";
-
+import { orderService } from "joegreen-service-library";
+import { CartItem, Order } from "joegreen-service-library/dist/services/orderService";
+import { useAuth } from "../../navigation/AuthContext";
 
 export default function CheckOut (): React.JSX.Element {
+    let token = window.localStorage.getItem('accessToken')
+    let auth = useAuth()
     let cartItems = useSelector((state:{user:{userCart}}) => state.user.userCart);
     const dispatch = useDispatch();
     const { setLoading, setLoadingText } = useLoading();
     const { triggerError, triggerSuccess } = useNotificationTrigger();
     const [currentDish,setCurrentDish] = useState<Dish>()
     const [showEdit,setShowEdit] = useState(false)
+    const [phoneNumber, setPhoneNumber] = useState<number>(0);
+    const [deliveryInfo, setDeliveryInfo] = useState("");
+    const [inputError, setInputError] = useState<{ phoneNumber?: boolean; deliveryInfo?: boolean }>({});
+    const navigate = useNavigate()
+    const deliveryFee = 1000
+
+    const validateInputs = () => {
+        const errors: { phoneNumber?: boolean; deliveryInfo?: boolean } = {};
+        if (String(phoneNumber).length<10) {
+            errors.phoneNumber = true;
+        }
+        if (deliveryInfo.length<20) {
+            errors.deliveryInfo = true;
+        }
+        setInputError(errors);
+        let inValid = errors.deliveryInfo || errors.phoneNumber;
+        return !inValid
+    };
+
+    const resetInputError = (field?: 'phoneNumber' | 'deliveryInfo') => {
+        if (field) {
+            setInputError(prevErrors => ({
+                ...prevErrors,
+                [field]: false
+            }));
+        } else {
+            setInputError({});
+        }
+    };
+
+    const updatePaymentStatus = async (orderId: string, token: string) => {
+        try {
+            // Prepare the payload for updating the order
+            const payload = { paymentStatus: 'Success' };
+            // Call the updateOrder function from the orderService
+            const response = await orderService.updateOrder(orderId, payload, token);
+            return response
+        } catch (error) {
+            console.error("Error updating payment status:", error);
+            throw error;
+        }
+    };
+    const cancelOrder = async (orderId: string, token: string) => {
+        try {
+            // Prepare the payload for updating the order
+            const payload = { cancelled: true };
+    
+            // Call the updateOrder function from the orderService
+            const response = await orderService.updateOrder(orderId, payload, token);
+            return response
+        } catch (error) {
+            console.error("Error updating payment status:", error);
+            throw error;
+        }
+    };
+
+    const payWithMonnify = async (grandTotal,phoneNumber,email,narration,orderId) => {
+        let monnify = window.MonnifySDK
+        monnify.initialize({
+            amount: 100,
+            currency: "NGN",
+            reference: new String((new Date()).getTime()),
+            customerFullName: phoneNumber.toString(),
+            customerEmail: email,
+            apiKey: "MK_TEST_QA372KPS4C",
+            contractCode: "5878350992",
+            paymentDescription: `Payment for ${narration}`,
+            onLoadStart: () => {
+                console.log("loading has started");
+            },
+            onLoadComplete:() => {
+                console.log("SDK is UP");
+            },
+            onComplete: function(response) {
+                //Implement what happens when the transaction is completed.
+                console.log({response})
+                let data = response
+                    if(data.paymentStatus == 'PAID'){
+                    setLoading(true)
+                    setLoadingText('Saving Payment Status')
+                    let updateData = {
+                        paymentStatus: 'Success',
+                        transactionRef: data.transactionReference,
+                        paymentRef: data.paymentReference
+                    }
+                    orderService.updateOrder(orderId,updateData,token).then(res=>{
+                        console.log({res})
+                        navigate('/user/orders')
+                    }).catch(error=>{                        
+                        console.error(error)
+                    })
+
+                    }
+                    else {
+                        console.log('Payment Was Unsuccessful')
+                    }
+            },
+            onClose: function(data) {
+                //Implement what should happen when the modal is closed here
+                console.log('do nothing', data);
+            }
+        });
+    }
+
+    const handleCheckout = async () => {
+        // Create the order object with cart items and narration
+        let valid = validateInputs()
+        console.log({valid})
+
+        if(!valid){
+            return;
+        }
+        const order = {
+            cartItems: cartItems,
+            narration: cartItems
+                .map(item => `${item.quantity} plate${item.quantity > 1 ? 's' : ''} of ${item.name}`)
+                .join(', '),
+            phoneNumber: phoneNumber.toString(),
+            deliveryInfo: deliveryInfo
+        };
+        
+        // Calculate the grand total cost
+        const grandTotal = calculateGrandTotal(cartItems);
+        setLoading(true)
+        try {
+            let orderRes = await orderService.createOrder(order,token)
+            setLoading(false)
+            payWithMonnify(grandTotal,phoneNumber,auth.email,order.narration,orderRes.order._id)
+        }
+        catch(error){
+            console.error(error)
+        }
+        finally {
+            setLoading(false)
+        }
+        // Log the order object and grand total to the console
+        //console.log('Order: Created', orderRes);
+        //console.log({paid})
+        //let cancelled = await cancelOrder("66a81ad0e01566e71e3c7e92", token)
+        //console.log({cancelled})
+        //navigate('/user/orders')
+    };
+    
     function toggleEdit () {
         setShowEdit(!showEdit)
     }
-    console.log({cartItems})
 
-    const navigate = useNavigate()
-    
     const handleRemoveFromCart = (id) => {
         dispatch(removeFromCart(id));
         triggerSuccess({ title: 'Success', message: 'Dish Removed From Cart successfully' })
@@ -80,11 +224,31 @@ export default function CheckOut (): React.JSX.Element {
             };
         });
     };
+
     const handleAddToCart = () => {    
           dispatch(addToCart(currentDish));
           triggerSuccess({ title: 'Updated addons', message: '' })
           toggleEdit()
         }
+
+        const calculateGrandTotal = (cartItems: CartItem[]) => {
+            return cartItems.reduce((grandTotal, item) => {
+                // Calculate the total addons price for the current item
+                const addonsTotalPrice = item.addons.reduce((total, addon) => {
+                    return total + (addon.price * addon.quantity);
+                }, 0);
+        
+                // Calculate the total cost per plate for the current item
+                const totalCostPerPlate = item.price + addonsTotalPrice;
+        
+                // Calculate the total cost for the current item based on its quantity
+                const itemTotalCost = totalCostPerPlate * item.quantity;
+        
+                // Add the current item's total cost to the grand total
+                return grandTotal + itemTotalCost;
+            }, 0);
+        };
+        
     return (
         <div>
             <div className="mainSpacing">
@@ -155,7 +319,7 @@ export default function CheckOut (): React.JSX.Element {
                                                 </div>
                                                 <div className="w-max-content">
                                                     <div>
-                                                        <p>N 35,500</p>
+                                                        <p>N {calculateGrandTotal(cartItems)}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,7 +331,7 @@ export default function CheckOut (): React.JSX.Element {
                                                 </div>
                                                 <div className="w-max-content">
                                                     <div>
-                                                        <p>N 5,500</p>
+                                                        <p>N {deliveryFee}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,15 +343,15 @@ export default function CheckOut (): React.JSX.Element {
                                             </div>
                                             <div className="py-1" />
                                             <div className="">
-                                                <InputMain value="" onChange={(e)=>{}} placeholder="Phone Number" icon={<FontAwesomeIcon icon={faEnvelope} />} />
+                                                <InputMain onFocus={()=>{resetInputError('phoneNumber')}} showError={inputError.phoneNumber} errorMessage="Phone Number is required" type="number" value={phoneNumber} onChange={(e)=>setPhoneNumber(Number(e))} placeholder="Phone Number" icon={<FontAwesomeIcon color="#737373" icon={faPhone} />} />
                                             </div>
                                             <div className="py-1" />
                                             <div className="">
-                                            <InputMain value="" onChange={(e)=>{}} placeholder="Delivery Information" icon={<FontAwesomeIcon icon={faEnvelope} />} />
+                                                <InputMain onFocus={()=>{resetInputError('deliveryInfo')}} showError={inputError.deliveryInfo} value={deliveryInfo} errorMessage="Delivery Address Is Required" onChange={setDeliveryInfo} placeholder="Delivery Information" icon={<FontAwesomeIcon color="#737373" icon={faMapLocation} />} />
                                             </div>
                                             <div className="py-2" />
                                             <div>
-                                                <button className="checkout-btn">Proceed To Checkout</button>
+                                                <button className="checkout-btn" onClick={handleCheckout}>Proceed To Checkout</button>
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +359,6 @@ export default function CheckOut (): React.JSX.Element {
                                     ) : (
                                        null
                                     )}
-              
                         </div>
                     </div>
                 </div>

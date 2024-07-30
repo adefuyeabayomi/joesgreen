@@ -1,18 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface CartItem {
-  id?: string;
-  name: string;
-  addons: { name: string; price: number; quantity: number }[];
-  description: string;
-  price: number;
-  published?: boolean;
-  category?:string;
-  image?: string; // Add this property
-  message?: string;
-  quantity:number
-}
-
+import { CartItem } from "joegreen-service-library/dist/services/orderService";
 interface UserState {
   email: string;
   accessToken: string;
