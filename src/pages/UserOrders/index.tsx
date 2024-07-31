@@ -79,7 +79,7 @@ export default function UserOrders (): React.JSX.Element {
                     setLoading(true)
                     setLoadingText('Saving Payment Status')
                     let updateData = {
-                        paymentStatus: 'Success',
+                        paymentStatus: 'Completed',
                         transactionRef: data.transactionReference,
                         paymentRef: data.paymentReference
                     }

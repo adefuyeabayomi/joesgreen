@@ -57,7 +57,7 @@ export default function CheckOut (): React.JSX.Element {
     const updatePaymentStatus = async (orderId: string, token: string) => {
         try {
             // Prepare the payload for updating the order
-            const payload = { paymentStatus: 'Success' };
+            const payload = { paymentStatus: 'Completed' };
             // Call the updateOrder function from the orderService
             const response = await orderService.updateOrder(orderId, payload, token);
             return response
@@ -105,15 +105,17 @@ export default function CheckOut (): React.JSX.Element {
                     setLoading(true)
                     setLoadingText('Saving Payment Status')
                     let updateData = {
-                        paymentStatus: 'Success',
+                        paymentStatus: 'Completed',
                         transactionRef: data.transactionReference,
                         paymentRef: data.paymentReference
                     }
                     orderService.updateOrder(orderId,updateData,token).then(res=>{
                         console.log({res})
+                        setLoading(false)
                         navigate('/user/orders')
                     }).catch(error=>{                        
                         console.error(error)
+                        setLoading(false)
                     })
 
                     }
