@@ -56,7 +56,6 @@ function Order(): React.JSX.Element {
                 {categories.map((category) => (
                     <OrderCategory key={category._id} category={{name: category.name, _id: category._id, description: category.description}} />
                 ))}
-                 
             </div>
         </main>
     )

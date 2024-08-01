@@ -17,7 +17,8 @@
 
 .orders-image-container {
     border-radius: 12px;
-    padding: 10px;
+    padding: 7px;
+    background-color: #FFF5D3;
 }
 .order-content-container{
     padding: 10px;
@@ -47,7 +48,8 @@
     box-shadow: 0px 0px 8px rgb(211, 224, 233);
     border: 0px solid;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 15px;
+    color: #0f330f !important;
 }
 .OCIImageContainer{
     padding: 5px;
@@ -60,10 +62,10 @@
     min-height: 140px;
 }
 .OCI_Button.BEdit{
-    background: #0F1C07;
+    background: #0c1009;
     color: white;
     width: 100%;
-    padding: 2px 5px;
+    padding: 5px 5px;
     border-radius: 5px;
     border: 0px solid;
 
@@ -72,7 +74,7 @@
     background-color: #FF3131;
     color: white;
     width: max-content;
-    padding: 2px 5px;
+    padding: 5px 5px;
     border-radius: 5px;
     border: 0px solid;
     display: block;

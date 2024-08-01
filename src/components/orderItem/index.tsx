@@ -31,18 +31,19 @@ function OrderItem({image,title,actionFn, description='',price}: FeaturedCardPro
                 </div>
             </div>
             <div className=''>
+                <div className='py-2' />
                 <div className='fc-title-container font-subtitle font-medium text-main'>
                     <p className='no-space'>{title}</p>
                 </div>
                 <div className='order-description'>
-                    <p className='font-small font-regular no-space'>{description}</p>
+                    <p className='font-small font-regular no-space text-main'>{description}</p>
                 </div>
                 <div className='py-1'></div>
                 <div>
-                    <p className='no-space font-subtitle font-regular'>N {price}</p>
+                    <p className='no-space font-subtitle font-regular text-main'>N {price}</p>
                 </div>
                 <div className='py-1'></div>
-                <div className='order-button-container'>
+                <div className='order-button-container text-main'>
                     <button className='pointer' onClick={actionFn}>Add To Cart <FontAwesomeIcon icon={faShoppingCart} /></button>
                 </div>                
             </div>
@@ -79,7 +80,7 @@ export function OrderCheckOutItem({ dish, onEdit,onRemove }:COIType) {
     return (
         <div className='orderCheckOutItemContainer text-main'>
                     <div>
-                        <p className='font-subtitle font-bold no-space'>{dish.quantity} Plate{dish.quantity > 0? 's':''} Of {dish.name}</p>
+                        <p className='font-subtitle font-bold no-space green-color-main'>{dish.quantity} Plate{dish.quantity > 0? 's':''} Of {dish.name}</p>
                     </div>
                     <div className='py-1' />
                     <div>

@@ -41,26 +41,28 @@ function Footer(): React.JSX.Element {
                 <div className='upperFooter'>
                     <div className='d-none'></div>
                     <div className='text-main text-center'>
-                            <p className='font-p font-medium'>QUICK LINKS</p>
+                            <p className='font-subtitle font-medium'>QUICK LINKS</p>
+                            <div className='py-1'></div>
                         <div className='row no-space align-items-center justify-content-center flex-column flex-md-row'>
-                            <p className='font-small w-max-content pointer' onClick={goToHome}>HOME</p>
-                            <p className='font-small w-max-content pointer' onClick={goToOrders}>ORDER</p>
-                            <p className='font-small w-max-content pointer' onClick={goToTrainings}>TRAINING PROGRAMS</p>
-                            <p className='font-small w-max-content pointer' onClick={goToBlog}>BLOG</p>
-                            <p className='font-small w-max-content pointer' onClick={goToAbout}>ABOUT US</p>
-                            <p className='font-small w-max-content pointer' onClick={goToContact}>CONTACT US</p>
+                            <p className='font-P font-regular w-max-content pointer py-2 py-xs-1 py-sm-0' onClick={goToHome}>Home</p>
+                            <p className='font-P font-regular w-max-content pointer py-2' onClick={goToOrders}>Order</p>
+                            <p className='font-P font-regular w-max-content pointer py-2' onClick={goToTrainings}>Training Programs</p>
+                            <p className='font-P font-regular w-max-content pointer py-2' onClick={goToBlog}>Blog</p>
+                            <p className='font-P font-regular w-max-content pointer py-2' onClick={goToAbout}>About</p>
+                            <p className='font-P font-regular w-max-content pointer py-2' onClick={goToContact}>Contact Us</p>
                         </div>
                     </div>
-                    <div className='py-2' />
+                    <div className='py-3' />
                     <div className='text-center'>
-                    <p className='font-p font-medium'>FOLLOW ON SOCIAL MEDIA</p>
+                    <p className='font-subtitle font-medium'>FOLLOW ON SOCIAL MEDIA</p>
+                    <div className='py-1'></div>
                         <div className='row no-space align-items-center justify-content-center'>
-                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.instagram.com/joegreencafe' target='_blank'>INSTAGRAM <img src={instagram} className='socialIcon' /></a></p>
-                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://www.facebook.com/profile.php?id=61559723398072&mibextid=ZbWKwL' target='_blank'>FACEBOOK <img src={facebook} className='socialIcon' /></a></p>
-                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>TWITTER <img src={twitter} className='socialIcon' /></a></p>
-                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>LINKEDIN <img src={linkedIn} className='socialIcon' /></a></p>
-                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>TIKTOK <img src={tiktok} className='socialIcon' /></a></p>
-                            <p className='font-small w-max-content pointer'><a className='text-main' href='https://youtube.com/@joegreencafeteriaservice?si=KsGhmTILyEFz-cv9' target='_blank'>YOUTUBE <img src={youtube} className='socialIcon' /></a></p>
+                            <p className='font-P font-regular w-max-content pointer py-2'><a className='text-main' href='https://www.instagram.com/joegreencafe' target='_blank'>Instagram <img src={instagram} className='socialIcon' /></a></p>
+                            <p className='font-P font-regular w-max-content pointer py-2'><a className='text-main' href='https://www.facebook.com/profile.php?id=61559723398072&mibextid=ZbWKwL' target='_blank'>Facebook <img src={facebook} className='socialIcon' /></a></p>
+                            <p className='font-P font-regular w-max-content pointer py-2'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>Twitter <img src={twitter} className='socialIcon' /></a></p>
+                            <p className='font-P font-regular w-max-content pointer py-2'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>LinkedIn <img src={linkedIn} className='socialIcon' /></a></p>
+                            <p className='font-P font-regular w-max-content pointer py-2'><a className='text-main' href='https://x.com/Joegreen_Cafe?t=qHMnfQEooac040PHfp6a3A&s=09' target='_blank'>Tiktok <img src={tiktok} className='socialIcon' /></a></p>
+                            <p className='font-P font-regular w-max-content pointer py-2'><a className='text-main' href='https://youtube.com/@joegreencafeteriaservice?si=KsGhmTILyEFz-cv9' target='_blank'>Youtube <img src={youtube} className='socialIcon' /></a></p>
                         </div>
                     </div>                    
                 <div className='py-3'></div>
@@ -68,8 +70,8 @@ function Footer(): React.JSX.Element {
             </div>
                 <div className='lowerFooter mainSpacing deep-green-bg'>
                     <div className='text-center'>
-                        <p className='font-small font-regular'>&copy;copyright of Five and Six Technologies. 2024 June.</p>
-                        <p className='font-small font-regular'>Privacy Policy - Terms Of Service</p>
+                        <p className='font-small font-regular white'>&copy; Five and Six Technologies. 2024 June</p>
+                        <p className='font-small font-regular white'>Privacy Policy - Terms Of Service</p>
                     </div>
                     <div className='py-1'></div>
                 </div>

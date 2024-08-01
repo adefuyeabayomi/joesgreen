@@ -213,7 +213,9 @@ button.hiw-button-container {
     color: white;
     background-color: #281100;
 }
-
+.moreMenuBtn svg{
+    color: white;
+}
 
 
 /**

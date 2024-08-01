@@ -54,36 +54,10 @@ export default function CheckOut (): React.JSX.Element {
         }
     };
 
-    const updatePaymentStatus = async (orderId: string, token: string) => {
-        try {
-            // Prepare the payload for updating the order
-            const payload = { paymentStatus: 'Completed' };
-            // Call the updateOrder function from the orderService
-            const response = await orderService.updateOrder(orderId, payload, token);
-            return response
-        } catch (error) {
-            console.error("Error updating payment status:", error);
-            throw error;
-        }
-    };
-    const cancelOrder = async (orderId: string, token: string) => {
-        try {
-            // Prepare the payload for updating the order
-            const payload = { cancelled: true };
-    
-            // Call the updateOrder function from the orderService
-            const response = await orderService.updateOrder(orderId, payload, token);
-            return response
-        } catch (error) {
-            console.error("Error updating payment status:", error);
-            throw error;
-        }
-    };
-
-    const payWithMonnify = async (grandTotal,phoneNumber,email,narration,orderId) => {
+    const payWithMonnify = async (grandTotal:number,phoneNumber,email,narration,orderId) => {
         let monnify = window.MonnifySDK
         monnify.initialize({
-            amount: 100,
+            amount: grandTotal,
             currency: "NGN",
             reference: new String((new Date()).getTime()),
             customerFullName: phoneNumber.toString(),
@@ -286,9 +260,9 @@ export default function CheckOut (): React.JSX.Element {
                             <div className="row no-space">
                                 
                                     {cartItems.length > 0 ? (
-                                        cartItems.map(item => {
+                                        cartItems.map((item, index) => {
                                             return (
-                                                <div className="no-space col-12 col-md-6">
+                                                <div className={`no-space col-12 col-md-6 ${index % 2 !== 0 ? 'checkout-margin-left': null}`}>
                                                     <div className="py-2" />
                                                     <OrderCheckOutItem
                                                         key={item._id}

@@ -114,27 +114,27 @@ function Header(): React.JSX.Element {
                         <p className='font-p font-regular deep-green' onClick={toggleDesktopMenu}><FontAwesomeIcon icon={faUser} /> {auth.email} {showDesktopMenu? <FontAwesomeIcon icon={faAngleUp}/>:<FontAwesomeIcon icon={faAngleDown} /> }</p>
                         {
                             showDesktopMenu ? (
-                        <div className='userOptionsDesktopContainer shadow p-2'>
+                        <div className='userOptionsDesktopContainer shadow'>
                             <div>
-                                <p className='font-p font-medium px-3'>Account Activities</p>
+                                <p className='font-p font-medium'>Account Activities</p>
                                 <div className='util-divider' />
-                                <p className='font-small font-regular pointer' onClick={()=>{
+                                    <p className='font-small font-regular pointer py-1' onClick={()=>{
+                                        toggleDesktopMenu()
+                                        navigate('/checkout')
+                                    }}>Checkout Page</p>
+                                <p className='font-small font-regular pointer py-1' onClick={()=>{
                                         toggleDesktopMenu()
                                         goToUserOrders()
                                     }}>My Orders</p>
-                                    <p className='font-small font-regular pointer' onClick={()=>{
-                                        toggleDesktopMenu()
-                                        goToUserTransactionHistory()
-                                    }}>Transactions History</p>
-                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                    <p className='font-small font-regular pointer py-1' onClick={()=>{
                                         toggleDesktopMenu()
                                         goToUserAccount()
                                     }}>Account Settings</p>
-                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                    <p className='font-small font-regular pointer py-1' onClick={()=>{
                                         toggleDesktopMenu()
                                         goToSupport()
                                     }}>Support Page</p>
-                                <p className='font-small font-regular pointer' onClick={()=>{
+                                <p className='font-small font-regular pointer py-1' onClick={()=>{
                                     toggleDesktopMenu()
                                     triggerInfo({title:'Log Out',message: 'You have successfully logged out'})
                                     auth.logout()
@@ -168,7 +168,7 @@ function Header(): React.JSX.Element {
                                     </div>
                                 </div>
                                 <div className='col no-space'>
-                                    <p style={{lineHeight: '0.8'}} className='font-p font-medium no-space'>{auth.email}</p>
+                                    <p style={{lineHeight: '0.8'}} className='font-p font-medium no-space wrap-text'>{auth.isAuthenticated ? auth.email:  'Guest User'}</p>
                                     <small style={{lineHeight: '0.8'}} className='font-mini no-space'>{auth.isAuthenticated? 'Logged In': 'Not Logged In'} </small>
                                 </div>
                             </div>
@@ -201,8 +201,14 @@ function Header(): React.JSX.Element {
                                     }}>Blog</p>
                                 </div>
                                 <div className='py-1' />
+                                {
+                                    auth.isAuthenticated ? (
                                 <div>
                                     <p className='font-p font-medium'>My Account</p>
+                                    <p className='font-small font-regular pointer' onClick={()=>{
+                                        setOpen(!isOpen)
+                                        navigate('/checkout')
+                                    }}>Checkout Page</p>
                                     <p className='font-small font-regular pointer' onClick={()=>{
                                         setOpen(!isOpen)
                                         goToUserOrders()
@@ -219,13 +225,14 @@ function Header(): React.JSX.Element {
                                         setOpen(!isOpen)
                                         goToSupport()
                                     }}>Support Page</p>
-                                </div>
+                                </div>) : null
+                                }
                             </div>                     
                             {auth.isAuthenticated?(
                                 <div>
                                     <div className='py-3' />
                                     <div className='no-space px-3'>
-                                        <button onClick={()=>{ setOpen(!isOpen) }} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out <FontAwesomeIcon icon={faArrowAltCircleRight} /> </button>
+                                        <button onClick={()=>{ setOpen(!isOpen); auth.logout() }} className='green-bg-main mobile-menu-login font-small font-regular'>Sign Out <FontAwesomeIcon icon={faArrowAltCircleRight} /> </button>
                                     </div>                                    
                                 </div>
                             ):(

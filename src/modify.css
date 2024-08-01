@@ -146,6 +146,10 @@ a {
     width: 100%;
 }
 
+.white {
+    color: white;
+}
+
 .green-bg {
     background-color: #EDFFF2;
 }

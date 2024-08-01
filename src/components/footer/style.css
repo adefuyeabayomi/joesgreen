@@ -4,9 +4,12 @@
     position: relative;
     top: 8px;
 }
-.lowerFooter{
-    color: white;
+.lowerFooter *{
+    color: white !important;
 }
 #footer {
     border-top: 2px solid #ede9e9;
+}
+#footer * {
+    color: #101D09;
 }

@@ -17,7 +17,7 @@ function ContactItem({image,text,title}: HowItemPropType): React.JSX.Element {
                 <p className=' font-p text-center font-bold  text-main'>{title}</p>
             </div>
             <div className='HITextContainer center'>
-                <p className='text-main text-center font-small'>{text}</p>
+                <p className='text-main text-center font-p font-regular wrap-text'>{text}</p>
             </div>
         </div>
     )

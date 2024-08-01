@@ -16,6 +16,15 @@
     color: white;
 }
 
+.checkout-margin-left {
+    padding-left: 0px !important;
+}
+@media screen and (min-width: 768px){
+    .checkout-margin-left {
+        padding-left: 20px !important;
+    }
+}
+
 .addonOpButton {
     background-color:#050a08;
     color: white;

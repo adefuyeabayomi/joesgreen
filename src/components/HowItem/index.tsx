@@ -16,7 +16,7 @@ function HowItem({image,title,text}: HowItemPropType): React.JSX.Element {
                 <p className=' font-subtitle font-bold  text-main'>{title}</p>
             </div>
             <div className='HITextContainer center'>
-                <p className='text-main font-small'>{text}</p>
+                <p className='text-main font-p font-regular'>{text}</p>
             </div>
             <div className='py-3' />
         </div>

@@ -10,7 +10,7 @@ import ReviewItem from '../../components/reviewItem';
 import ContactItem from '../../components/contactItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { useNotificationTrigger } from '../../components/utils/notificationTrigger';
+
 //images
 import heroImage from "../../assets/hero-img.png"
 import tipDots from '../../assets/tipDots.png'
@@ -55,30 +55,27 @@ import './style.css'
 function Home(): React.JSX.Element {   
     const navigate = useNavigate()
     const location = useLocation();
-    const { triggerNotification } = useNotificationTrigger();
 
-    const handleClick = () => {
-      triggerNotification('success', { title: 'Success!', message: 'Your action was successful.' });
-    };
     function goToOrders () {
         return navigate('/order')
     }
-      useEffect(() => {
-        console.log({location})
-        if (location.hash === '#contact') {
-            scrollToElement('#contact', {
-                offset: -100,
-                ease: 'in-out-sine',
-                duration: 1500
-            })
-        }
-        else {
-        scroll.scrollToTop({
-          duration: 1500, // duration of the scrolling animation in milliseconds
-          smooth: 'easeInOutQuart', // the type of easing
-        });
-        }
-      }, [location])
+
+    useEffect(() => {
+    console.log({location})
+    if (location.hash === '#contact') {
+        scrollToElement('#contact', {
+            offset: -100,
+            ease: 'in-out-sine',
+            duration: 1500
+        })
+    }
+    else {
+    scroll.scrollToTop({
+        duration: 1500, // duration of the scrolling animation in milliseconds
+        smooth: 'easeInOutQuart', // the type of easing
+    });
+    }
+    }, [location])
 
     return (
         <main id='home' className='text-main'>
@@ -92,7 +89,7 @@ function Home(): React.JSX.Element {
                                     <p className='hAccentItem font-regular'>Satisfy those cravings here</p>
                                     <div className='py-2' />
                                     <h1 className='text-main headline'><span className='green-color-main'>Delicious</span> Meals That <span className='green-color-main'>Delight</span> Your Senses.</h1>
-                                    <p className='font-p text-main'>Welcome to Joe's Green Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
+                                    <p className='font-p text-main'>Welcome to Joegreen Catering Services, where culinary excellence meets exceptional service. Indulge in our mouthwatering dishes prepared with passion and served with a smile.</p>
                                     <div className='py-2' />
                                     <div className='py-2 py-sm-0 hbcontainer'>
                                         <button className='headlinebutton font-p' onClick={goToOrders}>Order Now!</button>
@@ -116,7 +113,7 @@ function Home(): React.JSX.Element {
                             </div>
                             <div className='sectionHeadlineContainer features d-sm-none text-main font-subtitle-big font-medium'>OUR FEATURED CHOP <span className='delicious'>BELLE-FULL</span> MENU</div>
                             <div className='sectionHeadlineContainer features d-none d-sm-block text-main font-heading-5 font-medium'>OUR FEATURED CHOP <span className='delicious'>BELLE-FULL</span> MENU</div>
-                            <div className='sectionAfterTextContainer features'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
+                            <div className='sectionAfterTextContainer features'><p className='font-p font-regular text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                             <div className='featuredItemsContainer'>
                                 <div className='row no-space'>
                                     <div className='col-12 col-md-6 col-lg-3 no-space'>
@@ -151,7 +148,7 @@ function Home(): React.JSX.Element {
                 </div>
             </div>
             
-            <div id='howItWorks'>
+            <div id='howItWorks' className='text-main'>
                 <div className='howItWorksMainContainer mainSpacing'>
                     <div className='howItWorksContents'>
                         <div className='howItWorksTextsContainer text-center'>
@@ -161,7 +158,7 @@ function Home(): React.JSX.Element {
                             </div>
                             <div className='sectionHeadlineContainer d-sm-none text-main font-subtitle-big font-medium'>HOW OUR <span className='delicious'>DELIVERY SERVICE</span> WORKS</div>
                             <div className='sectionHeadlineContainer ease d-none d-sm-block text-main font-heading-5 font-medium'>HOW OUR <span className='delicious'>DELIVERY SERVICE</span> WORKS.</div>
-                            <div className='sectionAfterTextContainer ease'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
+                            <div className='sectionAfterTextContainer ease'><p className='font-p font-regular text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
                             <div>
                                 <div className='row align-items-center'>
                                     <div className='col-12 col-md-6 col-lg-3'>
@@ -189,7 +186,7 @@ function Home(): React.JSX.Element {
                             <div className='py-4'></div>
                             <div>                                    
                                 <div className='py-2 py-sm-0 col-12 col-md-8 col-lg-6 center' onClick={goToOrders}>
-                                    <button className='moreMenuBtn font-p' onClick={goToOrders}>See The Menu <FontAwesomeIcon icon={faArrowRight} /></button>
+                                    <button className='moreMenuBtn font-p white' onClick={goToOrders}>See The Menu <FontAwesomeIcon icon={faArrowRight} /></button>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +202,7 @@ function Home(): React.JSX.Element {
                         </div>
                         <div className='sectionHeadlineContainer d-sm-none text-main text-center font-subtitle-big font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span></div>
                         <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'>REVIEWS FROM <span className='delicious'>OUR CUSTOMERS.</span></div>
-                        <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See what our loyal customers have to say about their experiences with our services.</p></div>
+                        <div className='sectionAfterTextContainer ease text-center'><p className='font-p font-regular text-main'>See what our loyal customers have to say about their experiences with our services.</p></div>
                         <div className='py-3' />
                        
                         <div>
@@ -291,7 +288,7 @@ function Home(): React.JSX.Element {
                         </div>
                         <div className='sectionHeadlineContainer d-sm-none text-main text-center font-subtitle-big font-medium'><span className='delicious'>GET IN TOUCH</span> WITH US.</div>
                         <div className='sectionHeadlineContainer ease d-none d-sm-block  text-center text-main font-heading-5 font-medium'><span className='delicious'>GET IN TOUCH</span> WITH US.</div>
-                        <div className='sectionAfterTextContainer ease text-center'><p className='font-p text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
+                        <div className='sectionAfterTextContainer ease text-center'><p className='font-p font-regular text-main'>See our most sought after dishes, Order with ease and experience a new world of vibrant taste and delight.</p></div>
 
                         </div>
                         <div>

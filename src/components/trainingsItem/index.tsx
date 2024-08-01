@@ -1,6 +1,5 @@
 import React,{ useState, useRef, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
- 
+
 import caretWhite from '../../assets/caret-white.png'
 
 import './style.css'
@@ -28,34 +27,35 @@ function TrainingItem({image,title,text,price,actionFn,reverse}: HowItemPropType
             TC.current.classList.add('TItext-content-left')
         }
     },[])
+
     return (
         <div className='trainingItemContainer'>
             <div ref={ref} className='row no-space align-items-center justify-content-center'>
                 <div className='col-12 col-md-6 col-lg-7 no-space'>
                     <div className='TIImageContainer' ref={TI_img}>
                         {image}
-                    </div>                    
+                    </div>
                 </div>
                 <div className='col-12 col-md-6 col-lg-5 no-space'>
-                    <div className='py-2 text-main' ref={TC}>
+                    <div className='py-2' ref={TC}>
                         <div className='py-2 py-md-1' />
-                        <p className='no-space font-subtitle font-bold'>{title}</p>
+                        <p className='no-space font-subtitle font-bold green-color-main'>{title}</p>
                         <div className='py-1' />
-                        <p className='no-space font-regular font-p font-bold'>Description </p>
+                        <p className='no-space font-regular font-p font-bold deep-green-color'>Description </p>
                         <div className='py-0' />
-                        <p className='no-space font-regular font-p'>{text}</p>
+                        <p className='no-space font-regular font-p deep-green-color'>{text}</p>
                         <div className='py-1' />
                         <div>
                             <p className='no-space font-subtitle'>N {price}</p>
                         </div>
                         <div className='py-2'></div>
-                        <button onClick={actionFn} className='ti-button-container'> 
+                        <button onClick={actionFn} className='ti-button-container green-bg-main'> 
                             <div className='w-max-content center pointer row no-space align-items-center'>
                                 <div className='w-max-content no-space'><p className='font-small tipTitle no-space py-2'>Enroll Now</p></div>
                                 <div className='w-max-content no-space'><img className='caretIcon' src={caretWhite} /></div>
                             </div>
-                        </button>                           
-                        <div className='py-2 py-md-1' />                     
+                        </button>
+                        <div className='py-2 py-md-1' />
                     </div>
                 </div>
             </div>
