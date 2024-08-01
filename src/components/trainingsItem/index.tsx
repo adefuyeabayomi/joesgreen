@@ -5,7 +5,7 @@ import caretWhite from '../../assets/caret-white.png'
 import './style.css'
 
 interface HowItemPropType {
-    image: React.JSX.Element,
+    image: string,
     title: string,
     text: string,
     price: number,
@@ -33,7 +33,7 @@ function TrainingItem({image,title,text,price,actionFn,reverse}: HowItemPropType
             <div ref={ref} className='row no-space align-items-center justify-content-center'>
                 <div className='col-12 col-md-6 col-lg-7 no-space'>
                     <div className='TIImageContainer' ref={TI_img}>
-                        {image}
+                        <img src={image} />
                     </div>
                 </div>
                 <div className='col-12 col-md-6 col-lg-5 no-space'>

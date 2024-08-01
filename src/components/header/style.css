@@ -11,7 +11,7 @@
     border: 0px solid #d3ffd3;
     border-bottom-width: 1px;
     top: 0px;
-    z-index: 1;
+    z-index: 3;
 }
 
 .nav-container-desktop {

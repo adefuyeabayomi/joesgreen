@@ -20,21 +20,17 @@ export default function UserAccount (): React.JSX.Element {
                     <div className="py-3" />
                 </div>
                 <div className="accountPageContents col-12 col-sm-10 col-md-8 col-lg-6 center ">
-                    <div>
-                    <p className="font-small font-regular">Your Email</p>
-                        <InputMain icon={<FontAwesomeIcon icon={faShoppingCart}/>} value='' onChange={()=>{}} />
-                    </div>
                     <div className="py-1" />
                     <div>
                     <p className="font-small font-regular">Phone number</p>
-                        <InputMain icon={<FontAwesomeIcon icon={faShoppingCart}/>} value='' onChange={()=>{}} />
+                        <InputMain value='' onChange={()=>{}} />
                     </div>
                     <div className="py-1" />
                     <div>
                     <p className="font-small font-regular">Primary Delivery Address </p>
-                        <InputMain icon={<FontAwesomeIcon icon={faShoppingCart}/>} value='' onChange={()=>{}} />
+                        <InputMain value='' onChange={()=>{}} />
                     </div>
-                    <div className="py-1" />
+                    <div className="py-3" />
                     <div>
                         <button className="support-cta-button">Update Details</button>
                     </div>
