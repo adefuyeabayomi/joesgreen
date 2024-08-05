@@ -25,21 +25,33 @@ export const userSlice = createSlice({
     },
     addToCart: (state, action) => {
       const newItem = action.payload;
-      const existingItemIndex = state.userCart.findIndex(item => item.id === newItem.id);
+      const existingItemIndex = state.userCart.findIndex(
+        (item) => item.id === newItem.id,
+      );
       if (existingItemIndex > -1) {
         state.userCart[existingItemIndex].quantity = newItem.quantity;
-        state.userCart[existingItemIndex].addons = newItem.addons
+        state.userCart[existingItemIndex].addons = newItem.addons;
       } else {
         state.userCart.push(newItem);
       }
     },
     removeFromCart: (state, action) => {
-      state.userCart = state.userCart.filter(item => item.id !== action.payload);
-      console.log('patload',state)
+      state.userCart = state.userCart.filter(
+        (item) => item.id !== action.payload,
+      );
+    },
+    clearCart: (state, action) => {
+      state.userCart = [];
     },
   },
 });
 
-export const { updateEmail, updateAccessToken, addToCart, removeFromCart } = userSlice.actions;
+export const {
+  updateEmail,
+  updateAccessToken,
+  addToCart,
+  removeFromCart,
+  clearCart,
+} = userSlice.actions;
 
 export default userSlice.reducer;

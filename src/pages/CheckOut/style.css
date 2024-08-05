@@ -1,62 +1,44 @@
 .orderContainer {
-    padding: 20px;
-    box-shadow: 0px 0px 8px #d7dedd;
-    background-color: #fbfbfb;
-    margin-top: 25px;
-    border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 8px #d7dedd;
+  background-color: #fbfbfb;
+  margin-top: 25px;
+  border-radius: 10px;
 }
 
-.checkout-btn{
-    display: block;
-    padding: 11px;
-    border-radius: 5px;
-    border: 0px solid;
-    background-color: #202020;
-    width: 100%;
-    color: white;
+.checkout-btn {
+  display: block;
+  padding: 11px;
+  border-radius: 5px;
+  border: 0px solid;
+  background-color: #202020;
+  width: 100%;
+  color: white;
 }
 
 .checkout-margin-left {
-    padding-left: 0px !important;
+  padding-left: 0px !important;
 }
 
-@media screen and (min-width: 768px){
-    .checkout-margin-left {
-        padding-left: 20px !important;
-    }
+@media screen and (min-width: 768px) {
+  .checkout-margin-left {
+    padding-left: 20px !important;
+  }
 }
 
 .addonOpButton {
-    background-color:#050a08;
-    color: white;
-    border: 0px solid;
-    padding: 1px 10px;
-    border-radius: 3px;
+  background-color: #050a08;
+  color: white;
+  border: 0px solid;
+  padding: 1px 10px;
+  border-radius: 3px;
 }
 .UpdateAddonButton {
-    display: block;
-    padding: 11px;
-    border-radius: 5px;
-    border: 0px solid;
-    background-color: #202020;
-    width: 100%;
-    color: white;
+  display: block;
+  padding: 11px;
+  border-radius: 5px;
+  border: 0px solid;
+  background-color: #202020;
+  width: 100%;
+  color: white;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

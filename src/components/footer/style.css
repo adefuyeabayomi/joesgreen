@@ -1,15 +1,15 @@
 .socialIcon {
-    width: 25px;
-    height: 25px;
-    position: relative;
-    top: 8px;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: 8px;
 }
-.lowerFooter *{
-    color: white !important;
+.lowerFooter * {
+  color: white !important;
 }
 #footer {
-    border-top: 2px solid #ede9e9;
+  border-top: 2px solid #ede9e9;
 }
 #footer * {
-    color: #101D09;
+  color: #101d09;
 }

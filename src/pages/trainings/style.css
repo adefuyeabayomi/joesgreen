@@ -1,10 +1,18 @@
 .socialIcon {
-    width: 25px;
-    height: 25px;
-    position: relative;
-    top: 8px;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: 8px;
 }
-.lowerFooter{
-    background-color: #4D3B3B;
-    color: white;
+.lowerFooter {
+  background-color: #4d3b3b;
+  color: white;
+}
+.enroll-button {
+  color: #ffffff;
+  width: 100%;
+  background-color: #181c1a;
+  border-radius: 10px;
+  border: 0px solid;
+  padding-bottom: 9px;
 }

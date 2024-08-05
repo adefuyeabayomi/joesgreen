@@ -1,13 +1,10 @@
-import React,{ useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
-import "./style.css"
+import "./style.css";
 
 function HamburgerIcon(): React.JSX.Element {
-    
-    return (
-        <div>Menu</div>
-    )
+  return <div>Menu</div>;
 }
 
-export default HamburgerIcon
+export default HamburgerIcon;

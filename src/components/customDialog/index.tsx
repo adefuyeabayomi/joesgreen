@@ -1,6 +1,6 @@
 // src/components/CustomDialog.js
-import React, { useRef, useEffect } from 'react';
-import './style.css'; // Make sure to create a corresponding CSS file for styling
+import React, { useRef, useEffect } from "react";
+import "./style.css"; // Make sure to create a corresponding CSS file for styling
 
 const CustomDialog = ({ isOpen, onClose, children }) => {
   const dialogRef = useRef(null);

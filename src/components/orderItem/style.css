@@ -1,88 +1,84 @@
-
 .oIFrame {
-    max-height: 250px;
-    overflow: hidden;
-    height: -webkit-fill-available;
-    border-radius: 7px;
+  max-height: 250px;
+  overflow: hidden;
+  height: -webkit-fill-available;
+  border-radius: 7px;
 }
 
 .orders-image-container img {
-    width: 100%;
-    border-radius: 7px;
+  width: 100%;
+  border-radius: 7px;
 }
 
-.fc-title-container{
-    padding: 5px 0px;
+.fc-title-container {
+  padding: 5px 0px;
 }
 
 .orders-image-container {
-    border-radius: 12px;
-    padding: 7px;
-    background-color: #FFF5D3;
+  border-radius: 12px;
+  padding: 7px;
+  background-color: #fff5d3;
 }
-.order-content-container{
-    padding: 10px;
+.order-content-container {
+  padding: 10px;
 }
 
 .order-button-container button {
-    padding: 10px 0px 9px 0px;
-    width: 100%;
-    border-radius: 8px;
-    color: white;
-    border: 0px solid;
-    background-color: #0F1C07;
+  padding: 10px 0px 9px 0px;
+  width: 100%;
+  border-radius: 8px;
+  color: white;
+  border: 0px solid;
+  background-color: #0f1c07;
 }
 
-.order-item-container-main{
-    border-radius: 10px;
-    position: relative;
+.order-item-container-main {
+  border-radius: 10px;
+  position: relative;
 }
 
-.order-delete-container{
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.order-delete-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
-.orderCheckOutItemContainer{
-    box-shadow: 0px 0px 8px rgb(211, 224, 233);
-    border: 0px solid;
-    border-radius: 10px;
-    padding: 10px 15px;
-    color: #0f330f !important;
+.orderCheckOutItemContainer {
+  box-shadow: 0px 0px 8px rgb(211, 224, 233);
+  border: 0px solid;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #0f330f !important;
 }
-.OCIImageContainer{
-    padding: 5px;
-    padding-bottom: 1px;
-    border-radius: 10px;
+.OCIImageContainer {
+  padding: 5px;
+  padding-bottom: 1px;
+  border-radius: 10px;
 }
 .OCIImageContainer img {
-    width: 100%;
-    border-radius: 5px;
-    min-height: 140px;
+  width: 100%;
+  border-radius: 5px;
+  min-height: 140px;
 }
-.OCI_Button.BEdit{
-    background: #0c1009;
-    color: white;
-    width: 100%;
-    padding: 5px 5px;
-    border-radius: 5px;
-    border: 0px solid;
-
+.OCI_Button.BEdit {
+  background: #0c1009;
+  color: white;
+  width: 100%;
+  padding: 5px 5px;
+  border-radius: 5px;
+  border: 0px solid;
 }
-.OCI_Button.BRemove{
-    background-color: #FF3131;
-    color: white;
-    width: max-content;
-    padding: 5px 5px;
-    border-radius: 5px;
-    border: 0px solid;
-    display: block;
-    margin-left: 6px;
-    margin-right: 6px;
+.OCI_Button.BRemove {
+  background-color: #ff3131;
+  color: white;
+  width: max-content;
+  padding: 5px 5px;
+  border-radius: 5px;
+  border: 0px solid;
+  display: block;
+  margin-left: 6px;
+  margin-right: 6px;
 }
-.p10{
-    padding: 5px !important;
+.p10 {
+  padding: 5px !important;
 }
-
-

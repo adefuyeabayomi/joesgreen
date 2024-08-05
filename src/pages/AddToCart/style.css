@@ -1,40 +1,33 @@
-.ATCContentsContainer{
-
+.ATCContentsContainer {
 }
 
-.ATCImageItemContainer{
-    padding: 7px 7px 3px 7px;
-    background-color: #FFF5D3;
-    border-radius: 10px;
+.ATCImageItemContainer {
+  padding: 7px 7px 3px 7px;
+  background-color: #fff5d3;
+  border-radius: 10px;
 }
 .ATCImageItemContainer img {
-    width: 100%;
-    border-radius: 5px;
+  width: 100%;
+  border-radius: 5px;
 }
 .ATCButton {
-    font-size: 12px;
-    background: #FFE0C9;
-    border: 1px solid #ffc9a2;
-    border-radius: 3px;
-    padding: 3px 10px;
-    margin-right: 5px;
+  font-size: 12px;
+  background: #ffe0c9;
+  border: 1px solid #ffc9a2;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin-right: 5px;
 }
 
-.ATCButton.active{
-    background-color: #ffb47e !important;
+.ATCButton.active {
+  background-color: #ffb47e !important;
 }
 
-.ATCButtonGray{
-    font-size: 12px;
-    background-color: rgb(243, 243, 243);
-    border: 1px solid #dbdbdb;
-    border-radius: 3px;
-    padding: 3px 10px;
-    margin-right: 5px;
+.ATCButtonGray {
+  font-size: 12px;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin-right: 5px;
 }
-
-
-
-
-
-

@@ -1,37 +1,35 @@
-.trainingItemContainer{
-    border-radius: 10px;
-    
+.trainingItemContainer {
+  border-radius: 10px;
 }
 
 .trItemContainer img {
-    width: 100px;
-    margin-top: 35px;
+  width: 100px;
+  margin-top: 35px;
 }
-.HITextContainer{
-    max-width: 300px;
+.HITextContainer {
+  max-width: 300px;
 }
-.ti-button-container{
-    color: #ffffff;
-    width: 100%;
-    background-color: #181c1a;
-    border-radius: 10px;
-    border: 0px solid;
+.ti-button-container {
+  color: #ffffff;
+  width: 100%;
+  background-color: #181c1a;
+  border-radius: 10px;
+  border: 0px solid;
 }
 
-.TIImageContainer{
-    padding: 0px;
-    border-radius: 10px;
-    border-bottom: 0px solid gray;
+.TIImageContainer {
+  padding: 0px;
+  border-radius: 10px;
+  border-bottom: 0px solid gray;
 }
 .TIImageContainer img {
-    border-radius: 10px;
-    width: 100%;
-    border: 5px solid #d1ffcd;
+  border-radius: 10px;
+  width: 100%;
+  border: 5px solid #d1ffcd;
 }
-@media screen and (min-width: 768px) { 
-    .TItext-content-left, .TIimg-content-left {
-        padding-left: 20px;
-    }  
+@media screen and (min-width: 768px) {
+  .TItext-content-left,
+  .TIimg-content-left {
+    padding-left: 20px;
+  }
 }
-
-

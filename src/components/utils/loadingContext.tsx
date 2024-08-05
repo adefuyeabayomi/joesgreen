@@ -2,20 +2,22 @@ import React, { createContext, useState, useContext } from "react";
 import { Spin } from "antd";
 
 interface LoadingContextType {
-  setLoading: (bool: boolean) => void; 
+  setLoading: (bool: boolean) => void;
   setLoadingText: (text: string) => void;
 }
 
 const defaultLoadingContext: LoadingContextType = {
   setLoading: () => {},
-  setLoadingText: () => {}
+  setLoadingText: () => {},
 };
 
 const LoadingContext = createContext<LoadingContextType>(defaultLoadingContext);
 
 export const useLoading = () => useContext(LoadingContext);
 
-export const LoadingContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const LoadingContextProvider: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
   const [loading, setLoadingState] = useState(false);
   const [loadingText, setLoadingText] = useState("Loading...");
 
@@ -23,7 +25,7 @@ export const LoadingContextProvider: React.FC<{ children: React.ReactNode }> = (
     setLoadingState(bool);
     setTimeout(() => {
       setLoadingState(false);
-      setLoadingText('')
+      setLoadingText("");
     }, 20000);
   };
 

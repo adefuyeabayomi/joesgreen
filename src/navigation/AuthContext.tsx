@@ -1,12 +1,12 @@
-import React, { createContext, useState, useContext,useEffect } from "react";
-import { authService } from 'joegreen-service-library'
+import React, { createContext, useState, useContext, useEffect } from "react";
+import { authService } from "joegreen-service-library";
 
 // Define the shape of your auth context
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: (token:string,email:string) => void;
+  login: (token: string, email: string) => void;
   logout: () => void;
-  email: string,
+  email: string;
 }
 
 // Create the context with initial values
@@ -22,46 +22,49 @@ export const useAuth = () => {
 };
 
 // AuthProvider component to wrap your app and provide context
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   //default auth state is not authenticated. then use effect checks if there is an accessToken
   // if it exists, then i check to see if it is valid and not expired, if it is not expired, then the state can be updated to true, othewise it stays in false, and the expired message is displayed.
-  let accessToken: string | undefined = window.localStorage.getItem('accessToken')
-  let emailFromStore: string | undefined = window.localStorage.getItem('email')
-  const [email,setEmail] = useState(emailFromStore)
-  
-  async function checkValidity (): Promise<void>{
-    try{
-      let response = await authService.isValid(accessToken)
-      if(response.isValid){
-        setIsAuthenticated(true)
+  let accessToken: string | undefined =
+    window.localStorage.getItem("accessToken");
+  let emailFromStore: string | undefined = window.localStorage.getItem("email");
+  const [email, setEmail] = useState(emailFromStore);
+
+  async function checkValidity(): Promise<void> {
+    try {
+      let response = await authService.isValid(accessToken);
+      if (response.isValid) {
+        setIsAuthenticated(true);
+      } else {
+        logout();
       }
-      console.log({response})
-    }
-    catch(err){
-      console.error(err)
+      console.log({ response });
+    } catch (err) {
+      console.error(err);
     }
   }
-  useEffect(()=>{
-    if(accessToken){
-      console.log('user')
-      checkValidity()
-    }  
-    else {
-      console.log('user')
-    }  
-  },[])
+  useEffect(() => {
+    if (accessToken) {
+      console.log("user");
+      checkValidity();
+    } else {
+      console.log("user");
+    }
+  }, []);
 
-  const login = (accessToken: string,email: string) => {
+  const login = (accessToken: string, email: string) => {
     setIsAuthenticated(true);
-    setEmail(email)
-    window.localStorage.setItem('accessToken',accessToken)
-    window.localStorage.setItem('email',email)
+    setEmail(email);
+    window.localStorage.setItem("accessToken", accessToken);
+    window.localStorage.setItem("email", email);
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    window.localStorage.clear()
+    window.localStorage.clear();
   };
 
   return (
